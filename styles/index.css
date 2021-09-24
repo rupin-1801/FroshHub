@@ -104,8 +104,6 @@ input[type="submit"]{
     padding: 5px 0px;
     outline: none;
     margin-top: 10px;
-}
-input[type="submit"]:hover{
     box-shadow: 0px 2px 10px 2px #979BF9;
 }
 .image{
@@ -120,5 +118,51 @@ input[type="submit"]:hover{
     height: 100%;
     margin-bottom: 0px;
 }
+@media screen and (max-width:1080px) {
+    .image > h2{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width:600px) {
+    body{
+        background-image: none;
+        background: linear-gradient(150deg,#6b6fe2 50%,#cdd7f3);
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    .image{
+        display: none;
+    }
+    
+    #mobile-heading{
+        display: block;
+        color: white;
+        font-size:large;
+    }
+    input[type="submit"]{
+        align-items: center;
+        width: 100%;
+        top: 10px;
+        position: relative;
+    }
+    .remember-field{
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .login{
+        width:60vw;
+        max-width: 260px;
+    }
+    .footer{
+        display: flex;
+        font-size: small;
+    }
 
+}
+@media screen and (max-width:375px) {
+    #mobile-heading{
+        font-size: small;
+    }
+}
 
