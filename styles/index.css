@@ -1,0 +1,118 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-image: url("../utilities/LOGIN\ BACKGROUND.jpg");
+    background-size: cover;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container{
+    border-radius: 10px;
+    min-width: 500px;
+    width: 50vw;
+    background-color: white;
+    box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.3);
+    margin: 20px 0px;
+    display: flex;
+    height: 65vh;
+}
+.login > h2{
+    color: #7975e7;
+}
+.input{
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    margin-top: 10px;
+    width: 90%;
+    font-size: 14px;
+    line-height: 28px;
+    height: 28px;
+    color: black;
+    border-bottom: 1px solid black;
+}
+.input-field{
+    position: relative;
+}
+.actions{
+    display: flex;
+}
+.actions > *{
+    width: 50%;
+    margin: 0px;
+}
+.forgot{
+    text-align: center;
+}
+.pointer{
+    cursor: pointer;
+}
+.border{
+    width: 0px;
+    position: absolute;
+    bottom: 0px;
+    height: 2px;
+    background-color: #7975e7;
+    left: 0px;
+}
+.input:focus{
+    border-bottom: none;
+    background-color: #eaeaf3;
+}
+.input-field:focus-within {
+    color: #7975e7;
+  }
+.input:focus ~ .border{
+    transition: 0.3s;
+    width: 90%;
+}
+.photo{
+    position: relative;
+    top: 50px;
+    left: -10px;
+    width: 80%;
+    height: 50%;
+}
+.remember-field{
+    display: flex;
+    align-items: center;
+}
+.image, .login{
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+}
+input[type="checkbox"]{
+    margin-right: 10px;
+}
+input[type="submit"]{
+    background-color: #7975e7;
+    color: white;
+    width: 35%;
+    border: none;
+    border-radius: 2px;
+    padding: 5px 0px;
+    outline: none;
+}
+.image{
+    border-radius: 10px 0px 0px 10px;
+    color: white;
+    background-color: #7975e7;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
