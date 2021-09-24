@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url("../utilities/LOGIN\ BACKGROUND.jpg");
+    background-image: url("../util/LOGIN\ BACKGROUND.jpg");
     background-size: cover;
     display: flex;
     height: 100%;
@@ -10,11 +10,11 @@ body{
     justify-content: center;
     align-items: center;
 }
-
+#mobile-heading{
+    display: none;
+}
 .login-container{
     border-radius: 10px;
-    min-width: 500px;
-    width: 50vw;
     background-color: white;
     box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.3);
     margin: 20px 0px;
@@ -23,6 +23,7 @@ body{
 }
 .login > h2{
     color: #7975e7;
+    margin: 0;
 }
 .input{
     border: none;
@@ -38,16 +39,14 @@ body{
 }
 .input-field{
     position: relative;
+    margin-top: 10px;
 }
-.actions{
+.remember-field{
     display: flex;
-}
-.actions > *{
-    width: 50%;
     margin: 0px;
 }
 .forgot{
-    text-align: center;
+    text-align:center;
 }
 .pointer{
     cursor: pointer;
@@ -78,17 +77,15 @@ body{
     width: 80%;
     height: 50%;
 }
-.remember-field{
-    display: flex;
-    align-items: center;
-}
 .image, .login{
-    width: 50%;
+    width: 25vw;
+    min-width: 250px;
     padding: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
 a{
     text-decoration: none;
 }
@@ -98,7 +95,6 @@ input[type="checkbox"]{
 input[type="submit"]{
     background-color: #7975e7;
     color: white;
-    width: 35%;
     border: none;
     border-radius: 2px;
     padding: 5px 0px;
@@ -115,4 +111,40 @@ input[type="submit"]{
     justify-content: space-evenly;
     height: 100%;
 }
+@media screen and (max-width:425px) {
+    body{
+        background-image: none;
+        background: linear-gradient(150deg,#6b6fe2 50%,#cdd7f3);
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    .image{
+        display: none;
+    }
+    
+    #mobile-heading{
+        display: block;
+        color: white;
+        text-transform: uppercase;
+        font-family: 'Gluten', cursive;
+        font-size:large;
+    }
+    input[type="submit"]{
+        align-items: center;
+        width: 100%;
+        top: 10px;
+        position: relative;
+        box-shadow: 0px 2px 10px 2px #979BF9;
+    }
+    .remember-field{
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .footer{
+        display: flex;
+        font-size: small;
+        width: 50vw;
+    }
 
+}
