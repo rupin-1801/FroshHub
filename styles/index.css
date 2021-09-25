@@ -33,8 +33,6 @@ body{
     border: none;
     outline: none;
     box-sizing: border-box;
-    text-transform: none !important;
-    font-family: 'Times New Roman', Times, serif;
     margin-top: 10px;
     width: 90%;
     font-size: 14px;

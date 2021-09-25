@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <link rel="stylesheet" href="styles/index.css" />
+<<<<<<< HEAD
+  <!-- <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    /> -->
+
+=======
+>>>>>>> refs/remotes/origin/login-mayank
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@300&display=swap" rel="stylesheet">
@@ -24,8 +34,8 @@
       <h2>Login</h2>
       <form class="form">
         <field class="input-field">
-          <label for="roll">Roll No / Email</label>
-          <input type="text" id="roll" class="input" />
+          <label for="mail">Email</label>
+          <input type="email" id="mail" class="input" />
           <span class="border"></span>
         </field>
         <field class="input-field">
@@ -34,10 +44,10 @@
           <span class="border"></span>
         </field>
         <field class="remember-field">
-          <input type="checkbox" name="remember" class="forgot pointer" id="remember" />
+          <input type="checkbox" name="remember" class="forgot pointer" id="remember" onchange="rememberMe()" />
           <label for="remember">Remember me</label>
         </field>
-        <input type="submit" class="pointer" value="Login" />
+        <input type="submit" class="pointer" id ="_login" value="Login" onclick="verification()"  />
         <p class="forgot pointer">
           <a href="/pages/forgot.html">Forgot password?</a>
         </p>
@@ -47,6 +57,9 @@
   <div class="footer">
     © 2021 All Rights Reserved. Frosh Hub
   </div>
+  <script src="./js/mainFirebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+  <script src="./js/firbaseConfig.js"></script>
 </body>
 
 </html>
