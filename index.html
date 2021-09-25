@@ -9,43 +9,87 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@300&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4d63232f4c.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Norican&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div id="mobile-heading">
-    <h2>welcome to FroshHub</h2>
-  </div>
-  <div class="login-container">
-    <div class="image">
-      <h2>Welcome to FroshHub</h2>
-      <img src="util/student3.png" class="photo" />
+  <div class="main-container">
+    <div id="mobile-heading">
+      <h2>welcome to FroshHub</h2>
     </div>
-    <div class="login">
-      <h2>Login</h2>
-      <form class="form">
-        <field class="input-field">
-          <label for="mail">Email</label>
-          <input type="email" id="mail" class="input" />
-          <span class="border"></span>
-        </field>
-        <field class="input-field">
-          <label for="pass">Password</label>
-          <input type="password" id="pass" class="input" />
-          <span class="border"></span>
-        </field>
-        <field class="remember-field">
-          <input type="checkbox" name="remember" class="forgot pointer" id="remember" onchange="rememberMe()" />
-          <label for="remember">Remember me</label>
-        </field>
-        <input type="submit" class="pointer" id ="_login" value="Login" onclick="verification()"  />
-        <p class="forgot pointer">
-          <a href="/pages/forgot.html">Forgot password?</a>
-        </p>
-      </form>
+    <div class="login-container">
+      <div class="image">
+        <h2>Welcome to FroshHub</h2>
+        <img src="util/student3.png" class="photo" />
+      </div>
+      <div class="login">
+        <h2>Login</h2>
+        <form class="form">
+          <field class="input-field">
+            <label for="mail">Email</label>
+            <input type="email" id="mail" class="input" />
+            <span class="border"></span>
+          </field>
+          <field class="input-field">
+            <label for="pass">Password</label>
+            <input type="password" id="pass" class="input" />
+            <span class="border"></span>
+          </field>
+          <field class="remember-field">
+            <input type="checkbox" name="remember" class="forgot pointer" id="remember" onchange="rememberMe()" />
+            <label for="remember">Remember me</label>
+          </field>
+          <input type="submit" class="pointer" id="_login" value="Login" onclick="verification()" />
+          <p class="forgot pointer">
+            <a href="/pages/forgot.html">Forgot password?</a>
+          </p>
+        </form>
+      </div>
+    </div>
+    <div class="footer">
+      © 2021 All Rights Reserved. Frosh Hub
     </div>
   </div>
-  <div class="footer">
-    © 2021 All Rights Reserved. Frosh Hub
+  <div id="main">
+    <h1>FroshHub</h1>
+    <form>
+      <input type="email" placeholder="email" class="in" id="mail">
+      <input type="password" placeholder="password" class="in" id="pass">
+      <span id="rem">
+        <div>
+          <input type="checkbox" id="check">
+          <label for="check"> Remember Me</label>
+        </div>
+
+        <a href="" id="forgot">Forgot Password?</a>
+      </span>
+    </form>
+
+    <div id="follow">
+      <span>
+        <a href="#" id="_login" type="submit" onclick="verification()">
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </span>
+    </div>
+    <div id="social">
+      <a href="">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="">
+        <i class="fab fa-twitter">
+        </i>
+      </a>
+      <a href="">
+        <i class="fab fa-facebook"></i>
+      </a>
+    </div>
+
   </div>
   <script src="./js/mainFirebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
