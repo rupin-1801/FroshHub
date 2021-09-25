@@ -33,6 +33,11 @@ body{
     border: none;
     outline: none;
     box-sizing: border-box;
+<<<<<<< HEAD
+=======
+    text-transform: none !important;
+    font-family: 'Times New Roman', Times, serif;
+>>>>>>> refs/remotes/origin/login-mayank
     margin-top: 10px;
     width: 90%;
     font-size: 14px;
