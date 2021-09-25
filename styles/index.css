@@ -3,6 +3,9 @@
     text-transform: capitalize;
     font-family: 'Gluten', cursive;
 }
+#main {
+    display: none;
+}
 body{
     background-image: url("../util/LOGIN\ BACKGROUND.jpg");
     background-size: cover;
@@ -118,12 +121,15 @@ input[type="submit"]{
     height: 100%;
     margin-bottom: 0px;
 }
+.footer {
+    text-align: center;
+}
 @media screen and (max-width:1080px) {
     .image > h2{
         font-size: 20px;
     }
 }
-@media screen and (max-width:600px) {
+@media screen and (min-width:435px) and (max-width:600px) {
     body{
         background-image: none;
         background: linear-gradient(150deg,#6b6fe2 50%,#cdd7f3);
@@ -155,10 +161,135 @@ input[type="submit"]{
         max-width: 260px;
     }
     .footer{
-        display: flex;
         font-size: small;
     }
 
+}
+@media screen and (max-width:435px) {
+    .main-container {
+        display: none;
+    } 
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        height: 100vh !important;
+        overflow: hidden;
+    
+    }
+    
+    #main{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100vw;
+        background: linear-gradient(180deg, rgb(52, 48, 163),#A3D8F4);
+        overflow: hidden;
+    
+    }
+    #main>h1{
+        height: 23%;
+        width: 100%;
+        text-align: center;
+        padding-top: 40px;
+        margin-bottom: 5vh;
+        color: aliceblue;
+        font-family: 'Norican', cursive;
+        font-weight: lighter;
+        letter-spacing: 5px;
+        text-transform: capitalize;
+    }
+    #main>form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: space-around; */
+        width: 100%;
+        padding: 5px 5px 5px 5px;
+        height: 30vh;
+    }
+    
+    .in{
+        margin: 10px 0px 0px 0px;
+        padding: 9px;
+        font-size: 16px;
+        align-items: center;
+        width: 80%;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        box-shadow: inset 0px 0px 35px rgba(255,255,255,0.3);
+        /* background-color: rgba(255,255,255,0.5); */
+        /* color: aliceblue; */
+        border-radius: 20px;
+    }
+    .in::placeholder{
+        color: white;
+        text-transform: capitalize;
+    }
+    #rem{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 25px;
+        width: 100%;
+        color: white;
+        padding: 1%;
+    }
+    #forgot{
+        text-decoration: none;
+        color: white;
+    }
+    #follow{
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        width: 150%;
+        left: -16vh;
+        position: relative;
+        height:300px;
+        top: 10vh;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+    #follow span{
+        position: absolute;
+        top: -20px;
+        background-color:white;
+        height: 45px;
+        width: 45px;
+        box-shadow: 0px 0px 15px 1px rgba(41, 39, 39, 0.466);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .fas{
+        font-size: 18px;
+        color: rgb(0, 68, 255);
+    }
+    .fab{
+        font-size: xx-large;
+        cursor: pointer;
+    }
+    #social{
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        top: 90%;
+        right: 51%;
+        /* border: 1px solid red; */
+        width: 70;
+    }
+    #social a{
+        text-decoration: none;
+        color: #6170f5;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    
 }
 @media screen and (max-width:375px) {
     #mobile-heading{
