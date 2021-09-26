@@ -38,6 +38,7 @@ body {
   border: none;
   outline: none;
   box-sizing: border-box;
+  text-transform: none;
   margin-top: 10px;
   width: 90%;
   font-size: 14px;
@@ -101,6 +102,9 @@ a {
 }
 input[type="checkbox"] {
   margin-right: 10px;
+}
+input[type="password"]{
+  letter-spacing: 3px;
 }
 input[type="submit"] {
   background-color: #7975e7;
@@ -223,6 +227,7 @@ input[type="submit"] {
     width: 80%;
     outline: none;
     border: none;
+    text-transform: none;
     background-color: transparent;
     box-shadow: inset 0px 0px 35px rgba(255, 255, 255, 0.3);
     border-radius: 20px;
@@ -231,6 +236,7 @@ input[type="submit"] {
   .in::placeholder {
     color: white;
     text-transform: capitalize;
+    letter-spacing: 0px;
   }
   #rem {
     display: flex;
