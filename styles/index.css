@@ -38,6 +38,7 @@ body {
   border: none;
   outline: none;
   box-sizing: border-box;
+  text-transform: none;
   margin-top: 10px;
   width: 90%;
   font-size: 14px;
@@ -102,6 +103,9 @@ a {
 input[type="checkbox"] {
   margin-right: 10px;
 }
+input[type="password"] {
+  letter-spacing: 3px;
+}
 input[type="submit"] {
   background-color: #7975e7;
   color: white;
@@ -117,7 +121,7 @@ input[type="submit"] {
   color: white;
   background-color: #7975e7;
 }
-.form {
+#form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -138,6 +142,9 @@ input[type="submit"] {
     background: linear-gradient(150deg, #6b6fe2 50%, #cdd7f3);
     background-repeat: no-repeat;
     height: 100vh;
+  }
+  #mobile-form {
+    display: none;
   }
   .image {
     display: none;
@@ -176,11 +183,18 @@ input[type="submit"] {
   #main-container {
     display: none;
   }
+  #form {
+    display: none;
+  }
+  body {
+    background: none;
+    overflow: hidden;
+  }
   #main {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 100vw;
+    width: 100%;
     background: linear-gradient(180deg, rgb(52, 48, 163), #a3d8f4);
     overflow: hidden;
   }
@@ -213,6 +227,7 @@ input[type="submit"] {
     width: 80%;
     outline: none;
     border: none;
+    text-transform: none;
     background-color: transparent;
     box-shadow: inset 0px 0px 35px rgba(255, 255, 255, 0.3);
     border-radius: 20px;
@@ -221,6 +236,7 @@ input[type="submit"] {
   .in::placeholder {
     color: white;
     text-transform: capitalize;
+    letter-spacing: 0px;
   }
   #rem {
     display: flex;
@@ -233,6 +249,10 @@ input[type="submit"] {
     text-decoration: none;
     color: white;
   }
+  .packet {
+    overflow: hidden;
+    width: 100%;
+  }
   #follow {
     display: flex;
     justify-content: center;
@@ -244,10 +264,12 @@ input[type="submit"] {
     top: 70vh;
     border-radius: 50%;
   }
-  #follow span {
+  #mobile-form button {
     position: absolute;
-    top: -20px;
+    top: 67vh;
+    z-index: +10;
     background-color: white;
+    border: none;
     height: 45px;
     width: 45px;
     box-shadow: 0px 0px 15px 1px rgba(41, 39, 39, 0.466);
@@ -276,5 +298,10 @@ input[type="submit"] {
     text-decoration: none;
     color: #6170f5;
     margin: 0px 20%;
+  }
+}
+@media screen and (max-width: 320px) {
+  body {
+    min-width: 320px;
   }
 }
