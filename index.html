@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>Student Login</title>
 
     <link rel="stylesheet" href="styles/index.css" />
@@ -34,7 +34,8 @@
         </div>
         <div class="login">
           <h2>Login</h2>
-          <form class="form">
+          <form id="form"
+          onsubmit="verification(event)">
             <field class="input-field">
               <label for="mail">Email</label>
               <input type="email" id="mail" class="input" />
@@ -51,7 +52,6 @@
                 name="remember"
                 class="forgot pointer"
                 id="remember"
-                onchange="rememberMe()"
               />
               <label for="remember">Remember me</label>
             </field>
@@ -60,7 +60,6 @@
               class="pointer"
               id="_login"
               value="Login"
-              onclick="verification()"
             />
             <p class="forgot pointer">
               <a href="/pages/forgot.html">Forgot password?</a>
@@ -72,29 +71,32 @@
     </div>
     <div id="main">
       <h1>FroshHub</h1>
-      <form>
-        <input type="email" placeholder="email" class="in" id="mail" />
-        <input type="password" placeholder="password" class="in" id="pass" />
+      <form id="mobile-form"
+      onsubmit="verification(event)">
+        <input type="email" placeholder="email" class="in" id="m-mail" />
+        <input type="password" placeholder="password" class="in" id="m-pass" />
         <span id="rem">
           <div>
             <input
               type="checkbox"
               id="remember"
-              onchange="rememberMe()"
             />
             <label for="remember"> Remember Me</label>
           </div>
           <a href="" id="forgot">Forgot Password?</a>
         </span>
-      </form>
-
+          <button type="submit">
+            <a href="#" id="_login">
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </button>
+          
+        <div class="packet">
       <div id="follow">
-        <span>
-          <a href="#" id="_login" type="submit" onclick="verification()">
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </span>
+        
       </div>
+      </div>
+    </form>
       <div id="social">
         <a href="">
           <i class="fab fa-instagram"></i>
