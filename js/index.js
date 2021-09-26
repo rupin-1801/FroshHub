@@ -1,24 +1,49 @@
-var store_email;
+var store_email, email, pass, remembered;
+
+const remember = document.getElementById("remember");
+const mRemember = document.getElementById("m-remember");
+
+window.onload = () => {
+  staticAuth();
+  if(localStorage.getItem("remembered")){
+    document.getElementById("mail").value=localStorage.getItem("user-email");
+    document.getElementById("m-mail").value=localStorage.getItem("user-email");
+    document.getElementById("pass").value=localStorage.getItem("user-pass");
+    document.getElementById("m-pass").value=localStorage.getItem("user-pass");
+  }
+}
 
 function staticAuth() {
   localStorage.setItem("email", "test@gla.com");
   localStorage.setItem("pass", "froshHubTeam");
 }
-staticAuth();
+
 function readForm(form) {
   email = document.getElementById(form[0].id).value;
   pass = document.getElementById(form[1].id).value;
-  return { email, pass };
 }
 
+remember.addEventListener("change", () => {
+  remembered = !remembered;
+});
+
+mRemember.addEventListener("change", () => {
+  remembered = !remembered;
+});
+
 function verification(event) {
-  const { email, pass } = readForm(event.target);
+  readForm(event.target);
   if (
     email === localStorage.getItem("email") &&
     pass === localStorage.getItem("pass")
   ) {
-    console.log("verified");
+    alert("You are ready to go!");
   } else {
-    alert("incorrect");
+    alert("Invalid email id or password!");
+  }
+  if (remembered) {
+    localStorage.setItem("remembered", true);
+    localStorage.setItem("user-email", email);
+    localStorage.setItem("user-pass", pass);
   }
 }

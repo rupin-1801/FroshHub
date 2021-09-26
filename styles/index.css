@@ -103,7 +103,7 @@ a {
 input[type="checkbox"] {
   margin-right: 10px;
 }
-input[type="password"]{
+input[type="password"] {
   letter-spacing: 3px;
 }
 input[type="submit"] {
@@ -143,8 +143,8 @@ input[type="submit"] {
     background-repeat: no-repeat;
     height: 100vh;
   }
-  #mobile-form{
-    display:none;
+  #mobile-form {
+    display: none;
   }
   .image {
     display: none;
@@ -183,10 +183,10 @@ input[type="submit"] {
   #main-container {
     display: none;
   }
-  #form{
-    display:none;
+  #form {
+    display: none;
   }
-  body{
+  body {
     background: none;
     overflow: hidden;
   }
@@ -249,7 +249,7 @@ input[type="submit"] {
     text-decoration: none;
     color: white;
   }
-  .packet{
+  .packet {
     overflow: hidden;
     width: 100%;
   }
@@ -269,7 +269,7 @@ input[type="submit"] {
     top: 67vh;
     z-index: +10;
     background-color: white;
-    border:none;
+    border: none;
     height: 45px;
     width: 45px;
     box-shadow: 0px 0px 15px 1px rgba(41, 39, 39, 0.466);
@@ -301,7 +301,7 @@ input[type="submit"] {
   }
 }
 @media screen and (max-width: 320px) {
-  body{
+  body {
     min-width: 320px;
   }
 }
