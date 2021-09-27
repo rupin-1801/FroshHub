@@ -58,6 +58,7 @@ body {
 }
 .forgot {
   text-align: center;
+  margin-top: 12px;
 }
 .pointer {
   cursor: pointer;
