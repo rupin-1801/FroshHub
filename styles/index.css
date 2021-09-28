@@ -140,7 +140,8 @@ input[type="submit"] {
 @media screen and (min-width: 435px) and (max-width: 600px) {
   body {
     background-image: none;
-    background: linear-gradient(150deg, #6b6fe2 50%, #cdd7f3);
+    /* background: linear-gradient(150deg, #6b6fe2 50%, #cdd7f3); */
+    background: linear-gradient(135deg, #7579E7 40% ,#9AB3F5, #A3D8F4,#B9FFFC);
     background-repeat: no-repeat;
     height: 100vh;
   }
