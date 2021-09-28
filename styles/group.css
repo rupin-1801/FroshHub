@@ -1,0 +1,46 @@
+.chat-card{
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 15vh;
+    width: 25%;
+    /* remove it when apply */
+    margin: 50px; 
+    border-bottom: 1px solid black;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.651);
+}
+#dp img{
+    width: 100px;
+    align-items: center;
+    margin-top: 10px;
+    
+}
+#heading
+{
+    margin-top: 5px;
+    margin-bottom: 0;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    height: 35%;
+}
+#time{
+    font-size: small;
+}
+
+#h-row{
+    margin: 0;
+    margin-right: 10px;
+}
+#chat-body{
+    display: flex;
+    margin-top: 10px;
+    font-size: x-small;
+    padding: 2px 5px 0px 5px;
+    overflow: hidden;
+    height: 30%;
+}
+#message{
+margin-right: 5px;
+
+}
