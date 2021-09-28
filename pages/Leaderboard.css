@@ -13,11 +13,11 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  width: fit-content;
+  width: 30vw;
   margin: 2%;
   height: 200px;
   border-radius: 20px;
-  box-shadow: 0 0 10px rgba(50, 50, 50, 0.2);
+  box-shadow: 0 0 15px rgba(50, 50, 50, 0.5);
   background: #0f0c29; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
