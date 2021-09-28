@@ -61,3 +61,6 @@ iframe {
   margin-top: -5rem;
   overflow-x: hidden;
 }
+.fh-overflow {
+  overflow: hidden;
+}

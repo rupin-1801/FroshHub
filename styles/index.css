@@ -141,7 +141,7 @@ input[type="submit"] {
   body {
     background-image: none;
     /* background: linear-gradient(150deg, #6b6fe2 50%, #cdd7f3); */
-    background: linear-gradient(135deg, #7579E7 40% ,#9AB3F5, #A3D8F4,#B9FFFC);
+    background: linear-gradient(135deg, #7579e7 40%, #9ab3f5, #a3d8f4, #b9fffc);
     background-repeat: no-repeat;
     height: 100vh;
   }
