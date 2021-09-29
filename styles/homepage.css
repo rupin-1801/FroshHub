@@ -1,7 +1,6 @@
 * {
   padding: 0;
   margin: 0;
-  /* overflow: hidden; */
 }
 nav {
   background-color: #212529;
@@ -9,13 +8,13 @@ nav {
 body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  background-color: #212529;
+  background-color: rgba(150, 150, 150, 0.2);
 }
 
 html {
   height: -webkit-fill-available;
 }
-
+ 
 main {
   display: flex;
   flex-wrap: nowrap;
@@ -36,8 +35,8 @@ main {
 .dropdown-toggle {
   outline: 0;
 }
-.side-fh {
-  height: 100vh;
+.fh-side {
+  height: calc(100vh - 57px);
 }
 .btn-toggle:hover,
 .btn-toggle:focus {
@@ -50,17 +49,37 @@ main {
   left: 30;
   right: 20;
 }
+.fh-card {
+  height: 13rem;
+  margin: 20px 2.5%;
+}
+.fh-container {
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 iframe {
   position: absolute;
-  top: 10rem;
-  right: 0;
-  /* left: 60rem; */
-  width: 79%;
-  height: 100%;
+  right: 0px;
+  top: 57px;
+  width: calc(100% - 280px);
+  height: calc(100% - 57px);
   z-index: 0;
-  margin-top: -5rem;
   overflow-x: hidden;
 }
-.fh-overflow {
-  overflow: hidden;
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
 }

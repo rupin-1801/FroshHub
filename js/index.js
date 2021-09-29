@@ -5,13 +5,14 @@ const mRemember = document.getElementById("m-remember");
 
 window.onload = () => {
   staticAuth();
-  if(localStorage.getItem("remembered")){
-    document.getElementById("mail").value=localStorage.getItem("user-email");
-    document.getElementById("m-mail").value=localStorage.getItem("user-email");
-    document.getElementById("pass").value=localStorage.getItem("user-pass");
-    document.getElementById("m-pass").value=localStorage.getItem("user-pass");
+  if (localStorage.getItem("remembered")) {
+    document.getElementById("mail").value = localStorage.getItem("user-email");
+    document.getElementById("m-mail").value =
+      localStorage.getItem("user-email");
+    document.getElementById("pass").value = localStorage.getItem("user-pass");
+    document.getElementById("m-pass").value = localStorage.getItem("user-pass");
   }
-}
+};
 
 function staticAuth() {
   localStorage.setItem("email", "test@gla.com");
@@ -34,12 +35,11 @@ mRemember.addEventListener("change", () => {
 function verification(event) {
   readForm(event.target);
   if (
-    email === localStorage.getItem("email") &&
-    pass === localStorage.getItem("pass")
+    email !== localStorage.getItem("email") ||
+    pass !== localStorage.getItem("pass")
   ) {
-    alert("You are ready to go!");
-  } else {
     alert("Invalid email id or password!");
+    event.preventDefault();
   }
   if (remembered) {
     localStorage.setItem("remembered", true);
