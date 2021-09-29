@@ -1,0 +1,85 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+nav {
+  background-color: #212529;
+}
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  background-color: rgba(150, 150, 150, 0.2);
+}
+
+html {
+  height: -webkit-fill-available;
+}
+ 
+main {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-right: 1px white solid;
+}
+
+.bi {
+  vertical-align: -0.125em;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+.dropdown-toggle {
+  outline: 0;
+}
+.fh-side {
+  height: calc(100vh - 57px);
+}
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(0, 0, 0, 0.85);
+  background-color: #d2f4ea;
+}
+.card-control-fh {
+  position: absolute;
+  top: 9 * 0;
+  left: 30;
+  right: 20;
+}
+.fh-card {
+  height: 13rem;
+  margin: 20px 2.5%;
+}
+.fh-container {
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+iframe {
+  position: absolute;
+  right: 0px;
+  top: 57px;
+  width: calc(100% - 280px);
+  height: calc(100% - 57px);
+  z-index: 0;
+  overflow-x: hidden;
+}
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}

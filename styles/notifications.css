@@ -1,0 +1,58 @@
+.fh-card-container {
+  padding: 15px 2vw;
+  background-color: rgba(150, 150, 150, 0.2);
+}
+.fh-card {
+  background-color: white;
+  border-radius: 0px;
+  margin-bottom: 8px;
+  border: none;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+.fh-card:before {
+  content: "";
+  height: 100%;
+  width: 6px;
+  background-color: #7579e7;
+  position: absolute;
+}
+.fh-card-time {
+  float: right;
+  margin-bottom: 10px !important;
+}
+.fh-card-text {
+  margin-bottom: 10px !important;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.fh-tag-group {
+  width: fit-content;
+  display: flex;
+  float: left;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.fh-button-tag {
+  border: none;
+  margin: 5px 10px;
+  outline: none;
+  background-color: rgba(150, 150, 150, 0.4);
+  border-radius: 2px;
+  white-space: nowrap;
+  padding: 0px 15px 5px 15px;
+}
+
+@media screen and (max-width: 500px) {
+  .fh-button-tag {
+    margin: 5px 10px;
+    padding: 5px;
+    font-size: 12px;
+  }
+  .fh-card-container {
+    overflow: hidden;
+  }
+}
