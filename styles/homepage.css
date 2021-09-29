@@ -8,13 +8,13 @@ nav {
 body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  background-color: #212529;
+  background-color: rgba(150, 150, 150, 0.2);
 }
 
 html {
   height: -webkit-fill-available;
 }
-
+ 
 main {
   display: flex;
   flex-wrap: nowrap;
@@ -51,7 +51,7 @@ main {
 }
 .fh-card {
   height: 13rem;
-  margin: 20px;
+  margin: 20px 2.5%;
 }
 .fh-container {
   padding: 0px;
