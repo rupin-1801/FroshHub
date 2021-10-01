@@ -13,9 +13,10 @@
     text-align: center;
     height: 100%;
     overflow-y: scroll;
-    padding: 2%;
+    /* padding: 0 2% 2% 2%; */
     display: grid;
-    grid-auto-rows:50px
+    overflow-x: hidden;
+    grid-auto-rows:60px
     80px
     80px
     80px
@@ -37,13 +38,16 @@
     'user-8'
     'user-9';
 }
+.chat-message{
+    width:96%;
+    margin:0px 2%;
+}
 .chat-card{
     display: flex;
     border-radius: 10px;
     overflow: hidden;
     width: 100%; 
     height: 100%;
-    
 }
 #dp img{
     width: 100px;
@@ -63,11 +67,6 @@
     font-size: small;
     color: rgba(128, 128, 128, 0.76);
 }
-
-#h-row{
-    margin: 0;
-    margin-right: 10px;
-}
 #name{
     margin-left: 10px;
 }
@@ -76,13 +75,10 @@
     margin-top: 10px;
     margin-left: 7px;
     font-size: x-small;
-    /* padding: 2px 5px 0px 5px; */
-    /* overflow: hidden; */
     height: 30%;
     color: grey;
 }
 #message{
-/* margin-right: 5px; */
 color: grey;
 } 
 #message-body{
@@ -102,20 +98,21 @@ color: grey;
     align-items: center;
     grid-area: user-1;
     display: flex;
-    justify-content: space-between;
-    padding: 5px 9px;
+    justify-content:center;
     position: sticky;
-    background-color: white;
+    background-color: #ededed;
     top:0;
+    box-shadow: 0 0 10px 5px rgba(112, 128, 144, 0.397);
 }
 .search-bar-container{
     border: none;
     box-shadow: inset 0px 0px 10px 0px rgba(118, 143, 167, 0.404);
-    width: 70%;
+    width: 80%;
     height: 70%;
     vertical-align: middle;
     border-radius: 50px;
     padding: 5px;
+    background-color: white;
 }
 .search{
     border: none;
@@ -133,23 +130,10 @@ button[type="submit"]{
     cursor: pointer;
     padding: 1px 7px;
 }
-#dp-2{
-    border-radius: 50%;
-    height:100%;
-    width: 12%;
-    box-shadow: 0px 0px 8px rgba(165, 156, 156, 0.534);
-    overflow: hidden;
-}
-#dp-2 img{
-    width: 74px;
-    height: 46px;
-    align-items: center;
-    margin-left: -17.9px;
-    margin-top: -5px;
-}
+
 #item-2{
     grid-area: user-2;
-    border-top: 1px solid rgba(116, 112, 112, 0.473);
+    /* border-top: 1px solid rgba(116, 112, 112, 0.473); */
 }#item-3{
     grid-area: user-3;
     border-top: 1px solid rgba(116, 112, 112, 0.473);
@@ -183,7 +167,6 @@ button[type="submit"]{
     grid-template-areas: "user-heading"
     "chat-content"
     "chat-message-bar";
-    /* margin-left: 18px; */
     width: 100%;
 }
 #user-heading{
@@ -232,7 +215,6 @@ user-name>p{
 }
 #chat-content{
     grid-area: chat-content;
-    /* background-color: aqua; */
     height: 81%;
 }
 #chat-message-bar{
@@ -281,4 +263,40 @@ user-name>p{
 ::-webkit-scrollbar-thumb{
     background:linear-gradient(135deg,rgb(0, 168, 235),rgb(8, 22, 219));
     border-radius: 10px;
+}
+
+@media screen and (max-width:430px) {
+    .grid-container{
+        grid-template-columns: 100%;
+    }
+    #grid-item-2{
+        display: none;
+    }
+    #grid-item-1{
+        width: 100%;
+    }
+    ::-webkit-scrollbar{
+        width: 2px;
+    }
+    ::-webkit-scrollbar-thumb{
+        background: rgb(134, 130, 130) !important;
+    }
+    ::-webkit-scrollbar-track{
+        background: white !important;
+        box-shadow: none;
+    }
+
+    
+}
+@media screen and (min-width: 430px) and (max-width:1020px) {
+    .grid-container{
+        grid-template-columns: 42% 58%;
+    }
+    
+}
+@media screen and (min-width:1440px) {
+    .grid-container{
+        grid-template-columns: 30% 70%;
+    }
+    
 }
