@@ -10,13 +10,19 @@
     overflow: hidden;
 }
 #grid-item-1{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+}
+#grid-item-1-a{
     text-align: center;
     height: 100%;
     overflow-y: scroll;
     /* padding: 0 2% 2% 2%; */
     display: grid;
     overflow-x: hidden;
-    grid-auto-rows:60px
+    grid-auto-rows:
     80px
     80px
     80px
@@ -28,7 +34,7 @@
     80px
     80px
     80px;
-    grid-template-areas: 'user-1'
+    grid-template-areas: 
     'user-2'
     'user-3'
     'user-4'
@@ -108,13 +114,14 @@ color: grey;
 
 #item-1{
     align-items: center;
-    grid-area: user-1;
+    /* grid-area: user-1; */
     display: flex;
     justify-content:center;
     position: sticky;
     background-color: #ededed;
     top:0;
-    box-shadow: 0 0 10px 5px rgba(112, 128, 144, 0.397);
+    height: 62px;
+    box-shadow: 0 0 10px 1px rgba(68, 74, 80, 0.288);
 }
 .search-bar-container{
     border: none;
@@ -277,7 +284,7 @@ user-name>p{
     color: rgb(0, 132, 255);
 }
 ::-webkit-scrollbar{
-    width: 5px;
+    width: 4.5px;
 }
 ::-webkit-scrollbar-track{
     box-shadow: inset 0 0 3px rgb(87, 85, 85);
