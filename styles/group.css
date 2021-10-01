@@ -89,6 +89,10 @@ color: grey;
     margin-bottom: 0;
     line-height: 2;
 }
+#chat-heading-body{
+    align-items: center;
+    padding: 15px 0 0 10px;
+}
 .chat-message:hover{
     background-color: rgba(231, 216, 204, 0.658);
     cursor: pointer;
@@ -231,8 +235,15 @@ user-name>p{
 #chat-message-bar>emoji{
     font-size: x-large;
 }
+#chat-message-bar>emoji>a{
+    text-decoration: none;
+}
 #chat-message-bar>papper-clip{
     font-size: x-large;
+    color: rgb(0, 132, 255);
+}
+#chat-message-bar>papper-clip>a{
+    text-decoration: none;
     color: rgb(0, 132, 255);
 }
 #chat-message-bar>input{
@@ -252,6 +263,10 @@ user-name>p{
 #chat-message-bar>mic{
     font-size: x-large;
     margin-right: 2%;
+}
+#chat-message-bar>mic>a{
+    text-decoration: none;
+    color: rgb(0, 132, 255);
 }
 ::-webkit-scrollbar{
     width: 5px;
