@@ -23,6 +23,9 @@ body{
   text-indent: 15px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
+.fh-search:focus{
+  background-color: #96adf622;
+}
 .fh-submit{
   position: absolute;
   outline:none;
