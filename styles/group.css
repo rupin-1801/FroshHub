@@ -49,10 +49,18 @@
     width: 100%; 
     height: 100%;
 }
+#dp{
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(90, 89, 89, 0.432);
+    width: 74%;
+    margin-top: 3%;
+    margin-left: 1%;
+    height: 74%;
+    overflow: hidden;
+}
 #dp img{
-    width: 100px;
-    align-items: center;
-    margin-top: 10px;
+    width: 100%;
+    height: 100%;
 }
 #heading
 {
@@ -289,6 +297,11 @@ user-name>p{
     }
     #grid-item-1{
         width: 100%;
+    }
+    #dp{
+        width: 100pt;
+        height: 60%;
+        box-sizing: border-box;
     }
     ::-webkit-scrollbar{
         width: 2px;
