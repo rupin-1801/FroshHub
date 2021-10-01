@@ -118,24 +118,26 @@ color: grey;
     display: flex;
     justify-content:center;
     position: sticky;
-    background-color: #ededed;
+    /* background-color: #ededed; */
     top:0;
+    backdrop-filter: blur(108px);
     height: 62px;
     box-shadow: 0 0 10px 1px rgba(68, 74, 80, 0.288);
 }
 .search-bar-container{
     border: none;
-    box-shadow: inset 0px 0px 10px 0px rgba(118, 143, 167, 0.404);
+    box-shadow:0px 0px 5px 0px rgba(118, 143, 167, 0.404);
     width: 80%;
     height: 70%;
     vertical-align: middle;
     border-radius: 50px;
     padding: 5px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.63);
 }
 .search{
     border: none;
     font-size: 15px;
+    text-indent: 15px;
     background-color: transparent;
     outline: none;
 }
@@ -290,11 +292,11 @@ user-name>p{
     width: 4.5px;
 }
 ::-webkit-scrollbar-track{
-    box-shadow: inset 0 0 3px rgb(87, 85, 85);
+    /* box-shadow: inset 0 0 3px rgb(87, 85, 85); */
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb{
-    background:linear-gradient(135deg,rgb(0, 168, 235),rgb(8, 22, 219));
+    background:rgba(153, 145, 145, 0.712);
     border-radius: 10px;
 }
 
@@ -314,13 +316,12 @@ user-name>p{
         box-sizing: border-box;
     }
     ::-webkit-scrollbar{
-        width: 2px;
+        width: 3px;
     }
     ::-webkit-scrollbar-thumb{
-        background: rgb(134, 130, 130) !important;
+        background: rgba(134, 130, 130, 0.473) !important;
     }
     ::-webkit-scrollbar-track{
-        background: white !important;
         box-shadow: none;
     }
 
