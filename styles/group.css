@@ -283,6 +283,9 @@ user-name>p{
     text-decoration: none;
     color: rgb(0, 132, 255);
 }
+#location-arrow{
+    display: none;
+}
 ::-webkit-scrollbar{
     width: 4.5px;
 }
