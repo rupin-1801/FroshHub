@@ -118,9 +118,9 @@ color: grey;
     display: flex;
     justify-content:center;
     position: sticky;
-    /* background-color: #ededed; */
+    background-color: #ededed;
     top:0;
-    backdrop-filter: blur(108px);
+    /* backdrop-filter: blur(108px); */
     height: 62px;
     box-shadow: 0 0 10px 1px rgba(68, 74, 80, 0.288);
 }
@@ -132,7 +132,7 @@ color: grey;
     vertical-align: middle;
     border-radius: 50px;
     padding: 5px;
-    background-color: rgba(255, 255, 255, 0.63);
+    background-color: rgba(255, 255, 255, 0.733);
 }
 .search{
     border: none;
