@@ -100,9 +100,45 @@ body {
 .styled-table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
 }
+.fh-search-bar-container {
+  padding: 15px 2vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+.fh-search-form {
+  position: relative;
+  background-color: white;
+  width: 600px;
+  max-width: 80%;
+}
+.fh-search {
+  width: 100%;
+  border: none;
+  height: 40px;
+  outline: none;
+  text-indent: 15px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.fh-search:focus {
+  background-color: #96adf622;
+}
+.fh-submit {
+  position: absolute;
+  outline: none;
+  width: 50px;
+  height: 40px;
+  border: none;
+  color: white;
+  z-index: +10;
+  right: 0px;
+  background-color: royalblue;
+}
 .styled-table tbody tr.active-row {
   font-weight: bold;
   color: #009879;
+}
+#table-search {
+  text-align: center;
 }
 @media (max-width: 425px) {
   .fh-card {
