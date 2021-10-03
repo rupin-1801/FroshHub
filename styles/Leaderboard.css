@@ -101,7 +101,7 @@ body {
   border-bottom: 2px solid #009879;
 }
 .fh-search-bar-container {
-  padding: 15px 2vw;
+  padding: 5px 2vw;
   display: flex;
   justify-content: space-evenly;
 }
