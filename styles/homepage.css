@@ -13,8 +13,24 @@ nav {
 .fh-navbar{
   width: 100%;
   height: 60px;
+}
+.fh-nav-list{
+  list-style-type: none;
   display: flex;
   align-items: center;
+  margin: 0px 0px 0px 6vw;
+}
+.fh-nav-options{
+  height: 60px;
+  margin: 0px;
+  width: 20vw;
+  line-height: 60px;
+  padding: 0px 5%;
+  color: white;
+  text-align: center;
+}
+.active{
+  border-bottom: 5px solid white;
 }
 #fh-profile{
   display: none;
@@ -36,7 +52,7 @@ nav {
   left: -400px;
   border-radius: 50%;
   background-color: #3b84f6e0;
-  padding: 45vh 0px;
+  padding: 50vh 0px;
   z-index: +2;
   overflow-x: hidden;
   transition: .5s width ease-out;
@@ -45,7 +61,7 @@ nav {
   float: right;
   color: white;
   width: 250px;
-  height: 50vh;
+  height: 45vh;
   list-style-type: none;
   padding: 0px !important;
   text-indent: 10px;
