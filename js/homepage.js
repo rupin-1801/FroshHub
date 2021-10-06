@@ -1,8 +1,9 @@
 const profile = document.getElementById("fh-profile");
 const profileIcon = document.getElementById("fh-profile-icon");
 const sidebar = document.getElementById("fh-sidebar");
-const options = document.getElementsByClassName("fh-sidebar-option");
+const options = document.getElementsByClassName("fh-nav-options");
 const iframe = document.getElementById("fh-iframe");
+const borderLine = document.getElementById("fh-bottom-line");
 
 profile.addEventListener("change", (event) => {
   if (event.target.checked) {
@@ -30,6 +31,7 @@ indexes.map((option) => {
       options[0].addEventListener("click", () => {
         profile.checked = false;
         changePage("./DashboardContent.html");
+        borderLine.style.transform = "translateX(0vw)";
         profileIcon.style.transform =
           "scale(1) translateY(0px) translateX(0px)";
         setTimeout(() => {
@@ -41,6 +43,7 @@ indexes.map((option) => {
       options[1].addEventListener("click", () => {
         profile.checked = false;
         changePage("./Leaderboard.html");
+        borderLine.style.transform = "translateX(20vw)";
         profileIcon.style.transform =
           "scale(1) translateY(0px) translateX(0px)";
         setTimeout(() => {
@@ -52,6 +55,7 @@ indexes.map((option) => {
       options[2].addEventListener("click", () => {
         changePage("./group.html");
         profile.checked = false;
+        borderLine.style.transform = "translateX(40vw)";
         profileIcon.style.transform =
           "scale(1) translateY(0px) translateX(0px)";
         setTimeout(() => {
@@ -63,6 +67,7 @@ indexes.map((option) => {
       options[3].addEventListener("click", () => {
         profile.checked = false;
         changePage("./notifications.html");
+        borderLine.style.transform = "translateX(60vw)";
         profileIcon.style.transform =
           "scale(1) translateY(0px) translateX(0px)";
         setTimeout(() => {

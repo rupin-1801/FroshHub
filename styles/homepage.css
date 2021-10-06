@@ -17,8 +17,11 @@ nav {
 .fh-nav-list {
   list-style-type: none;
   display: flex;
+  padding: 0px !important;
   align-items: center;
-  margin: 0px 0px 0px 6vw;
+  margin: 0px 0px 0px 10vw;
+  position: relative;
+  /* border: 2px solid white; */
 }
 .fh-nav-options {
   height: 60px;
@@ -28,13 +31,21 @@ nav {
   padding: 0px 5%;
   color: white;
   text-align: center;
+  cursor: pointer;
+  /* border: 2px solid blue; */
+}
+.fh-border-bottom {
+  position: absolute;
+  width: 20vw;
+  height: 5px;
+  left: 0px;
+  bottom: 0px;
+  background-color: white;
+  transition: 0.2s transform;
 }
 .fh-navbar-a {
   text-decoration: none;
   color: white;
-}
-.active {
-  border-bottom: 5px solid white;
 }
 #fh-profile {
   display: none;
