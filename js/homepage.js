@@ -4,13 +4,37 @@ const sidebar = document.getElementById("fh-sidebar");
 const options = document.getElementsByClassName("fh-nav-options");
 const iframe = document.getElementById("fh-iframe");
 const borderLine = document.getElementById("fh-bottom-line");
-const sideOptions = document.getElementsByClassName("fh-sidebar-option");
+const sideOptions = document.getElementsByClassName("fh-nav-side");
+
+window.onload = () => {
+  profile.checked = false;
+};
 
 for(let i = 0; i < sideOptions.length; i++){
   sideOptions[i].addEventListener("click", (event) => {
     changePage(`./${event.target.innerHTML}.html`);
+    profile.checked = false;
+    profileIcon.style.transform =
+          "scale(1) translateY(0px) translateX(0px)";
+        setTimeout(() => {
+          sidebar.style.width = "400px";
+        }, 500);
   })
 }
+
+let indexes = [0, 1, 2, 3];
+indexes.map((option) => {
+  options[option].addEventListener("click", (event) => {
+    changePage(`./${event.target.innerHTML}.html`);
+    borderLine.style.transform = `translateX(${20 * option}vw)`;
+    profile.checked = false;
+    profileIcon.style.transform =
+          "scale(1) translateY(0px) translateX(0px)";
+        setTimeout(() => {
+          sidebar.style.width = "400px";
+        }, 500);
+  });
+});
 
 profile.addEventListener("change", (event) => {
   if (event.target.checked) {
@@ -30,59 +54,3 @@ profile.addEventListener("change", (event) => {
 function changePage(link) {
   iframe.src = link;
 }
-
-let indexes = [0, 1, 2, 3];
-indexes.map((option) => {
-  switch (option) {
-    case 0:
-      options[0].addEventListener("click", () => {
-        profile.checked = false;
-        changePage("./DashboardContent.html");
-        borderLine.style.transform = "translateX(0vw)";
-        profileIcon.style.transform =
-          "scale(1) translateY(0px) translateX(0px)";
-        setTimeout(() => {
-          sidebar.style.width = "400px";
-        }, 500);
-      });
-      break;
-    case 1:
-      options[1].addEventListener("click", () => {
-        profile.checked = false;
-        changePage("./Leaderboard.html");
-        borderLine.style.transform = "translateX(20vw)";
-        profileIcon.style.transform =
-          "scale(1) translateY(0px) translateX(0px)";
-        setTimeout(() => {
-          sidebar.style.width = "400px";
-        }, 500);
-      });
-      break;
-    case 2:
-      options[2].addEventListener("click", () => {
-        changePage("./group.html");
-        profile.checked = false;
-        borderLine.style.transform = "translateX(40vw)";
-        profileIcon.style.transform =
-          "scale(1) translateY(0px) translateX(0px)";
-        setTimeout(() => {
-          sidebar.style.width = "400px";
-        }, 500);
-      });
-      break;
-    case 3:
-      options[3].addEventListener("click", () => {
-        profile.checked = false;
-        changePage("./notifications.html");
-        borderLine.style.transform = "translateX(60vw)";
-        profileIcon.style.transform =
-          "scale(1) translateY(0px) translateX(0px)";
-        setTimeout(() => {
-          sidebar.style.width = "400px";
-        }, 500);
-      });
-      break;
-    default:
-      console.log(index);
-  }
-});
