@@ -71,6 +71,12 @@ body {
 .fh-gold-and-silver {
   display: flex;
 }
+.table-container {
+  width: 80vw !important;
+  overflow: scroll;
+  left: 0px;
+  border-radius: 15px;
+}
 .styled-table {
   border-collapse: collapse;
   margin: 25px 0;
