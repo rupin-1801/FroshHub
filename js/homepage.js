@@ -4,6 +4,13 @@ const sidebar = document.getElementById("fh-sidebar");
 const options = document.getElementsByClassName("fh-nav-options");
 const iframe = document.getElementById("fh-iframe");
 const borderLine = document.getElementById("fh-bottom-line");
+const sideOptions = document.getElementsByClassName("fh-sidebar-option");
+
+for(let i = 0; i < sideOptions.length; i++){
+  sideOptions[i].addEventListener("click", (event) => {
+    changePage(`./${event.target.innerHTML}.html`);
+  })
+}
 
 profile.addEventListener("change", (event) => {
   if (event.target.checked) {
@@ -12,7 +19,7 @@ profile.addEventListener("change", (event) => {
     setTimeout(() => {
       sidebar.style.width = "650px";
     }, 500);
-  } else {
+  } else { 
     profileIcon.style.transform = "scale(1) translateY(0px) translateX(0px)";
     setTimeout(() => {
       sidebar.style.width = "400px";
