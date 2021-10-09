@@ -2,7 +2,6 @@ body {
   background: rgba(150, 150, 150, 0.2);
   margin-top: 20px;
 }
-
 .ui-w-80 {
   width: 80px !important;
   height: auto;
@@ -13,7 +12,19 @@ body {
   background: rgba(0, 0, 0, 0);
   color: #4e5155;
 }
-
+.back-button {
+  border: none;
+  background-color: transparent;
+  /* background-color: rgba(150, 150, 150, 0.2); */
+}
+.fa-arrow-left {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.fa-arrow-left:hover {
+  transform: scale(0.9);
+  cursor: pointer;
+}
 label.btn {
   margin-bottom: 0;
 }
@@ -31,7 +42,9 @@ label.btn {
 .text-light {
   color: #babbbc !important;
 }
-
+.text-right {
+  margin-bottom: 15px;
+}
 .btn-facebook {
   border-color: rgba(0, 0, 0, 0);
   background: #3b5998;
