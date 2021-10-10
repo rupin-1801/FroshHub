@@ -45,7 +45,7 @@ body {
   color: grey;
 }
 .fh-left-side{
-  left: 10px;
+  left: 20px;
 }
 .fh-stories{
   width: 43vw;
@@ -95,7 +95,7 @@ body {
 }
 
 .fh-right-side{
-  right: 10px;
+  right: 20px;
   padding: 10px 20px;
 }
 .fh-right-side > h4{
