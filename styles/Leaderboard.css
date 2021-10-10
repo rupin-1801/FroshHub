@@ -15,9 +15,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  width: 30vw;
+  /* width: 30vw; */
   margin: 2%;
-  height: 200px;
+  /* height: 200px; */
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(50, 50, 50, 0.5);
   background: #0f0c29; /* fallback for old browsers */
@@ -70,12 +70,6 @@ body {
 }
 .fh-gold-and-silver {
   display: flex;
-}
-.table-container {
-  width: 80vw !important;
-  overflow: scroll;
-  left: 0px;
-  border-radius: 15px;
 }
 .styled-table {
   border-collapse: collapse;
@@ -165,6 +159,12 @@ body {
   .fh-gold-and-silver {
     display: flex;
     flex-direction: column;
+  }
+  .table-container {
+    width: 80vw !important;
+    overflow: scroll;
+    left: 0px;
+    border-radius: 15px;
   }
 }
 @media (max-width: 768px) and (min-width: 425px) {
