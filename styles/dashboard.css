@@ -1,0 +1,156 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: rgba(150, 150, 150, 0.2);
+}
+.fh-card {
+  height: 28vh;
+  width: 28vw !important;
+  margin: 0px 2.52vw;
+  max-width: 450px;
+}
+.fh-container-top {
+  padding: 20px 0px;
+  height: calc(28vh + 40px);
+  scroll-behavior: smooth;
+  width: 100vw;
+  display: -webkit-box;
+  overflow: hidden;
+}
+.fh-main{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: calc(72vh - 60px);
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  flex-wrap: nowrap;
+}
+.fh-left-side, .fh-right-side {
+  position: fixed;
+  width: 25vw;
+  bottom: 10px;
+  height: calc(72vh - 60px);
+  background-color: white;
+  border-radius: 10px;
+}
+.fh-more{
+  position: absolute;
+  right: 30px;
+  cursor: pointer;
+  font-size: 20px;
+  color: grey;
+}
+.fh-left-side{
+  left: 20px;
+}
+.fh-stories{
+  width: 43vw;
+  height: calc(72vh - 40px);
+  margin-top: 40px;
+  background-color: transparent;
+  overflow-y: scroll;
+  position: fixed;
+}
+*::-webkit-scrollbar{
+  display: none;
+}
+.fh-story{
+  border-radius: 0px !important;
+  margin-bottom: 15px;
+}
+.fh-card-title-box{
+  display: flex;
+  height: 30%;
+  align-items: center;
+}
+.fh-name-box > p{
+  margin: 0px !important;
+  color:grey;
+}
+.fh-name-box > p:nth-child(1){
+  font-weight: 600;
+  font-size: 12px;
+}
+.fh-name-box > .fh-name{
+  font-weight: 400;
+  display: inline;
+  font-size: 15px;
+  color: grey;
+}
+.card-title{
+  font-weight: 500;
+  font-size: 18px !important;
+  color: black !important;
+  margin-top: 4px !important;
+}
+.nav-link{
+  padding: 0px;
+}
+.card-text{
+  padding: 10px 10px;
+}
+
+.fh-right-side{
+  right: 20px;
+  padding: 10px 20px;
+}
+.fh-right-side > h4{
+  font-size: 20px;
+  padding-top: 10px;
+}
+.fh-right-side input, textarea{
+  text-indent: 5px;
+  width: 90%;
+  font-size: 15px;
+}
+.fh-post-input{
+  display: flex;
+}
+.fh-edit-options{
+  background-color: rgb(240 240 240);
+}
+.nav-item{
+  padding: 4px;
+  color: black;
+  cursor: pointer;
+}
+.nav-item:hover{
+  color: royalblue;
+}
+.fh-label{
+  margin-top: 15px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.fh-message{
+  width: 95%;
+  height: 180px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid black;
+}
+.fh-body-text{
+  width: 100% !important;
+  outline: none;
+  resize: none;
+  border: none;
+  border-top: 1px solid rgba(150, 150, 150, 0.6);
+  overflow-wrap: break-word !important;
+  height: calc(100% - 32px);
+}
+
+.fh-post-send{
+  outline: none;
+  border: none;
+  background-color: royalblue;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 3px;
+  position: absolute;
+  bottom: 15px;
+  right: 10%;
+}

@@ -1,6 +1,41 @@
+body{
+  background-color:rgba(150, 150, 150, 0.2);
+}
 .fh-card-container {
   padding: 15px 2vw;
-  background-color: rgba(150, 150, 150, 0.2);
+}
+.fh-search-bar-container{
+  padding: 15px 2vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+.fh-search-form{
+  position: relative;
+  background-color: white;
+  width: 600px;
+  max-width: 80%;
+}
+.fh-search{
+  width: 100%;
+  border: none;
+  height: 40px;
+  outline: none;
+  text-indent: 15px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.fh-search:focus{
+  background-color: #96adf622;
+}
+.fh-submit{
+  position: absolute;
+  outline:none;
+  width: 50px;
+  height: 40px;
+  border: none;
+  color:white;
+  z-index: +10;
+  right: 0px;
+  background-color: royalblue;
 }
 .fh-card {
   background-color: white;
@@ -13,7 +48,7 @@
   content: "";
   height: 100%;
   width: 6px;
-  background-color: #7579e7;
+  background-color: royalblue;
   position: absolute;
 }
 .fh-card-time {
