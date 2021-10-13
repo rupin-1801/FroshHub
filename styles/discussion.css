@@ -1,0 +1,195 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+.mainContainer{
+    height: 100%;
+    padding: 0 15ch;
+}
+#image>img{
+    width: 100%;
+    height: 100px;
+}
+.mainContainer>h1{
+    text-transform: capitalize;
+    font-size: 60px;
+    text-align: center;
+    line-height: 74px;
+    margin-top: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color:#222222;
+}
+.mainContainer>h3{
+    color:#222222;
+    font-size: 23px;
+    line-height: 100px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+#searchBar{
+    display: flex;
+    /* border: 1px solid red; */
+    width: 63%;
+    height: 7%;
+    margin: auto;
+    border:3px solid rgb(195 191 191 / 80%);
+    /* box-shadow: 0 0 30px 1px rgba(128, 128, 128, 0.616); */
+
+}
+
+#searchBar>input{
+    width: 90%;
+    height: 100%;
+    border: none;
+    font-size: 25px;
+    outline: none;
+    text-indent: 15px;
+}
+#searchBar>input::placeholder{
+    color: #999292;
+    padding: .5em .65em;
+    font-size: 21px;
+}
+#searchBar>input:focus{
+    border-bottom-color:1px solid chartreuse;
+    box-shadow: inset 0 0 5px rgb(139, 136, 136);
+}
+#searchBar>button{
+    width: 10%;
+    height: 100%;
+    outline: none;
+    border: none !important;
+    font-size: 20px;
+    background:rgb(255, 115, 0);
+    color: white;
+}
+#searchBar>button:hover{
+    cursor: pointer;
+}
+nav{
+    width: 100%;
+    display: flex;
+    /* border: 5px solid green; */
+    height: 8vh;
+    margin: 7vh auto;
+    justify-content: space-between;
+    border-bottom: 3px solid rgba(194, 184, 184, 0.692);
+}
+nav>ul{
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 40%;
+    font-size: 30px;
+}
+nav>ul>a>li{
+    list-style: none;
+    line-height: 1.5em;
+    color: #413d3dd0;
+}
+nav>ul>a{
+text-decoration: none;
+}
+nav>ul>a:hover{
+    color: #222222;
+    border-bottom: 5px solid rgb(15, 235, 15);
+}
+nav>button{
+    background-color: rgb(36 134 250);
+    color: white;
+    height: 55px;
+    width: 120px;
+    cursor: pointer;
+    padding: 15px 15px 15px 15px;
+    font-size: x-large;
+    border: none;
+    border-radius: 5000px;
+    box-shadow: inset 0 0 6px 5px rgb(82, 79, 79);
+}
+nav>button:hover{
+    box-shadow: inset 0 0 10px rgb(102, 100, 100);
+    background-color: white;
+    color:rgb(36 134 250);
+    border: 2px solid rgb(184, 180, 180);
+    padding: 12px;
+
+}
+
+.currentPage{
+    border-bottom: 5px solid rgb(255, 196, 0);
+}
+.cards{
+    /* border: 3px solid red; */
+    height: 100vh;
+    display: grid;
+    grid-gap: 50px;
+    grid-template-areas: "mainCardLeft mainCardRight";
+}
+.main-card-left{
+    grid-area: "mainCardLeft";
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    border-image: linear-gradient(to bottom,
+        rgb(248, 7, 7),yellow, rgb(39, 192, 39),rgb(0, 4, 255)
+    )1 100%;
+    border-left: 6px solid blue;
+}
+.main-card-left>div{
+    display: flex;
+    max-height: 35%;
+    overflow: hidden;
+    border-bottom: 2px solid rgb(201, 198, 198);
+}
+.main-card-right{
+    grid-area: "mainCardRight";
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+}
+.main-card-right>div{
+    display: flex;
+    height: 100%;
+    border-bottom: 2px solid rgb(201, 198, 198);
+}
+.card-right{
+    width: 20%;
+    /* border: 1px solid rgb(204, 0, 255); */
+    height: 100%;
+    /* background-color: red; */
+}
+#upper-border{
+    border-top: 3px solid rgb(141, 141, 141);   
+}
+.card-left{
+    grid-template-areas: "heading"
+    "para";
+    grid-gap: 20px;
+    max-width: 80%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(240, 239, 239, 0.815);
+    overflow: hidden;
+    padding: 8px;
+}
+#heading{
+    grid-area: "heading";
+    font-size: 20px;
+}
+#para{
+    grid-area: "para";
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    font-size: large;
+    -webkit-box-orient:vertical;
+    color: #696464;
+}

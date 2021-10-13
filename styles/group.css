@@ -13,6 +13,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    border-right: 0.5px solid rgba(100, 88, 88, 0.37);
 
 }
 #grid-item-1-a{
@@ -120,9 +121,8 @@ color: grey;
     position: sticky;
     background-color: #ededed;
     top:0;
-    /* backdrop-filter: blur(108px); */
     height: 62px;
-    box-shadow: 0 0 10px 1px rgba(68, 74, 80, 0.288);
+    box-shadow: 0 0 8px 1px rgba(68, 74, 80, 0.288);
 }
 .search-bar-container{
     border: none;
