@@ -2,18 +2,30 @@
     margin:0;
     box-sizing: border-box;
 }
-body{
+html,body{
     width: 100vw;
     height: 100vh;
-    background-color: #ececec;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar{
+    max-width: 10px;
+}
+::-webkit-scrollbar-track{
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background:grey;
+    border-radius: 10px;
 }
 .mainContainer{
     height: 100%;
-    padding: 0 15ch;
+    padding: 0 10vw;
+    width: 100%;
 }
 #image>img{
     width: 100%;
-    height: 100px;
+    height: 90px;
 }
 .mainContainer>h1{
     text-transform: capitalize;
@@ -37,7 +49,7 @@ body{
     display: flex;
     /* border: 1px solid red; */
     width: 63%;
-    height: 7%;
+    height: 55px;
     margin: auto;
     border:3px solid rgb(195 191 191 / 80%);
     /* box-shadow: 0 0 30px 1px rgba(128, 128, 128, 0.616); */
@@ -59,7 +71,7 @@ body{
 }
 #searchBar>input:focus{
     border-bottom-color:1px solid chartreuse;
-    box-shadow: inset 0 0 5px rgb(139, 136, 136);
+    box-shadow: inset 0 0 20px rgba(139, 136, 136, 0.404);
 }
 #searchBar>button{
     width: 10%;
@@ -98,32 +110,35 @@ nav>ul>a>li{
 nav>ul>a{
 text-decoration: none;
 }
-nav>ul>a:hover{
+nav>ul>a>li:hover{
     color: #222222;
-    border-bottom: 5px solid rgb(15, 235, 15);
+}
+nav>ul>a:hover{
+    border-bottom: 4px solid greenyellow;
 }
 nav>button{
     /* background-color: rgb(225, 227, 230); */
-    color:rgb(36 134 250);
+    color:rgb(36 ,134, 250);
     height: 55px;
     width: 120px;
     cursor: pointer;
-    padding: 10px;
+    padding: 10px 10px 10px 19px;
     font-size: x-large;
-    border: 8px solid #ececec;
+    border: 9px solid #ececec;
     display: flex;
     border-radius: 5000px;
-    box-shadow:-10px -10px 10px rgba(255, 255, 255, 0.5),
-    10px 10px 30px rgba(0,0,0,0.25);
+    border: 4px solid rgba(221, 218, 218, 0.945);
+    box-shadow: inset 0 0 15px rgb(255, 255, 255);
     transform: translate(-50%,-50%);
-
+}
+nav>button:hover{
+    box-shadow: inset 0 0 15px rgb(148, 145, 145);
 }
 
 .currentPage{
     border-bottom: 5px solid rgb(255, 196, 0);
 }
 .cards{
-    /* border: 3px solid red; */
     height: 100vh;
     display: grid;
     grid-gap: 50px;
@@ -189,4 +204,15 @@ nav>button{
     font-size: large;
     -webkit-box-orient:vertical;
     color: #696464;
+}
+.card-right{
+    display: flex;
+    justify-content: center;
+    padding: auto;
+    font-size: 20px;
+    align-items: center;
+    color: grey;
+}
+#cardGapBetween{
+    margin: 15px 0 15px 0;
 }
