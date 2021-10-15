@@ -4,20 +4,22 @@ body {
 }
 .fh-winner-card {
   display: flex;
-  /* flex-wrap: wrap; */
-  justify-content: space-around;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   /* margin: 5%; */
+}
+.fh-hidden-winner-card {
+  display: none;
 }
 .fh-card {
   overflow: none;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  /* width: 30vw; */
-  margin: 2%;
-  /* height: 200px; */
+  width: 25vw;
+  margin: 2vw;
+  height: 20vh;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(50, 50, 50, 0.5);
   background: #0f0c29; /* fallback for old browsers */
@@ -68,9 +70,9 @@ body {
 #fh-silver-image {
   transform: scale(0.8);
 }
-.fh-gold-and-silver {
+/* .fh-gold-and-silver {
   display: flex;
-}
+} */
 .styled-table {
   border-collapse: collapse;
   margin: 25px 0;
@@ -146,19 +148,20 @@ body {
 #table-search {
   text-align: center;
 }
-@media (max-width: 425px) {
+@media (max-width: 470px) {
   .fh-card {
     width: 100%;
     height: 115px !important;
     text-align: center;
   }
-  .fh-winner-card {
+  .fh-hidden-winner-card {
     display: flex;
     flex-direction: column;
   }
-  .fh-gold-and-silver {
-    display: flex;
-    flex-direction: column;
+  .fh-winner-card {
+    display: none;
+    /* display: flex;
+    flex-direction: column; */
   }
   .table-container {
     width: 80vw !important;
@@ -167,41 +170,22 @@ body {
     border-radius: 15px;
   }
 }
-@media (max-width: 768px) and (min-width: 425px) {
-  /* .fh-card-text {
-    font-size: small;
-    font-weight: bolder;
-    color: whitesmoke;
-    white-space: nowrap;
-  }
-  .fh-card-rank {
-    color: black;
-    font-weight: bolder;
-    font-size: 55px;
-  } */
+@media (max-width: 768px) and (min-width: 470px) {
   .fh-card {
-    width: 28vw;
+    width: 30vw;
     height: 130px;
   }
   .fh-winner-card {
-    display: flex;
-    flex-direction: column;
-  }
-  .fh-gold-and-silver {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* flex-direction: column; */
     width: 100%;
   }
 }
 @media (max-width: 1024px) {
   .fh-card-text {
-    font-size: 77%;
+    font-size: 100%;
     font-weight: bolder;
     color: whitesmoke;
     white-space: nowrap;
-  }
-  .fh-card {
-    height: 130px;
   }
 }
