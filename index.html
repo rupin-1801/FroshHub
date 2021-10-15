@@ -26,7 +26,7 @@
       </div>
       <div class="login">
         <h2>Login</h2>
-        <form id="form" action="./pages/homepage.html" onsubmit="verification(event)">
+        <form id="form" onsubmit="verification(event)">
           <field class="input-field">
             <label for="mail">Email</label>
             <input type="email" id="mail" class="input" autofocus />
@@ -40,21 +40,19 @@
             <span class="border"></span>
           </field>
           <field class="remember-field">
-            <input type="checkbox" name="remember" class="forgot pointer" id="remember" />
+            <input type="checkbox" name="remember" id="remember" />
             <label for="remember">Remember me</label>
           </field>
           <input type="submit" class="pointer" id="_login" value="Login" />
-          <p class="forgot pointer">
-            <a href="/pages/forgot.html">Forgot password?</a>
-          </p>
         </form>
+        <p id="loading">Loading<b>.</b>...</p>
       </div>
     </div>
     <div class="footer">© 2021 All Rights Reserved. Frosh Hub</div>
   </div>
   <div id="main">
     <h1>FroshHub</h1>
-    <form id="mobile-form" action="./pages/homepage.html" onsubmit="verification(event)">
+    <form id="mobile-form" onsubmit="verification(event)">
       <input type="email" placeholder="email" class="in" id="m-mail" autofocus />
       <input type="password" placeholder="password" class="in" id="m-pass" />
       <span id="rem">
@@ -62,10 +60,9 @@
           <input type="checkbox" id="m-remember" />
           <label for="remember"> Remember Me</label>
         </div>
-        <a href="" id="forgot">Forgot Password?</a>
       </span>
       <button type="submit">
-        <a href="#" id="_login">
+        <a href="" id="_login">
           <i class="fas fa-arrow-right"></i>
         </a>
       </button>

@@ -4,6 +4,7 @@ const remember = document.getElementById("remember");
 const mRemember = document.getElementById("m-remember");
 const eye = document.getElementsByClassName("show")[0];
 const passField = document.getElementById("pass");
+const loading = document.getElementById("loading");
 
 eye.onclick = () => {
   if(eye.classList.contains("far")){
@@ -25,7 +26,11 @@ eye.onclick = () => {
 }
 
 window.onload = () => {
-  staticAuth();
+  // firebase.database().ref("student/" + "test")
+  // .set({
+  //   email: "test@gla.com",
+  //   password: "froshHubTeam"
+  // });
   if (localStorage.getItem("remembered")) {
     document.getElementById("mail").value = localStorage.getItem("user-email");
     document.getElementById("m-mail").value =
@@ -34,11 +39,6 @@ window.onload = () => {
     document.getElementById("m-pass").value = localStorage.getItem("user-pass");
   }
 };
-
-function staticAuth() {
-  localStorage.setItem("email", "test@gla.com");
-  localStorage.setItem("pass", "froshHubTeam");
-}
 
 function readForm(form) {
   email = document.getElementById(form[0].id).value;
@@ -55,13 +55,28 @@ mRemember.addEventListener("change", () => {
 
 function verification(event) {
   readForm(event.target);
-  if (
-    email !== localStorage.getItem("email") ||
-    pass !== localStorage.getItem("pass")
-  ) {
-    alert("Invalid email id or password!");
-    event.preventDefault();
-  }
+  event.preventDefault();
+  loading.style.display="block";
+  let i = 0;
+  const loadEvent = setInterval(() => {
+    if(i%4 === 0) loading.innerHTML = "Loading<b>.</b>...";
+    if(i%4 === 1) loading.innerHTML = "Loading.<b>.</b>..";
+    if(i%4 === 2) loading.innerHTML = "Loading..<b>.</b>.";
+    if(i%4 === 3) loading.innerHTML = "Loading...<b>.</b>";
+    i++;
+  }, 200);
+  firebase.database().ref("student/" + email.split("@")[0])
+  .on("value", function(snap){
+    clearInterval(loadEvent);
+    loading.style.display="none";
+    if((email !== snap.val().email) || (pass !== snap.val().password)){
+      alert("Invalid email id or password");
+    }
+    else{
+      window.location = "./pages/homepage.html";
+    }
+  })
+
   if (remembered) {
     localStorage.setItem("remembered", true);
     localStorage.setItem("user-email", email);
