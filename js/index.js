@@ -30,10 +30,12 @@ window.onload = () => {
   //   email: "test@gla.com",
   //   password: "froshHubTeam"
   // });
+  if(sessionStorage.getItem("FRID")){
+    window.location = "./pages/homepage.html";
+  }
   if (localStorage.getItem("remembered")) {
     document.getElementById("mail").value = localStorage.getItem("user-email");
-    document.getElementById("m-mail").value =
-      localStorage.getItem("user-email");
+    document.getElementById("m-mail").value = localStorage.getItem("user-email");
     document.getElementById("pass").value = localStorage.getItem("user-pass");
     document.getElementById("m-pass").value = localStorage.getItem("user-pass");
   }
@@ -73,6 +75,8 @@ function verification(event) {
       alert("Invalid email id or password");
     }
     else{
+      sessionStorage.setItem("FRID", email);
+      sessionStorage.setItem("FRSE", pass);
       window.location = "./pages/homepage.html";
     }
   })
