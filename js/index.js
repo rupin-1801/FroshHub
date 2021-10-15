@@ -2,6 +2,27 @@ var store_email, email, pass, remembered;
 
 const remember = document.getElementById("remember");
 const mRemember = document.getElementById("m-remember");
+const eye = document.getElementsByClassName("show")[0];
+const passField = document.getElementById("pass");
+
+eye.onclick = () => {
+  if(eye.classList.contains("far")){
+    eye.classList.remove("fa-eye");
+    eye.classList.remove("far");
+    eye.classList.add("fa-eye-slash");
+    eye.classList.add("fas");
+    passField.type="text";
+    passField.style.letterSpacing ="0px";
+  }
+  else{
+    eye.classList.remove("fa-eye-slash");
+    eye.classList.remove("fas");
+    eye.classList.add("fa-eye");
+    eye.classList.add("far");    
+    passField.type="password";
+    passField.style.letterSpacing ="3px";
+  }
+}
 
 window.onload = () => {
   staticAuth();
