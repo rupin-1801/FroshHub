@@ -164,18 +164,16 @@ nav>button:hover{
     grid-area: "mainCardRight";
     display: flex;
     flex-direction: column;
-    height: 30%;
+    max-width: 100%;
 }
 .main-card-right>div{
     display: flex;
-    height: 100%;
+    max-height: 35%;
     border-bottom: 2px solid rgb(201, 198, 198);
 }
 .card-right{
     width: 20%;
-    /* border: 1px solid rgb(204, 0, 255); */
     height: 100%;
-    /* background-color: red; */
 }
 #upper-border{
     border-top: 3px solid rgb(141, 141, 141);   
@@ -215,4 +213,67 @@ nav>button:hover{
 }
 #cardGapBetween{
     margin: 15px 0 15px 0;
+}
+
+@media screen and (max-width: 780px) {
+    .mainContainer{
+        padding: 0;
+    }
+    .mainContainer>h1{
+        font-size: 53px;
+        font-weight: 400;
+    }
+    .mainContainer>h3{
+        line-height: 25px;
+        font-size: 23px;
+        margin-bottom:25px;
+        margin-top: 20px;
+    }
+    #searchBar{
+        width: 80%;
+        height: 40px;
+    }
+    #searchBar>input::placeholder{
+        font-size: 15px;
+        text-indent: 2px;
+    }
+    #searchBar>button{
+        width: 15%;
+    }
+    nav>button{
+        position: absolute;
+        bottom: 10px;
+        right: 0;
+        border-radius:80%;
+        width: 70px;
+        height: 70px;
+        align-items: center;
+        padding: 0;
+    }
+    nav>button>i{
+        margin: auto;
+    }
+    nav>ul{
+        justify-content: space-evenly;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+    }
+    nav>ul>a>li{
+        font-size: 20px;
+    }
+    #addButton{
+        display: none;
+    }
+    .cards{
+        display: flex;
+        flex-direction: column;
+    }
+    .main-card-right{ 
+        border-image: linear-gradient(to bottom,
+        rgb(248, 7, 7),yellow, rgb(39, 192, 39),rgb(0, 4, 255)
+        )1 100%;
+        border-left: 6px solid blue;
+    }
 }
