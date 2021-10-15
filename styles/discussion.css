@@ -165,11 +165,10 @@ nav>button:hover{
     display: flex;
     flex-direction: column;
     max-width: 100%;
-    /* overflow: scroll; */
 }
 .main-card-right>div{
     display: flex;
-    height: 100%;
+    max-height: 35%;
     border-bottom: 2px solid rgb(201, 198, 198);
 }
 .card-right{
@@ -216,7 +215,7 @@ nav>button:hover{
     margin: 15px 0 15px 0;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 780px) {
     .mainContainer{
         padding: 0;
     }
