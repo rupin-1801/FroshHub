@@ -104,8 +104,14 @@ a {
 input[type="checkbox"] {
   margin-right: 10px;
 }
-input[type="password"] {
+#pass {
   letter-spacing: 3px;
+}
+.show{
+  position: absolute;
+  right: 30px;
+  cursor: pointer;
+  bottom: 10px;
 }
 input[type="submit"] {
   background-color: #7975e7;
