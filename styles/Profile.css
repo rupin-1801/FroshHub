@@ -43,6 +43,24 @@ body,
   position: relative;
   transform-style: preserve-3d;
   overflow: hidden;
+  font-family: "Festive", cursive;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Scheherazade New", serif;
+}
+.card1 {
+  padding: 2.5rem 2rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  max-width: 1000px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+  height: 18rem;
+  margin: 1rem;
+  position: relative;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  font-family: "Festive", cursive;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Scheherazade New", serif;
 }
 .card::before,
 .card::after {
@@ -75,6 +93,9 @@ body,
 
 .infos {
   margin-left: 1.5rem;
+  font-family: "Festive", cursive;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Scheherazade New", serif;
 }
 
 .name {
@@ -126,7 +147,78 @@ body,
   background-color: transparent;
   color: #222;
 }
-
+#content {
+  margin: 40px auto;
+  text-align: center;
+  width: 600px;
+}
+#content h1 {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 40px 0;
+  font-size: 25px;
+  line-height: 30px;
+}
+.circle {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-align: center;
+  position: absolute;
+  top: 14rem;
+  left: -30px;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 auto 40px;
+}
+.circle1 {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-align: center;
+  position: absolute;
+  top: -9rem;
+  left: -1px;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 auto 40px;
+}
+.circle2 {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-align: center;
+  position: absolute;
+  top: -8rem;
+  right: -8rem;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 auto 40px;
+}
+.blue {
+  background-color: #3498db;
+}
+.green {
+  background-color: #16a085;
+}
+.red {
+  background-color: #e74c3c;
+}
 @media screen and (max-width: 450px) {
   .card {
     display: block;
