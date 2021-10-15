@@ -4,7 +4,6 @@ const remember = document.getElementById("remember");
 const mRemember = document.getElementById("m-remember");
 const eye = document.getElementsByClassName("show")[0];
 const passField = document.getElementById("pass");
-const loading = document.getElementById("loading");
 
 eye.onclick = () => {
   if(eye.classList.contains("far")){
@@ -55,6 +54,7 @@ mRemember.addEventListener("change", () => {
 
 function verification(event) {
   readForm(event.target);
+  let loading = event.target.childNodes[event.target.childNodes.length - 2];
   event.preventDefault();
   loading.style.display="block";
   let i = 0;
