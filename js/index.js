@@ -59,10 +59,10 @@ function verification(event) {
   loading.style.display="block";
   let i = 0;
   const loadEvent = setInterval(() => {
-    if(i%4 === 0) loading.innerHTML = "Loading<b>.</b>...";
-    if(i%4 === 1) loading.innerHTML = "Loading.<b>.</b>..";
-    if(i%4 === 2) loading.innerHTML = "Loading..<b>.</b>.";
-    if(i%4 === 3) loading.innerHTML = "Loading...<b>.</b>";
+    if(i%4 === 0) loading.innerHTML = "Validating<b>.</b>...";
+    if(i%4 === 1) loading.innerHTML = "Validating.<b>.</b>..";
+    if(i%4 === 2) loading.innerHTML = "Validating..<b>.</b>.";
+    if(i%4 === 3) loading.innerHTML = "Validating...<b>.</b>";
     i++;
   }, 200);
   firebase.database().ref("student/" + email.split("@")[0])
