@@ -179,7 +179,6 @@ body {
 
 @media screen and (max-width: 600px){
   .fh-right-side{
-    display: none;
     width: 60vw;
     min-width: 300px;    
   }

@@ -7,16 +7,32 @@ const scrollable = document.getElementsByClassName("scrollable")[0];
 const addPost = document.getElementsByClassName("fh-add-post")[0];
 const backPost = document.getElementById("post-back");
 const postTop = rightTab.offsetTop-20;
+var openAddPost = false;
 
 rightTab.onclick = (event) => {
     event.stopPropagation();
 }
+
 backPost.onclick = () => {
-    rightTab.style.display = "none";
-    backPost.style.display = "none";
+    if(window.innerWidth <= 600){
+        openAddPost = false;
+        backPost.style.display = "none";
+    }
 }
+
+window.onresize = () => {
+    if(window.innerWidth > 600){
+        openAddPost = true;
+        backPost.style.display = "inline-flex";
+    }   
+    else{
+        openAddPost = false;
+        backPost.style.display = "none";
+    }
+}
+
 addPost.onclick = () => {
-    rightTab.style.display = "block";
+    openAddPost = true;
     backPost.style.display = "inline-flex";
 }
 

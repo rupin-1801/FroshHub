@@ -10,22 +10,28 @@ const logout = document.getElementsByClassName("fh-sidebar-option")[7];
 window.onload = () => {
   profile.checked = false;
 };
+document.body.onclick = () => {
 
+}
 logout.onclick = () => {
-  console.log(logout);
   sessionStorage.removeItem("FRID");
   sessionStorage.removeItem("FRSE");
   window.location = "../index.html";
 }
-for(let i = 0; i < sideOptions.length; i++){
-  sideOptions[i].addEventListener("click", (event) => {
-    changePage(`./${event.target.innerHTML}.html`);
-    profile.checked = false;
+
+function closeSidebar(){
+  profile.checked = false;
     profileIcon.style.transform =
           "scale(1) translateY(0px) translateX(0px)";
         setTimeout(() => {
           sidebar.style.width = "400px";
         }, 500);
+}
+
+for(let i = 0; i < sideOptions.length; i++){
+  sideOptions[i].addEventListener("click", (event) => {
+    changePage(`./${event.target.innerHTML}.html`);
+    closeSidebar();
   })
 }
 
@@ -34,12 +40,7 @@ indexes.map((option) => {
   options[option].addEventListener("click", (event) => {
     changePage(`./${event.target.innerHTML}.html`);
     borderLine.style.transform = `translateX(${20 * option}vw)`;
-    profile.checked = false;
-    profileIcon.style.transform =
-          "scale(1) translateY(0px) translateX(0px)";
-        setTimeout(() => {
-          sidebar.style.width = "400px";
-        }, 500);
+    closeSidebar();
   });
 });
 
