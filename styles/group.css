@@ -260,8 +260,8 @@ user-name>p{
     
 }
 #emoji-container{
-    font-size: x-large;
-    border: 1px solid red;
+    /* font-size: x-large;
+    border: 1px solid red; */
 }
 .emojiOpt{
     position: relative;
@@ -270,7 +270,7 @@ user-name>p{
 #emoji{
     width: 35px;
     height: 35px;
-    /* display: none; */
+    display: none;
     z-index: 3;
     position: absolute;
 }
