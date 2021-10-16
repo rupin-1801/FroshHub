@@ -20,7 +20,13 @@ emoji.addEventListener('click', () => {
     if (!emoji.checked) {
         emojiBox.style.display = "none";
     }
-    if(emoji.checked){
+    if (emoji.checked) {
         emojiBox.style.display = "unset";
     }
 });
+var selectedEmoji = document.getElementsByClassName("selectEmoji");
+for(let i = 0;i<selectedEmoji.length;i++){
+    selectedEmoji[i].addEventListener('click',(e)=>{
+        input_bar.value+= e.target.innerHTML;
+    })
+}
