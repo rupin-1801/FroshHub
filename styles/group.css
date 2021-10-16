@@ -266,6 +266,10 @@ user-name>p{
 .emojiPicker{
     display: none;
 }
+.selectEmoji{
+    z-index: 4;
+    cursor: pointer;
+}
 #emoji{
     width: 35px;
     height: 35px;
@@ -282,6 +286,7 @@ user-name>p{
     color: rgb(0, 132, 255);
 }
 #chat-message-bar>input[type="text"]{
+    overflow-wrap: normal;
     width: 73%;
     height: 39%;
     padding: 8px;
@@ -289,7 +294,7 @@ user-name>p{
     border: none;
     font-size: 15px;
     outline: none;
-    overflow: scroll;
+    line-break: normal;
     box-shadow: 1px 1px 10px rgba(160, 148, 148, 0.603);
 }
 #chat-message-bar>input[type="text"]:focus{
