@@ -250,15 +250,17 @@ body,
 }
 
 .square{
-  width: 360px;
+  width: 35rem;
 	height:280px;
 	background: white;
-  border-radius: 8rem;
   box-shadow: 0px 20px 50px #ADE5F9;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease; 
   border: 1px #ADE5F9 solid;
+  margin-left: -2rem;
+  /* margin-right: -1rem; */
+
 }
 
 .mask{
