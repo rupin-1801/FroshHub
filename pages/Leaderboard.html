@@ -97,13 +97,13 @@
     </div>
   </div>
   <div class="table-container">
-  <table class="styled-table">
+  <table class="styled-table" id="myTable">
     <thead>
       <tr>
         <th>Rank</th>
         <th>Handle</th>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th>Full Name</th>
+        <th>Rating</th>
       </tr>
       
     </thead>
@@ -112,10 +112,10 @@
         <td id="table-search" colspan="4">
           <div class="fh-search-bar-container">
       <form class="fh-search-form">
-        <input type="text" placeholder="Search..." class="fh-search">
-        <button type="submit" class="fh-submit">
+        <input type="text" id="myInput" onkeyup="myFunction()"  placeholder="Search By Name..." class="fh-search">
+        <!-- <button type="submit" id="myInput" onkeyup="myFunction()" class="fh-submit">
             <i class="fas fa-search"></i>
-        </button>
+        </button> -->
       </form>
     </div>
         </td>
@@ -123,49 +123,91 @@
       <tr>
         <td>4</td>
         <td>@harsh822</td>
-        <td>Harsh</td>
-        <td>Gautam</td>
+        <td>Harsh Gautam</td>
+        <td>1600</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>@rupin</td>
+        <td>Rupin Bhugra</td>
+        <td>1700</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>@mayank14</td>
+        <td>Mayank Bhugra</td>
+        <td>1900</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>@mayank14</td>
+        <td>Mayank Bhugra</td>
+        <td>1900</td>
       </tr>
       <tr>
         <td>4</td>
         <td>@harsh822</td>
-        <td>Harsh</td>
-        <td>Gautam</td>
+        <td>Harsh Gautam</td>
+        <td>1600</td>
       </tr>
       <tr>
         <td>4</td>
         <td>@harsh822</td>
-        <td>Harsh</td>
-        <td>Gautam</td>
+        <td>Harsh Gautam</td>
+        <td>1600</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>@rupin</td>
+        <td>Rupin Bhugra</td>
+        <td>1700</td>
       </tr>
       <tr>
         <td>4</td>
         <td>@harsh822</td>
-        <td>Harsh</td>
-        <td>Gautam</td>
+        <td>Harsh Gautam</td>
+        <td>1600</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>@rupin</td>
+        <td>Rupin Bhugra</td>
+        <td>1700</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>@mayank14</td>
+        <td>Mayank Bhugra</td>
+        <td>1900</td>
       </tr>
       <tr>
         <td>4</td>
         <td>@harsh822</td>
-        <td>Harsh</td>
-        <td>Gautam</td>
+        <td>Harsh Gautam</td>
+        <td>1600</td>
       </tr>
       <tr>
         <td>4</td>
         <td>@harsh822</td>
-        <td>Harsh</td>
-        <td>Gautam</td>
+        <td>Harsh Gautam</td>
+        <td>1600</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>@mayank14</td>
+        <td>Mayank Bhugra</td>
+        <td>1900</td>
       </tr>
       <tr>
         <td>4</td>
         <td>@harsh822</td>
-        <td>Harsh</td>
-        <td>Gautam</td>
+        <td>Harsh Gautam</td>
+        <td>1600</td>
       </tr>
-      <!-- and so on... -->
     </tbody>
   </table>
   </div>
+  <script src="./../js/leaderboard.js"></script>
   <script src="https://kit.fontawesome.com/4d63232f4c.js" crossorigin="anonymous"></script>
 </body>
 
