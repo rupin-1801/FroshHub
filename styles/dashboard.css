@@ -3,6 +3,8 @@
   margin: 0;
 }
 body {
+  overflow: hidden;
+  height: 100vh;
   background-color: rgba(150, 150, 150, 0.2);
 }
 .fh-card {
@@ -20,11 +22,9 @@ body {
   overflow: hidden;
 }
 .fh-right-side {
-  position: absolute;
   padding: 10px 20px;
-  right: 20px;
-  bottom: 20px;
-  width: 25vw;
+  margin: 0px 20px 0px 10px;
+  width: 280px;
   height: calc(72vh - 60px);
   background-color: white;
   border-radius: 10px;
@@ -32,39 +32,58 @@ body {
 .fh-sticky{
   position: fixed;
   top: 20px;
+  right: 0px;
 }
-.fh-more{
-  position: absolute;
-  right: 30px;
-  cursor: pointer;
-  font-size: 20px;
-  color: grey;
+.fh-stickier{
+  left: 0px;
+  max-width: calc(100vw - 340px);
+  position: relative;
+}
+.inline-main{
+  display: inline !important;
+}
+.fh-main{
+  display: flex;
+  overflow-y: scroll;
+  justify-content: space-evenly;
 }
 .fh-stories{
-  width: 68vw;
-  left: 20px;
-  height: calc(72vh - 40px);
+  width: calc(100vw - 340px);
+  margin: 0px 10px 0px 20px;
   background-color: transparent;
-  position: absolute;
 }
 *::-webkit-scrollbar{
   display: none;
 }
+.scrollable{
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
 .fh-story{
   border-radius: 0px !important;
-  margin-bottom: 15px;
+  margin-bottom: 15px !important;
 }
 .fh-card-title-box{
   display: flex;
   height: 30%;
   align-items: center;
 }
+.fa-user-circle{
+  transform: scale(3);
+  margin: 0px 30px;
+}
 .fh-name-box > p{
   margin: 0px !important;
+  margin-left: 10px !important;
   color:grey;
 }
 .fh-name-box > p:nth-child(1){
   font-weight: 600;
+  font-size: 13px;
+}
+.fh-name-box > .fh-time{
+  margin-left: 10px;
   font-size: 12px;
 }
 .fh-name-box > .fh-name{
@@ -138,6 +157,65 @@ body {
   padding: 5px 15px;
   border-radius: 3px;
   position: absolute;
-  bottom: 15px;
-  right: 10%;
+  bottom: -50px;
+  right: 5% !important;
+}
+
+.fh-add-post{
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  background-color: royalblue;
+  color: white;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 600px){
+  .fh-right-side{
+    display: none;
+    width: 60vw;
+    min-width: 300px;    
+  }
+  .fh-stories{
+    width: calc(100% - 40px);
+    margin: 0px 20px;
+  }
+  .fh-stickier{
+    left: 0px;
+    max-width: calc(100% - 40px);
+    position: relative;
+  }
+  .fh-add-post{
+    display: flex;
+  }
+  #post-back{
+    width: 100vw !important;
+    height: 100vh !important;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 425px){
+  .card-text{
+    font-size: 14px;
+  }
+  .card-title{
+    font-size: 18px !important;
+  }
+  .fh-add-post{
+    bottom: 5rem;
+    right: 1rem;
+  }
 }

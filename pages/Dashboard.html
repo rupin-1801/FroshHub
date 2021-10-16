@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div class="scrollable">
     <div class="fh-container-top" id="fh-container-top">
         <div class="fh-card card">
             <div class="card-body">
@@ -50,19 +51,20 @@
             </div>
         </div>
     </div>
-        <div class="fh-stories">
+    <div class="fh-main">
+        <div id="stories" class="fh-stories">
             <div class="card fh-story">
                 <div class="card-body">
                     <header class="fh-card-title-box">
-                        <img src="./../util/hero.png" style="width: 6rem;height:3rem;cursor: pointer;">
+                        <i class="fas fa-user-circle"></i>
                         <div class="fh-name-box">
                             <p># React</p>
                             <p class="fh-name">
                                 <span class="card-title">Rupin Bhugra</span>
-                                <span>&nbsp; @student · 2h ago</span>
+                                <span> @student</span>
+                                <div class="fh-time">2h ago</div>
                             </p>
                         </div>
-                        <i class="fh-more fas fa-ellipsis-h"></i>
                     </header>
                     <p class="card-text">
                         This is my first post to make you familiar with how these posts works.
@@ -83,9 +85,6 @@
                             12
                         </li>
                         <li class="nav-item">
-                            <i class="fas fa-pencil-alt"></i>
-                        </li>
-                        <li class="nav-item">
                             <i class="far fa-share-square"></i>
                         </li>
                     </ul>
@@ -93,16 +92,16 @@
             </div>
             <div class="card fh-story">
                 <div class="card-body">
-                    <header class="fh-card-title-box">
-                        <img src="./../util/hero.png" style="width: 6rem;height:3rem;cursor: pointer;">
+                    <header class="fh-card-title-box">                    
+                        <i class="fas fa-user-circle"></i>
                         <div class="fh-name-box">
                             <p># React</p>
                             <p class="fh-name">
                                 <span class="card-title">Rupin Bhugra</span>
-                                <span>&nbsp; @student · 2h ago</span>
+                                <span> @student</span>
+                                <div class="fh-time">2h ago</div>
                             </p>
                         </div>
-                        <i class="fh-more fas fa-ellipsis-h"></i>
                     </header>
                     <p class="card-text">
                         This is my second post to make you familiar with how these posts works.
@@ -123,9 +122,6 @@
                             12
                         </li>
                         <li class="nav-item">
-                            <i class="fas fa-pencil-alt"></i>
-                        </li>
-                        <li class="nav-item">
                             <i class="far fa-share-square"></i>
                         </li>
                     </ul>
@@ -133,16 +129,16 @@
             </div>
             <div class="card fh-story">
                 <div class="card-body">
-                    <header class="fh-card-title-box">
-                        <img src="./../util/hero.png" style="width: 6rem;height:3rem;cursor: pointer;">
+                    <header class="fh-card-title-box">                   
+                        <i class="fas fa-user-circle"></i>
                         <div class="fh-name-box">
                             <p># React</p>
                             <p class="fh-name">
                                 <span class="card-title">Rupin Bhugra</span>
-                                <span>&nbsp; @student · 2h ago</span>
+                                <span>@student</span>
+                                <div class="fh-time">2h ago</div>
                             </p>
                         </div>
-                        <i class="fh-more fas fa-ellipsis-h"></i>
                     </header>
                     <p class="card-text">
                         This is my third post to make you familiar with how these posts works.
@@ -163,18 +159,16 @@
                             12
                         </li>
                         <li class="nav-item">
-                            <i class="fas fa-pencil-alt"></i>
-                        </li>
-                        <li class="nav-item">
                             <i class="far fa-share-square"></i>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div id="post-back">
         <div id="right-box" class="fh-right-side">
             <h4>New Post</h4>
-            <form>
+            <form style="position: relative">
                 <div class="fh-post-input">
                     <span>
                         <p class="fh-label">Tag</p>
@@ -215,6 +209,12 @@
                 <button class="fh-post-send">Publish</button>
             </form>
         </div>
+        </div>
+    </div>
+</div>
+    <div class="fh-add-post">
+        <i class="fa fa-plus"></i>
+    </div>
     <script src="https://kit.fontawesome.com/4d63232f4c.js" crossorigin="anonymous"></script>
     <script src="./../js/dashboard.js"></script>
 </body>
