@@ -10,6 +10,10 @@ const backdrop = document.getElementById("backdrop");
 
 window.onload = () => {
   profile.checked = false;
+  if(sessionStorage.getItem("FRCT")){
+    let option = sessionStorage.getItem("FRCT");
+    borderLine.style.transform = `translateX(${20 * option}vw)`;
+  }
 };
 document.body.onclick = () => {
   closeSidebar();
@@ -42,6 +46,7 @@ let indexes = [0, 1, 2, 3];
 indexes.map((option) => {
   options[option].addEventListener("click", (event) => {
     changePage(`./${event.target.innerHTML}.html`);
+    sessionStorage.setItem("FRCT", option);
     borderLine.style.transform = `translateX(${20 * option}vw)`;
     closeSidebar();
   });
