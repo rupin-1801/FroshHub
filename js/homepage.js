@@ -5,11 +5,18 @@ const options = document.getElementsByClassName("fh-nav-options");
 const iframe = document.getElementById("fh-iframe");
 const borderLine = document.getElementById("fh-bottom-line");
 const sideOptions = document.getElementsByClassName("fh-nav-side");
+const logout = document.getElementsByClassName("fh-sidebar-option")[7];
 
 window.onload = () => {
   profile.checked = false;
 };
 
+logout.onclick = () => {
+  console.log(logout);
+  sessionStorage.removeItem("FRID");
+  sessionStorage.removeItem("FRSE");
+  window.location = "../index.html";
+}
 for(let i = 0; i < sideOptions.length; i++){
   sideOptions[i].addEventListener("click", (event) => {
     changePage(`./${event.target.innerHTML}.html`);

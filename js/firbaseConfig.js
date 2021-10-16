@@ -1,12 +1,12 @@
-var firebaseConfig = {
-  apiKey: "AIzaSyCmfSvVtEkJdpZTQ8Ryac1AICUe0U6NIsE",
-  authDomain: "froshhub-198.firebaseapp.com",
-  databaseURL: "https://froshhub-198-default-rtdb.firebaseio.com",
-  projectId: "froshhub-198",
-  storageBucket: "froshhub-198.appspot.com",
-  messagingSenderId: "330159800756",
-  appId: "1:330159800756:web:0ba1a8768c918bd83e32e1",
+const firebaseConfig = {
+  apiKey: "AIzaSyAnhme9cpDRWTTZBMuse4-BsWYbwYAxDAo",
+  authDomain: "froshhub-id.firebaseapp.com",
+  projectId: "froshhub-id",
+  databaaseURL: "https://froshhub-id-default-rtdb.firebaseio.com/",
+  storageBucket: "froshhub-id.appspot.com",
+  messagingSenderId: "923831936619",
+  appId: "1:923831936619:web:217f12628736a2215cb32e",
+  measurementId: "G-9R5BN4P9HD",
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);

@@ -23,9 +23,8 @@ nav {
   display: flex;
   padding: 0px !important;
   align-items: center;
-  margin: 0px 0px 0px 10vw;
+  margin: 0px 0px 0px 100px;
   position: relative;
-  /* border: 2px solid white; */
 }
 .fh-nav-options {
   height: 60px;
@@ -36,7 +35,13 @@ nav {
   color: white;
   text-align: center;
   cursor: pointer;
-  /* border: 2px solid blue; */
+}
+.fh-page-title{
+  margin-left: 100px;
+  line-height: 60px;
+  letter-spacing: 2px;
+  font-family:'Courier New', Courier, monospace;
+  display: none;
 }
 .fh-border-bottom {
   position: absolute;
@@ -111,6 +116,9 @@ iframe {
 
 @media screen and (max-width: 600px){
   .fh-nav-side{
+    display: block;
+  }
+  .fh-page-title{
     display: block;
   }
   .fh-nav-list{

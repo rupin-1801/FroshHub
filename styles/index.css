@@ -63,6 +63,9 @@ body {
 .pointer {
   cursor: pointer;
 }
+#loading{
+  display: none;
+}
 .border {
   width: 0px;
   position: absolute;

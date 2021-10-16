@@ -178,17 +178,20 @@ nav>button:hover{
 #upper-border{
     border-top: 3px solid rgb(141, 141, 141);   
 }
+#heading > h2{
+    font-size: 24px;
+}
 .card-left{
     grid-template-areas: "heading"
     "para";
-    grid-gap: 20px;
+    grid-gap: 10px;
     max-width: 80%;
     max-height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: rgba(240, 239, 239, 0.815);
+    /* background-color: rgba(240, 239, 239, 0.815); */
     overflow: hidden;
-    padding: 8px;
+    padding: 10px;
 }
 #heading{
     grid-area: "heading";
@@ -199,7 +202,7 @@ nav>button:hover{
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
-    font-size: large;
+    font-size: medium;
     -webkit-box-orient:vertical;
     color: #696464;
 }
@@ -207,12 +210,12 @@ nav>button:hover{
     display: flex;
     justify-content: center;
     padding: auto;
-    font-size: 20px;
-    align-items: center;
+    padding-top: 20px;
+    font-size: medium;
     color: grey;
 }
 #cardGapBetween{
-    margin: 15px 0 15px 0;
+    margin: 0px 0 15px 0;
 }
 
 @media screen and (max-width: 780px) {
