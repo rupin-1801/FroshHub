@@ -259,11 +259,20 @@ user-name>p{
     box-shadow: 0px 0px 10px rgb(173, 169, 169) ;
     
 }
-#chat-message-bar>emoji{
+#emoji-container{
     font-size: x-large;
+    border: 1px solid red;
 }
-#chat-message-bar>emoji>a{
-    text-decoration: none;
+.emojiOpt{
+    position: relative;
+    font-size: xx-large;
+}
+#emoji{
+    width: 35px;
+    height: 35px;
+    /* display: none; */
+    z-index: 3;
+    position: absolute;
 }
 #chat-message-bar>papper-clip{
     font-size: x-large;
@@ -273,7 +282,7 @@ user-name>p{
     text-decoration: none;
     color: rgb(0, 132, 255);
 }
-#chat-message-bar>input{
+#chat-message-bar>input[type="text"]{
     width: 73%;
     height: 39%;
     padding: 8px;
@@ -284,7 +293,7 @@ user-name>p{
     overflow: scroll;
     box-shadow: 1px 1px 10px rgba(160, 148, 148, 0.603);
 }
-#chat-message-bar>input:focus{
+#chat-message-bar>input[type="text"]:focus{
     box-shadow: inset 0px 0px 8px rgba(160, 148, 148, 0.822);
 }
 #chat-message-bar>mic{
@@ -308,6 +317,30 @@ user-name>p{
 ::-webkit-scrollbar-thumb{
     background:rgba(153, 145, 145, 0.712);
     border-radius: 10px;
+}
+.emojiPicker{
+    /* display:; */
+    position: absolute;
+    background-color: #b4b4b465;
+    height: 25vh;
+    max-width: 24vw;
+    width: fit-content;
+    border-radius: 20px;
+    bottom: 11vh;
+    padding: 3px;
+    left: 26vw;
+    overflow: auto;
+}
+.emojiPicker>button{
+    border: none;
+    font-size: 25px;
+    padding: 1.5px;
+    background-color: transparent;
+    margin: 2.8px;
+    scroll-behavior: smooth;
+}
+.emojiPicker::-webkit-scrollbar{
+    width: 0;
 }
 
 @media screen and (max-width:625px) {
