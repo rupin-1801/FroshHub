@@ -6,13 +6,16 @@ const iframe = document.getElementById("fh-iframe");
 const borderLine = document.getElementById("fh-bottom-line");
 const sideOptions = document.getElementsByClassName("fh-nav-side");
 const logout = document.getElementsByClassName("fh-sidebar-option")[7];
+const backdrop = document.getElementById("backdrop");
 
 window.onload = () => {
   profile.checked = false;
 };
 document.body.onclick = () => {
-
+  closeSidebar();
+  backdrop.style.display = "none";
 }
+
 logout.onclick = () => {
   sessionStorage.removeItem("FRID");
   sessionStorage.removeItem("FRSE");
@@ -43,19 +46,20 @@ indexes.map((option) => {
     closeSidebar();
   });
 });
-
+profile.onclick = (event) => {
+  event.stopPropagation();
+}
 profile.addEventListener("change", (event) => {
+  event.stopPropagation();
   if (event.target.checked) {
+    backdrop.style.display = "block";
     profileIcon.style.transform =
       "scale(1.70) translateY(35px) translateX(10px)";
     setTimeout(() => {
       sidebar.style.width = "650px";
     }, 500);
   } else { 
-    profileIcon.style.transform = "scale(1) translateY(0px) translateX(0px)";
-    setTimeout(() => {
-      sidebar.style.width = "400px";
-    }, 500);
+    closeSidebar();
   }
 });
 

@@ -5,6 +5,15 @@
 nav {
   background-color: #212529;
 }
+#backdrop{
+  position: absolute;
+  top:0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.1);
+  display: none;
+  z-index:+1;
+}
 #home-body {
   overflow: hidden;
   background-color: rgba(150, 150, 150, 0.2);
