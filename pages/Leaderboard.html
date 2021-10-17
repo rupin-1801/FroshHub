@@ -96,14 +96,17 @@
       </div>
     </div>
   </div>
+  <!-- <div class="mid-text">
+    <h2>Click on table header for sorting</h2>
+  </div> -->
   <div class="table-container">
   <table class="styled-table" id="myTable">
     <thead>
       <tr>
-        <th>Rank</th>
-        <th>Handle</th>
-        <th>Full Name</th>
-        <th>Rating</th>
+        <th>Rank <i onclick="sortTable(0)" class="fas fa-sort"></i></th>
+        <th>Handle  <i onclick="sortTable(1)" class="fas fa-sort"></i></th>
+        <th >Full Name <i onclick="sortTable(2)" class="fas fa-sort"></i></th>
+        <th>Rating  <i onclick="sortTable(3)" class="fas fa-sort"></i></th>
       </tr>
       
     </thead>
