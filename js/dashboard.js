@@ -10,25 +10,10 @@ const publish = document.getElementById("publish");
 const postTop = rightTab.offsetTop - 20;
 const formatList = document.getElementsByClassName("format-item");
 const newTag = document.getElementById("tag");
-const newRole = document.getElementById("role");
 const newMessage = document.getElementById("message");
 
-var openAddPost = false,
-  orlistOn = false,
-  unlistOn = false;
+var openAddPost = false;
 
-const postData = {
-  name: "Rupin Bhugra",
-  tag: "Getting Started",
-  role: "Admin",
-  message: `This is my first post to make you familiar with how these posts works.
-    so there are 3 buttons given below: <ol><li><b> Like: </b>To tell whether this content is
-    helpful for you or not.<li><b>Comment: </b>To add your thoughts about the post.<li><b>Share:
-    </b> Share to your groups.</ul>`,
-  comment: "4",
-  like: "12",
-  time: "2h ago",
-};
 rightTab.onclick = (event) => {
   event.stopPropagation();
 };
@@ -76,9 +61,16 @@ const cardMove = () => {
   else containerTop.scrollLeft += value;
 };
 
+function readSession() {
+  let name = sessionStorage.getItem("FRNM");
+  let role = sessionStorage.getItem("FRL");
+  return { name, role };
+}
+// firebase.database().ref("student/posts/1").set(postData);
+
 window.onload = () => {
   cardInterval = setInterval(cardMove, 2000);
-  for (let i = 0; i < 3; i++) createStory(postData);
+  // renderPost();
 };
 containerTop.addEventListener("mouseleave", () => {
   cardInterval = setInterval(cardMove, 2000);
@@ -92,52 +84,53 @@ function createStory(data) {
   fhStory.classList.add("fh-story");
   fhStory.classList.add("card");
   fhStory.innerHTML = `
-    <div class="card-body">
-        <header class="fh-card-title-box">
-            <i class="fas fa-user-circle"></i>
-            <div class="fh-name-box">
-                <p># ${data.tag}</p>
-                <p class="fh-name">
-                    <span class="card-title">${data.name}</span>
-                    <span> @${data.role}</span>
-                    <div class="fh-time">${data.time}</div>
-                </p>
-            </div>
-        </header>
-        <div class="card-text">${data.message}</div>
-    </div>
-    <div class="card-footer">
-        <ul class="nav nav-pills nav-fill">
-            <li class="nav-item">
-                <i class="far fa-comment"></i>
-                ${data.comment}
-            </li>
-            <li class="nav-item">
-                <i class="far fa-thumbs-up"></i>
-                ${data.like}
-            </li>
-            <li class="nav-item">
-                <i class="far fa-share-square"></i>
-            </li>
-        </ul>
-    </div>`;
+  <div class="card-body">
+  <header class="fh-card-title-box">
+  <i class="fas fa-user-circle"></i>
+  <div class="fh-name-box">
+  <p># ${data.tag}</p>
+  <p class="fh-name">
+  <span class="card-title">${data.name}</span>
+  <span> @${data.role}</span>
+  <div class="fh-time">${data.time}</div>
+  </p>
+  </div>
+  </header>
+  <div class="card-text">${data.message}</div>
+        </div>
+        <div class="card-footer">
+    <ul class="nav nav-pills nav-fill">
+    <li class="nav-item">
+    <i class="far fa-comment"></i>
+    ${data.comment}
+    </li>
+    <li class="nav-item">
+    <i class="far fa-thumbs-up"></i>
+    ${data.like}
+    </li>
+    <li class="nav-item">
+    <i class="far fa-share-square"></i>
+    </li>
+    </ul>
+  </div>`;
   stories.prepend(fhStory);
 }
 
 function readPostForm() {
-  let data = {
-    name: "New Student",
+  let { name, role } = readSession();
+  data = {
+    name: name,
+    role: role,
     comment: 0,
     like: 0,
     time: "now",
   };
   data.tag = newTag.value;
-  data.role = newRole.value;
   data.message = newMessage.value;
   return data;
 }
 function useFormat(type) {
-  console.log("aya");
+  // console.log("aya");
   let start = newMessage.selectionStart;
   let end = newMessage.selectionEnd;
   let text = newMessage.value;
@@ -171,8 +164,7 @@ function useFormat(type) {
     newMessage.focus();
     if (end - start > 0) newMessage.selectionEnd = end + 7;
     else newMessage.selectionEnd = start + 3;
-  } 
-  else if (type === "OL") {
+  } else if (type === "OL") {
     newMessage.value =
       text.slice(0, start) +
       "<ol><li>" +
@@ -182,8 +174,7 @@ function useFormat(type) {
     newMessage.focus();
     if (end - start > 0) newMessage.selectionEnd = end + 13;
     else newMessage.selectionEnd = start + 8;
-  } 
-  else if (type === "UL") {
+  } else if (type === "UL") {
     newMessage.value =
       text.slice(0, start) +
       "<ul><li>" +
@@ -216,7 +207,7 @@ function useFormat(type) {
 
 for (let i = 0; i < 6; i++) {
   formatList[i].addEventListener("click", () => {
-    console.log(i);
+    // console.log(i);
     if (i == 0) useFormat("B");
     if (i == 1) useFormat("I");
     if (i == 2) useFormat("U");
@@ -227,48 +218,46 @@ for (let i = 0; i < 6; i++) {
 }
 newMessage.addEventListener("keydown", (event) => {
   message = newMessage.value;
-  
+
   if (
     event.key === "Backspace" &&
     message[newMessage.selectionEnd - 1] === ">"
-    ) {
-      event.preventDefault();
-      closing = false;
-      for (let i = newMessage.selectionEnd - 1; i >= 0; i--) {
-        if (message[i] === "<") {
-          openFirst = i;
-          if(closing) curTag = message.slice(i+2, newMessage.selectionEnd-1);
-          else curTag = message.slice(i+1, newMessage.selectionEnd-1);
-          break;
-        } else if (message[i] === "/") {
-          closing = true;
-        }
+  ) {
+    event.preventDefault();
+    closing = false;
+    for (let i = newMessage.selectionEnd - 1; i >= 0; i--) {
+      if (message[i] === "<") {
+        openFirst = i;
+        if (closing) curTag = message.slice(i + 2, newMessage.selectionEnd - 1);
+        else curTag = message.slice(i + 1, newMessage.selectionEnd - 1);
+        break;
+      } else if (message[i] === "/") {
+        closing = true;
       }
-      
-      if (closing) {
-        close = false;
+    }
+
+    if (closing) {
+      close = false;
       for (let i = openFirst; i >= 0; i--) {
         if (message[i] === ">" && !close) {
           closeSecond = i;
           close = true;
         }
         if (close && message[i] === "<") {
-          if(message.slice(i+1, closeSecond) === curTag){
+          if (message.slice(i + 1, closeSecond) === curTag) {
             openSecond = i;
             break;
-          }
-          else{
+          } else {
             close = false;
           }
         }
       }
-        newMessage.value =
-        message.slice(0, openSecond ) +
+      newMessage.value =
+        message.slice(0, openSecond) +
         message.slice(closeSecond + 1, openFirst) +
         message.slice(newMessage.selectionEnd, message.length);
-        newMessage.selectionEnd = openSecond + (openFirst - closeSecond - 1);
-    } 
-    else {
+      newMessage.selectionEnd = openSecond + (openFirst - closeSecond - 1);
+    } else {
       open = false;
       for (let i = newMessage.selectionEnd; i < message.length; i++) {
         if (message[i] === "<" && !open) {
@@ -279,12 +268,12 @@ newMessage.addEventListener("keydown", (event) => {
           closeSecond = i;
           break;
         }
-        }
+      }
       start = newMessage.selectionEnd;
       newMessage.value =
-      message.slice(0, openFirst) +
-      message.slice(newMessage.selectionEnd, openSecond) +
-      message.slice(closeSecond + 1, message.length);
+        message.slice(0, openFirst) +
+        message.slice(newMessage.selectionEnd, openSecond) +
+        message.slice(closeSecond + 1, message.length);
       newMessage.selectionEnd = openFirst + (openSecond - start);
     }
   }
@@ -300,16 +289,32 @@ newMessage.addEventListener("keydown", (event) => {
   }
 });
 
+// function renderPost() {
+//   stories.innerHTML = "";
+// firebase
+//   .database()
+//   .ref("student/posts")
+//   .on("value", function (snap) {
+//     snap.val().forEach((element) => {
+//       createStory(element);
+//     });
+//   });
+// }
+// function uploadPost(post) {
+//   index = sessionStorage.getItem("FRPL");
+//   firebase
+//     .database()
+//     .ref("student/posts/" + index)
+//     .set(post);
+// }
+
 publish.addEventListener("click", (event) => {
   event.preventDefault();
   let data = readPostForm();
-  if (
-    //   data.tag !== "" && data.role !== "" &&
-    data.message !== ""
-  ) {
-    createStory(data);
+  if (data.tag !== "" && data.message !== "") {
+    // uploadPost(data);
+    // renderPost();
     newTag.value = "";
-    newRole.value = "";
     newMessage.value = "";
   }
 });
