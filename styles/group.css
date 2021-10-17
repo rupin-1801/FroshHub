@@ -229,20 +229,16 @@ button[type="submit"]{
 }
 #user-name{
     margin-left: 3%;
+    margin-top: 1%;
+    font-size: larger;
     text-decoration: none;
     /* width: 60%; */
 }
-user-name>h2{
+#user-name>h2{
     color: rgba(43, 40, 40, 0.877);
-}
-user-name>p{
-    font-size: small;
-    color: rgb(87, 81, 81);
-
 }
 #user-heading>button[type="submit"]{
     font-size: large;
-
 }
 #chat-content{
     grid-area: chat-content;
