@@ -72,6 +72,7 @@ body {
 .fa-user-circle{
   transform: scale(3);
   margin: 0px 30px;
+  color: grey;
 }
 .fh-name-box > p{
   margin: 0px !important;
@@ -179,7 +180,6 @@ body {
 
 @media screen and (max-width: 600px){
   .fh-right-side{
-    display: none;
     width: 60vw;
     min-width: 300px;    
   }
