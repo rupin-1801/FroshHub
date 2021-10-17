@@ -25,6 +25,7 @@ body {
   padding: 10px 20px;
   margin: 0px 20px 0px 10px;
   width: 280px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   height: calc(72vh - 60px);
   background-color: white;
   border-radius: 10px;
@@ -112,7 +113,7 @@ body {
 .fh-right-side input, textarea{
   text-indent: 5px;
   width: 90%;
-  font-size: 15px;
+  font-size: 13px;
 }
 .fh-post-input{
   display: flex;
@@ -143,10 +144,12 @@ body {
 .fh-body-text{
   width: 100% !important;
   outline: none;
+  font-size: 13px;
   resize: none;
   border: none;
   border-top: 1px solid rgba(150, 150, 150, 0.6);
   overflow-wrap: break-word !important;
+  letter-spacing: 1px;
   height: calc(100% - 32px);
 }
 
