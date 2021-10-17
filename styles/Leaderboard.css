@@ -73,6 +73,10 @@ body {
 /* .fh-gold-and-silver {
   display: flex;
 } */
+/* .mid-text {
+  margin-bottom: 3vh;
+  text-align: center;
+} */
 .styled-table {
   border-collapse: collapse;
   /* margin: 25px 0; */
@@ -92,6 +96,9 @@ body {
   background-color: #009879;
   color: #ffffff;
   text-align: left;
+}
+.fa-sort {
+  cursor: pointer;
 }
 .styled-table th,
 .styled-table td {
@@ -170,7 +177,7 @@ body {
   .table-container {
     width: 80vw !important;
     overflow: scroll;
-    left:0px;
+    left: 0px;
     border-radius: 15px;
   }
   .fh-card-text {
@@ -186,7 +193,7 @@ body {
     width: 30vw;
     height: 130px;
   }
-  body{
+  body {
     margin: 0px;
   }
   .table-container {
@@ -199,7 +206,7 @@ body {
     display: flex;
     /* flex-direction: column; */
     flex-wrap: wrap;
-  justify-content: space-evenly;
+    justify-content: space-evenly;
   }
   .fh-winner-card {
     display: none;
