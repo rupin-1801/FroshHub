@@ -14,17 +14,10 @@ const newMessage = document.getElementById("message");
 
 var openAddPost = false;
 
-rightTab.onclick = (event) => {
-  event.stopPropagation();
+window.onload = () => {
+  cardInterval = setInterval(cardMove, 2000);
+  // renderPost();
 };
-
-backPost.onclick = () => {
-  if (window.innerWidth <= 600) {
-    openAddPost = false;
-    backPost.style.display = "none";
-  }
-};
-
 window.onresize = () => {
   if (window.innerWidth > 600) {
     openAddPost = true;
@@ -35,11 +28,30 @@ window.onresize = () => {
   }
 };
 
+for (let i = 0; i < 6; i++) {
+  formatList[i].addEventListener("click", () => {
+    if (i == 0) useFormat("B");
+    if (i == 1) useFormat("I");
+    if (i == 2) useFormat("U");
+    if (i == 3) useFormat("OL");
+    if (i == 4) useFormat("UL");
+    if (i == 5) useFormat("L");
+  });
+}
+
+rightTab.onclick = (event) => {
+  event.stopPropagation();
+};
+backPost.onclick = () => {
+  if (window.innerWidth <= 600) {
+    openAddPost = false;
+    backPost.style.display = "none";
+  }
+};
 addPost.onclick = () => {
   openAddPost = true;
   backPost.style.display = "inline-flex";
 };
-
 scrollable.onscroll = () => {
   if (scrollable.scrollTop >= postTop) {
     rightTab.classList.add("fh-sticky");
@@ -52,170 +64,13 @@ scrollable.onscroll = () => {
   }
 };
 
-const cardMove = () => {
-  let child = containerTop.children[0];
-  value =
-    child.clientWidth + (containerTop.offsetWidth - child.offsetWidth * 3) / 3;
-  if (containerTop.scrollLeft > (containerTop.children.length - 4) * value)
-    containerTop.scrollLeft = 0;
-  else containerTop.scrollLeft += value;
-};
 
-function readSession() {
-  let name = sessionStorage.getItem("FRNM");
-  let role = sessionStorage.getItem("FRL");
-  return { name, role };
-}
-// firebase.database().ref("student/posts/1").set(postData);
-
-window.onload = () => {
-  cardInterval = setInterval(cardMove, 2000);
-  // renderPost();
-};
 containerTop.addEventListener("mouseleave", () => {
   cardInterval = setInterval(cardMove, 2000);
 });
 containerTop.addEventListener("mouseenter", () => {
   clearInterval(cardInterval);
 });
-
-function createStory(data) {
-  const fhStory = document.createElement("div");
-  fhStory.classList.add("fh-story");
-  fhStory.classList.add("card");
-  fhStory.innerHTML = `
-  <div class="card-body">
-  <header class="fh-card-title-box">
-  <i class="fas fa-user-circle"></i>
-  <div class="fh-name-box">
-  <p># ${data.tag}</p>
-  <p class="fh-name">
-  <span class="card-title">${data.name}</span>
-  <span> @${data.role}</span>
-  <div class="fh-time">${data.time}</div>
-  </p>
-  </div>
-  </header>
-  <div class="card-text">${data.message}</div>
-        </div>
-        <div class="card-footer">
-    <ul class="nav nav-pills nav-fill">
-    <li class="nav-item">
-    <i class="far fa-comment"></i>
-    ${data.comment}
-    </li>
-    <li class="nav-item">
-    <i class="far fa-thumbs-up"></i>
-    ${data.like}
-    </li>
-    <li class="nav-item">
-    <i class="far fa-share-square"></i>
-    </li>
-    </ul>
-  </div>`;
-  stories.prepend(fhStory);
-}
-
-function readPostForm() {
-  let { name, role } = readSession();
-  data = {
-    name: name,
-    role: role,
-    comment: 0,
-    like: 0,
-    time: "now",
-  };
-  data.tag = newTag.value;
-  data.message = newMessage.value;
-  return data;
-}
-function useFormat(type) {
-  // console.log("aya");
-  let start = newMessage.selectionStart;
-  let end = newMessage.selectionEnd;
-  let text = newMessage.value;
-  if (type === "B") {
-    newMessage.value =
-      text.slice(0, start) +
-      "<b>" +
-      text.slice(start, end) +
-      "</b>" +
-      text.slice(end, text.length);
-    newMessage.focus();
-    if (end - start > 0) newMessage.selectionEnd = end + 7;
-    else newMessage.selectionEnd = start + 3;
-  } else if (type === "I") {
-    newMessage.value =
-      text.slice(0, start) +
-      "<i>" +
-      text.slice(start, end) +
-      "</i>" +
-      text.slice(end, text.length);
-    newMessage.focus();
-    if (end - start > 0) newMessage.selectionEnd = end + 7;
-    else newMessage.selectionEnd = start + 3;
-  } else if (type === "U") {
-    newMessage.value =
-      text.slice(0, start) +
-      "<u>" +
-      text.slice(start, end) +
-      "</u>" +
-      text.slice(end, text.length);
-    newMessage.focus();
-    if (end - start > 0) newMessage.selectionEnd = end + 7;
-    else newMessage.selectionEnd = start + 3;
-  } else if (type === "OL") {
-    newMessage.value =
-      text.slice(0, start) +
-      "<ol><li>" +
-      text.slice(start, end) +
-      "</ol>" +
-      text.slice(end, text.length);
-    newMessage.focus();
-    if (end - start > 0) newMessage.selectionEnd = end + 13;
-    else newMessage.selectionEnd = start + 8;
-  } else if (type === "UL") {
-    newMessage.value =
-      text.slice(0, start) +
-      "<ul><li>" +
-      text.slice(start, end) +
-      "</ul>" +
-      text.slice(end, text.length);
-    newMessage.focus();
-    if (end - start > 0) newMessage.selectionEnd = end + 13;
-    else newMessage.selectionEnd = start + 8;
-  } else if (type === "L") {
-    newMessage.value =
-      text.slice(0, start) +
-      `<a href='' target='_blank'>` +
-      text.slice(start, end) +
-      "</a>" +
-      text.slice(end, text.length);
-    newMessage.focus();
-    if (end - start > 0) newMessage.selectionEnd = start + 9;
-    else newMessage.selectionEnd = start + 11;
-  } else if (type === "LI") {
-    newMessage.value =
-      text.slice(0, start) +
-      "<li>" +
-      text.slice(start, end) +
-      text.slice(end, text.length);
-    newMessage.focus();
-    newMessage.selectionEnd = start + 4;
-  }
-}
-
-for (let i = 0; i < 6; i++) {
-  formatList[i].addEventListener("click", () => {
-    // console.log(i);
-    if (i == 0) useFormat("B");
-    if (i == 1) useFormat("I");
-    if (i == 2) useFormat("U");
-    if (i == 3) useFormat("OL");
-    if (i == 4) useFormat("UL");
-    if (i == 5) useFormat("L");
-  });
-}
 newMessage.addEventListener("keydown", (event) => {
   message = newMessage.value;
 
@@ -288,33 +143,174 @@ newMessage.addEventListener("keydown", (event) => {
     useFormat("LI");
   }
 });
-
-// function renderPost() {
-//   stories.innerHTML = "";
-// firebase
-//   .database()
-//   .ref("student/posts")
-//   .on("value", function (snap) {
-//     snap.val().forEach((element) => {
-//       createStory(element);
-//     });
-//   });
-// }
-// function uploadPost(post) {
-//   index = sessionStorage.getItem("FRPL");
-//   firebase
-//     .database()
-//     .ref("student/posts/" + index)
-//     .set(post);
-// }
-
 publish.addEventListener("click", (event) => {
   event.preventDefault();
   let data = readPostForm();
   if (data.tag !== "" && data.message !== "") {
+    firebase
+      .database()
+      .ref("student/posts")
+      .on("value", function (snap) {
+        sessionStorage.setItem("FRPL", snap.val().length);
+      });
     // uploadPost(data);
     // renderPost();
     newTag.value = "";
     newMessage.value = "";
   }
 });
+
+function cardMove(){
+  let child = containerTop.children[0];
+  value =
+    child.clientWidth + (containerTop.offsetWidth - child.offsetWidth * 3) / 3;
+  if (containerTop.scrollLeft > (containerTop.children.length - 4) * value)
+    containerTop.scrollLeft = 0;
+  else containerTop.scrollLeft += value;
+};
+function readSession() {
+  let name = sessionStorage.getItem("FRNM");
+  let role = sessionStorage.getItem("FRL");
+  return { name, role };
+};
+function createStory(data) {
+  const fhStory = document.createElement("div");
+  fhStory.classList.add("fh-story");
+  fhStory.classList.add("card");
+  fhStory.innerHTML = `
+  <div class="card-body">
+  <header class="fh-card-title-box">
+  <i class="fas fa-user-circle"></i>
+  <div class="fh-name-box">
+  <p># ${data.tag}</p>
+  <p class="fh-name">
+  <span class="card-title">${data.name}</span>
+  <span> @${data.role}</span>
+  <div class="fh-time">${data.time}</div>
+  </p>
+  </div>
+  </header>
+  <div class="card-text">${data.message}</div>
+        </div>
+        <div class="card-footer">
+    <ul class="nav nav-pills nav-fill">
+    <li class="nav-item">
+    <i class="far fa-comment"></i>
+    ${data.comment}
+    </li>
+    <li class="nav-item">
+    <i class="far fa-thumbs-up"></i>
+    ${data.like}
+    </li>
+    <li class="nav-item">
+    <i class="far fa-share-square"></i>
+    </li>
+    </ul>
+  </div>`;
+  stories.prepend(fhStory);
+};
+function readPostForm() {
+  let { name, role } = readSession();
+  data = {
+    name: name,
+    role: role,
+    comment: 0,
+    like: 0,
+    time: "now",
+  };
+  data.tag = newTag.value;
+  data.message = newMessage.value;
+  return data;
+};
+function useFormat(type) {
+  let start = newMessage.selectionStart;
+  let end = newMessage.selectionEnd;
+  let text = newMessage.value;
+  if (type === "B") {
+    newMessage.value =
+      text.slice(0, start) +
+      "<b>" +
+      text.slice(start, end) +
+      "</b>" +
+      text.slice(end, text.length);
+    newMessage.focus();
+    if (end - start > 0) newMessage.selectionEnd = end + 7;
+    else newMessage.selectionEnd = start + 3;
+  } else if (type === "I") {
+    newMessage.value =
+      text.slice(0, start) +
+      "<i>" +
+      text.slice(start, end) +
+      "</i>" +
+      text.slice(end, text.length);
+    newMessage.focus();
+    if (end - start > 0) newMessage.selectionEnd = end + 7;
+    else newMessage.selectionEnd = start + 3;
+  } else if (type === "U") {
+    newMessage.value =
+      text.slice(0, start) +
+      "<u>" +
+      text.slice(start, end) +
+      "</u>" +
+      text.slice(end, text.length);
+    newMessage.focus();
+    if (end - start > 0) newMessage.selectionEnd = end + 7;
+    else newMessage.selectionEnd = start + 3;
+  } else if (type === "OL") {
+    newMessage.value =
+      text.slice(0, start) +
+      "<ol><li>" +
+      text.slice(start, end) +
+      "</ol>" +
+      text.slice(end, text.length);
+    newMessage.focus();
+    if (end - start > 0) newMessage.selectionEnd = end + 13;
+    else newMessage.selectionEnd = start + 8;
+  } else if (type === "UL") {
+    newMessage.value =
+      text.slice(0, start) +
+      "<ul><li>" +
+      text.slice(start, end) +
+      "</ul>" +
+      text.slice(end, text.length);
+    newMessage.focus();
+    if (end - start > 0) newMessage.selectionEnd = end + 13;
+    else newMessage.selectionEnd = start + 8;
+  } else if (type === "L") {
+    newMessage.value =
+      text.slice(0, start) +
+      `<a href='' target='_blank'>` +
+      text.slice(start, end) +
+      "</a>" +
+      text.slice(end, text.length);
+    newMessage.focus();
+    if (end - start > 0) newMessage.selectionEnd = start + 9;
+    else newMessage.selectionEnd = start + 11;
+  } else if (type === "LI") {
+    newMessage.value =
+      text.slice(0, start) +
+      "<li>" +
+      text.slice(start, end) +
+      text.slice(end, text.length);
+    newMessage.focus();
+    newMessage.selectionEnd = start + 4;
+  }
+};
+function renderPost() {
+  stories.innerHTML = "";
+  firebase
+    .database()
+    .ref("student/posts")
+    .on("value", function (snap) {
+      snap.val().forEach((element) => {
+        createStory(element);
+      });
+    });
+};
+function uploadPost(post) {
+  index = sessionStorage.getItem("FRPL");
+  firebase
+    .database()
+    .ref("student/posts/" + index)
+    .set(post);
+};
