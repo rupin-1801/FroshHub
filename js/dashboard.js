@@ -7,166 +7,26 @@ const scrollable = document.getElementsByClassName("scrollable")[0];
 const addPost = document.getElementsByClassName("fh-add-post")[0];
 const backPost = document.getElementById("post-back");
 const publish = document.getElementById("publish");
-const postTop = rightTab.offsetTop - 20;
 const formatList = document.getElementsByClassName("format-item");
 const newTag = document.getElementById("tag");
 const newMessage = document.getElementById("message");
 
-var openAddPost = false;
-
-window.onload = () => {
-  cardInterval = setInterval(cardMove, 2000);
-  // renderPost();
-};
-window.onresize = () => {
-  if (window.innerWidth > 600) {
-    openAddPost = true;
-    backPost.style.display = "inline-flex";
-  } else {
-    openAddPost = false;
-    backPost.style.display = "none";
-  }
-};
-
-for (let i = 0; i < 6; i++) {
-  formatList[i].addEventListener("click", () => {
-    if (i == 0) useFormat("B");
-    if (i == 1) useFormat("I");
-    if (i == 2) useFormat("U");
-    if (i == 3) useFormat("OL");
-    if (i == 4) useFormat("UL");
-    if (i == 5) useFormat("L");
-  });
-}
-
-rightTab.onclick = (event) => {
-  event.stopPropagation();
-};
-backPost.onclick = () => {
-  if (window.innerWidth <= 600) {
-    openAddPost = false;
-    backPost.style.display = "none";
-  }
-};
-addPost.onclick = () => {
-  openAddPost = true;
-  backPost.style.display = "inline-flex";
-};
-scrollable.onscroll = () => {
-  if (scrollable.scrollTop >= postTop) {
-    rightTab.classList.add("fh-sticky");
-    stories.classList.add("fh-stickier");
-    main.classList.add("inline-main");
-  } else if (scrollable.scrollTop < postTop) {
-    rightTab.classList.remove("fh-sticky");
-    stories.classList.remove("fh-stickier");
-    main.classList.remove("inline-main");
-  }
-};
-
-
-containerTop.addEventListener("mouseleave", () => {
-  cardInterval = setInterval(cardMove, 2000);
-});
-containerTop.addEventListener("mouseenter", () => {
-  clearInterval(cardInterval);
-});
-newMessage.addEventListener("keydown", (event) => {
-  message = newMessage.value;
-
-  if (
-    event.key === "Backspace" &&
-    message[newMessage.selectionEnd - 1] === ">"
-  ) {
-    event.preventDefault();
-    closing = false;
-    for (let i = newMessage.selectionEnd - 1; i >= 0; i--) {
-      if (message[i] === "<") {
-        openFirst = i;
-        if (closing) curTag = message.slice(i + 2, newMessage.selectionEnd - 1);
-        else curTag = message.slice(i + 1, newMessage.selectionEnd - 1);
-        break;
-      } else if (message[i] === "/") {
-        closing = true;
-      }
-    }
-
-    if (closing) {
-      close = false;
-      for (let i = openFirst; i >= 0; i--) {
-        if (message[i] === ">" && !close) {
-          closeSecond = i;
-          close = true;
-        }
-        if (close && message[i] === "<") {
-          if (message.slice(i + 1, closeSecond) === curTag) {
-            openSecond = i;
-            break;
-          } else {
-            close = false;
-          }
-        }
-      }
-      newMessage.value =
-        message.slice(0, openSecond) +
-        message.slice(closeSecond + 1, openFirst) +
-        message.slice(newMessage.selectionEnd, message.length);
-      newMessage.selectionEnd = openSecond + (openFirst - closeSecond - 1);
-    } else {
-      open = false;
-      for (let i = newMessage.selectionEnd; i < message.length; i++) {
-        if (message[i] === "<" && !open) {
-          openSecond = i;
-          open = true;
-        }
-        if (open && message[i] === ">") {
-          closeSecond = i;
-          break;
-        }
-      }
-      start = newMessage.selectionEnd;
-      newMessage.value =
-        message.slice(0, openFirst) +
-        message.slice(newMessage.selectionEnd, openSecond) +
-        message.slice(closeSecond + 1, message.length);
-      newMessage.selectionEnd = openFirst + (openSecond - start);
-    }
-  }
-
-  li = message.slice(newMessage.selectionEnd, newMessage.selectionEnd + 4);
-  tag = message.slice(newMessage.selectionEnd, newMessage.selectionEnd + 5);
-  if (
-    event.key === "Enter" &&
-    (li === "<li>" || tag === "</ol>" || tag === "</ul>")
-  ) {
-    event.preventDefault();
-    useFormat("LI");
-  }
-});
-publish.addEventListener("click", (event) => {
-  event.preventDefault();
-  let data = readPostForm();
-  if (data.tag !== "" && data.message !== "") {
-    firebase
-      .database()
-      .ref("student/posts")
-      .on("value", function (snap) {
-        sessionStorage.setItem("FRPL", snap.val().length);
-      });
-    // uploadPost(data);
-    // renderPost();
-    newTag.value = "";
-    newMessage.value = "";
-  }
-});
+const postTop = rightTab.offsetTop - 20;
+var openAddPost = false, scrollCount = 1;
 
 function cardMove(){
   let child = containerTop.children[0];
-  value =
-    child.clientWidth + (containerTop.offsetWidth - child.offsetWidth * 3) / 3;
-  if (containerTop.scrollLeft > (containerTop.children.length - 4) * value)
+  size = Math.floor(containerTop.clientWidth / (child.clientWidth + 40));
+  console.log(size, scrollCount, containerTop.childNodes.length/2-size);
+  value = child.clientWidth + 40;
+  if (scrollCount >= containerTop.childNodes.length/2 - size){
     containerTop.scrollLeft = 0;
-  else containerTop.scrollLeft += value;
+    scrollCount = 1;
+  }
+  else {
+    containerTop.scrollLeft += value;
+    scrollCount++;
+  }
 };
 function readSession() {
   let name = sessionStorage.getItem("FRNM");
@@ -195,11 +55,11 @@ function createStory(data) {
         <div class="card-footer">
     <ul class="nav nav-pills nav-fill">
     <li class="nav-item">
-    <i class="far fa-comment"></i>
+    <i class="far fa-comment" onclick="changeCounter(event)"></i>
     ${data.comment}
     </li>
     <li class="nav-item">
-    <i class="far fa-thumbs-up"></i>
+    <i class="far fa-thumbs-up" onclick="changeLike(event)"></i>
     ${data.like}
     </li>
     <li class="nav-item">
@@ -314,3 +174,150 @@ function uploadPost(post) {
     .ref("student/posts/" + index)
     .set(post);
 };
+
+window.onload = () => {
+  cardInterval = setInterval(cardMove, 2000);
+  // renderPost();
+};
+window.onresize = () => {
+  if (window.innerWidth > 600) {
+    openAddPost = true;
+    backPost.style.display = "inline-flex";
+  } else {
+    openAddPost = false;
+    backPost.style.display = "none";
+  }
+};
+for (let i = 0; i < 6; i++) {
+  formatList[i].addEventListener("click", () => {
+    if (i == 0) useFormat("B");
+    if (i == 1) useFormat("I");
+    if (i == 2) useFormat("U");
+    if (i == 3) useFormat("OL");
+    if (i == 4) useFormat("UL");
+    if (i == 5) useFormat("L");
+  });
+}
+rightTab.onclick = (event) => {
+  event.stopPropagation();
+};
+backPost.onclick = () => {
+  if (window.innerWidth <= 600) {
+    openAddPost = false;
+    backPost.style.display = "none";
+  }
+};
+addPost.onclick = () => {
+  openAddPost = true;
+  backPost.style.display = "inline-flex";
+};
+scrollable.onscroll = () => {
+  if (scrollable.scrollTop >= postTop) {
+    rightTab.classList.add("fh-sticky");
+    stories.classList.add("fh-stickier");
+    main.classList.add("inline-main");
+  } else if (scrollable.scrollTop < postTop) {
+    rightTab.classList.remove("fh-sticky");
+    stories.classList.remove("fh-stickier");
+    main.classList.remove("inline-main");
+  }
+};
+
+containerTop.addEventListener("mouseleave", () => {
+  cardInterval = setInterval(cardMove, 2000);
+});
+containerTop.addEventListener("mouseenter", () => {
+  clearInterval(cardInterval);
+});
+newMessage.addEventListener("keydown", (event) => {
+  message = newMessage.value;
+
+  if (
+    event.key === "Backspace" &&
+    message[newMessage.selectionEnd - 1] === ">"
+  ) {
+    event.preventDefault();
+    closing = false;
+    for (let i = newMessage.selectionEnd - 1; i >= 0; i--) {
+      if (message[i] === "<") {
+        openFirst = i;
+        if (closing) curTag = message.slice(i + 2, newMessage.selectionEnd - 1);
+        else curTag = message.slice(i + 1, newMessage.selectionEnd - 1);
+        break;
+      } else if (message[i] === "/") {
+        closing = true;
+      }
+    }
+
+    if (closing) {
+      close = false;
+      for (let i = openFirst; i >= 0; i--) {
+        if (message[i] === ">" && !close) {
+          closeSecond = i;
+          close = true;
+        }
+        if (close && message[i] === "<") {
+          if (message.slice(i + 1, closeSecond) === curTag) {
+            openSecond = i;
+            break;
+          } else {
+            close = false;
+          }
+        }
+      }
+      newMessage.value =
+        message.slice(0, openSecond) +
+        message.slice(closeSecond + 1, openFirst) +
+        message.slice(newMessage.selectionEnd, message.length);
+      newMessage.selectionEnd = openSecond + (openFirst - closeSecond - 1);
+    } else {
+      open = false;
+      for (let i = newMessage.selectionEnd; i < message.length; i++) {
+        if (message[i] === "<" && !open) {
+          openSecond = i;
+          open = true;
+        }
+        if (open && message[i] === ">") {
+          closeSecond = i;
+          break;
+        }
+      }
+      start = newMessage.selectionEnd;
+      newMessage.value =
+        message.slice(0, openFirst) +
+        message.slice(newMessage.selectionEnd, openSecond) +
+        message.slice(closeSecond + 1, message.length);
+      newMessage.selectionEnd = openFirst + (openSecond - start);
+    }
+  }
+
+  li = message.slice(newMessage.selectionEnd, newMessage.selectionEnd + 4);
+  tag = message.slice(newMessage.selectionEnd, newMessage.selectionEnd + 5);
+  if (
+    event.key === "Enter" &&
+    (li === "<li>" || tag === "</ol>" || tag === "</ul>")
+  ) {
+    event.preventDefault();
+    useFormat("LI");
+  }
+});
+publish.addEventListener("click", (event) => {
+  event.preventDefault();
+  let data = readPostForm();
+  if (data.tag !== "" && data.message !== "") {
+    firebase
+      .database()
+      .ref("student/posts")
+      .on("value", function (snap) {
+        sessionStorage.setItem("FRPL", snap.val().length);
+      });
+    // uploadPost(data);
+    // renderPost();
+    newTag.value = "";
+    newMessage.value = "";
+    if (window.innerWidth <= 600) {
+      openAddPost = false;
+      backPost.style.display = "none";
+    }
+  }
+});
