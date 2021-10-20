@@ -71,7 +71,6 @@
     /* border: 1px solid rgba(128, 128, 128, 0.473); */
     padding: 15px 0px 0px 0px;
     box-shadow: 0 0 5px rgba(128, 128, 128, 0.432);
-    min-width:8vw;
     height: 5vh;
     margin: 15px  0px 0 10px;
     border-radius: 50%;
@@ -211,31 +210,52 @@ button[type="submit"]{
     padding-left: 3%;
     padding-right: 5%;
 }
+.backButton{
+    width:40px;
+    cursor: pointer;
+    height: 40px;
+    border: none;
+    font-size: larger;
+    color: rgb(0, 119, 255);
+    display: none;
+}
 #chat-user-logo{
     border-radius: 50%;
-    padding: 10px;
-    width: fit-content;
+    /* padding: 10px; */
+    position: relative;
+    min-width: 40px;
+    width: 46px;
+    height: 46px;
+    min-height: 40px;
+    text-align: center;
     background-color: #faf6f6f3;
     box-shadow: 0px 0px 8px rgba(58, 50, 50, 0.233);
 }
 #chat-info{
     display: flex;
     height: initial;
-    width: 70%;
+    width: 90%;
 }
 .fa-users{
     font-size: x-large;
     color: rgb(151, 180, 199);
 }
+#chat-user-logo>a>.fa-users{
+    font-size: x-large;
+    position: relative;
+    margin: 8px;
+}
 #user-name{
     margin-left: 3%;
-    margin-top: 1%;
-    font-size: larger;
+    height: 100%;
+    font-size: normal;
     text-decoration: none;
-    /* width: 60%; */
 }
 #user-name>h2{
     color: rgba(43, 40, 40, 0.877);
+    vertical-align: middle;
+    height: 100%;
+    padding: 10px;
 }
 #user-heading>button[type="submit"]{
     font-size: large;
@@ -355,6 +375,22 @@ button[type="submit"]{
     }
     #grid-item-1-a{
         width: 100%;
+    }
+    .backButton{
+        display: unset;
+    }
+    #user-name>h2{
+        font-size: large;
+    }
+    #chat-user-logo>a>.fa-users{
+        margin: 8px;
+        font-size: large;
+    }
+    #chat-user-logo{
+        min-height: 39px;
+        width: 39px;
+        height: 39px;
+        min-width: 39px;
     }
     #dp{
         width: 100pt;

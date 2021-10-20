@@ -19,7 +19,7 @@
                 <table class="search-bar-container">
                     <tr>
                         <td>
-                            <input type="text" placeholder="Search..." class="search">
+                            <input type="text" placeholder="Search..." onkeyup="searchByName()" class="search">
                         </td>
                         <td>
                             <button type="submit">
@@ -37,9 +37,9 @@
                                 <i class="fas fa-users"></i>
                             </a>
                         </div>
-                        <div id="chat-heading-body" class="chatHeadingBody" onclick="changeUserName('Name 1')">
+                        <div id="chat-heading-body" class="chatHeadingBody" onclick="changeUserName(event)">
                             <div id="heading">
-                                <p id="name" >Name 1</p>
+                                <p id="name">Name 1</p>
                                 <p id="time">yesterday</p>
                             </div>
                             <!-- <hr id="h-row"> -->
@@ -62,7 +62,7 @@
                         </div>
                         <div id="chat-heading-body" class="chatHeadingBody" onclick="changeUserName('Name 2')">
                             <div id="heading">
-                                <p id="name" >Name 2</p>
+                                <p id="name">Name 2</p>
                                 <p id="time">yesterday</p>
                             </div>
                             <!-- <hr id="h-row"> -->
@@ -85,7 +85,7 @@
                         </div>
                         <div id="chat-heading-body" class="chatHeadingBody" onclick="changeUserName('Name 3')">
                             <div id="heading">
-                                <p id="name" >Name 3</p>
+                                <p id="name">Name 3</p>
                                 <p id="time">yesterday</p>
                             </div>
                             <!-- <hr id="h-row"> -->
@@ -108,7 +108,7 @@
                         </div>
                         <div id="chat-heading-body" class="chatHeadingBody" onclick="changeUserName('Name 4')">
                             <div id="heading">
-                                <p id="name" >Name 4</p>
+                                <p id="name">Name 4</p>
                                 <p id="time">yesterday</p>
                             </div>
                             <!-- <hr id="h-row"> -->
@@ -131,7 +131,7 @@
                         </div>
                         <div id="chat-heading-body" class="chatHeadingBody" onclick="changeUserName('Name 5')">
                             <div id="heading">
-                                <p id="name" >Name 5</p>
+                                <p id="name">Name 5</p>
                                 <p id="time">yesterday</p>
                             </div>
                             <!-- <hr id="h-row"> -->
@@ -152,9 +152,9 @@
                                 <i class="fas fa-users"></i>
                             </a>
                         </div>
-                        <div id="chat-heading-body"class="chatHeadingBody" onclick="changeUserName('Name 6')" >
+                        <div id="chat-heading-body" class="chatHeadingBody" onclick="changeUserName('Name 6')">
                             <div id="heading">
-                                <p id="name" >Name 6</p>
+                                <p id="name">Name 6</p>
                                 <p id="time">yesterday</p>
                             </div>
                             <!-- <hr id="h-row"> -->
@@ -177,7 +177,7 @@
                         </div>
                         <div id="chat-heading-body" class="chatHeadingBody" onclick="changeUserName('Name 7')">
                             <div id="heading">
-                                <p id="name" >Name 7</p>
+                                <p id="name">Name 7</p>
                                 <p id="time">yesterday</p>
                             </div>
                             <!-- <hr id="h-row"> -->
@@ -195,22 +195,22 @@
         </div>
         <div id="grid-item-2">
             <div id="user-heading">
+                <button class="backButton">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </button>
                 <div id="chat-info">
+
                     <div id="chat-user-logo">
                         <a href="">
                             <i class="fas fa-users"></i>
                         </a>
                     </div>
                     <a href="" id="user-name">
-                            <h2>
-                                Name 1
-                            </h2>
+                        <h2>
+                            Name 1
+                        </h2>
                     </a>
                 </div>
-                <button type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-
             </div>
             <div id="chat-content">
 
@@ -223,86 +223,86 @@
                     </label>
                 </div>
                 <div class="emojiPicker">
-                    <button class = "selectEmoji">&#128512</button>
-                    <button class = "selectEmoji">&#128513</button>
-                    <button class = "selectEmoji">&#128514</button>
-                    <button class = "selectEmoji">&#128515</button>
-                    <button class = "selectEmoji">&#128516</button>
-                    <button class = "selectEmoji">&#128517</button>
-                    <button class = "selectEmoji">&#128518</button>
-                    <button class = "selectEmoji">&#128519</button>
-                    <button class = "selectEmoji">&#128520</button>
-                    <button class = "selectEmoji">&#128521</button>
-                    <button class = "selectEmoji">&#128522</button>
-                    <button class = "selectEmoji">&#128523</button>
-                    <button class = "selectEmoji">&#128524</button>
-                    <button class = "selectEmoji">&#128525</button>
-                    <button class = "selectEmoji">&#128526</button>
-                    <button class = "selectEmoji">&#128527</button>
-                    <button class = "selectEmoji">&#128528</button>
-                    <button class = "selectEmoji">&#128529</button>
-                    <button class = "selectEmoji">&#128530</button>
-                    <button class = "selectEmoji">&#128531</button>
-                    <button class = "selectEmoji">&#128532</button>
-                    <button class = "selectEmoji">&#128533</button>
-                    <button class = "selectEmoji">&#128534</button>
-                    <button class = "selectEmoji">&#128535</button>
-                    <button class = "selectEmoji">&#128536</button>
-                    <button class = "selectEmoji">&#128537</button>
-                    <button class = "selectEmoji">&#128538</button>
-                    <button class = "selectEmoji">&#128539</button>
-                    <button class = "selectEmoji">&#128540</button>
-                    <button class = "selectEmoji">&#128541</button>
-                    <button class = "selectEmoji">&#128542</button>
-                    <button class = "selectEmoji">&#128543</button>
-                    <button class = "selectEmoji">&#128544</button>
-                    <button class = "selectEmoji">&#128545</button>
-                    <button class = "selectEmoji">&#128546</button>
-                    <button class = "selectEmoji">&#128547</button>
-                    <button class = "selectEmoji">&#128548</button>
-                    <button class = "selectEmoji">&#128549</button>
-                    <button class = "selectEmoji">&#128550</button>
-                    <button class = "selectEmoji">&#128551</button>
-                    <button class = "selectEmoji">&#128552</button>
-                    <button class = "selectEmoji">&#128553</button>
-                    <button class = "selectEmoji">&#128554</button>
-                    <button class = "selectEmoji">&#128555</button>
-                    <button class = "selectEmoji">&#128556</button>
-                    <button class = "selectEmoji">&#128557</button>
-                    <button class = "selectEmoji">&#128558</button>
-                    <button class = "selectEmoji">&#128559</button>
-                    <button class = "selectEmoji">&#128560</button>
-                    <button class = "selectEmoji">&#128561</button>
-                    <button class = "selectEmoji">&#128562</button>
-                    <button class = "selectEmoji">&#128563</button>
-                    <button class = "selectEmoji">&#128564</button>
-                    <button class = "selectEmoji">&#128565</button>
-                    <button class = "selectEmoji">&#128566</button>
-                    <button class = "selectEmoji">&#128567</button>
-                    <button class = "selectEmoji">&#128568</button>
-                    <button class = "selectEmoji">&#128569</button>
-                    <button class = "selectEmoji">&#128570</button>
-                    <button class = "selectEmoji">&#128571</button>
-                    <button class = "selectEmoji">&#128572</button>
-                    <button class = "selectEmoji">&#128573</button>
-                    <button class = "selectEmoji">&#128574</button>
-                    <button class = "selectEmoji">&#128575</button>
-                    <button class = "selectEmoji">&#128576</button>
-                    <button class = "selectEmoji">&#128577</button>
-                    <button class = "selectEmoji">&#128578</button>
-                    <button class = "selectEmoji">&#128579</button>
-                    <button class = "selectEmoji">&#128580</button>
-                    <button class = "selectEmoji">&#128581</button>
-                    <button class = "selectEmoji">&#128582</button>
-                    <button class = "selectEmoji">&#128583</button>
-                    <button class = "selectEmoji">&#128584</button>
-                    <button class = "selectEmoji">&#128585</button>
-                    <button class = "selectEmoji">&#128586</button>
-                    <button class = "selectEmoji">&#128587</button>
-                    <button class = "selectEmoji">&#128588</button>
-                    <button class = "selectEmoji">&#128589</button>
-                    <button class = "selectEmoji">&#128590</button>
-                    <button class = "selectEmoji">&#128591</button>
+                    <button class="selectEmoji">&#128512</button>
+                    <button class="selectEmoji">&#128513</button>
+                    <button class="selectEmoji">&#128514</button>
+                    <button class="selectEmoji">&#128515</button>
+                    <button class="selectEmoji">&#128516</button>
+                    <button class="selectEmoji">&#128517</button>
+                    <button class="selectEmoji">&#128518</button>
+                    <button class="selectEmoji">&#128519</button>
+                    <button class="selectEmoji">&#128520</button>
+                    <button class="selectEmoji">&#128521</button>
+                    <button class="selectEmoji">&#128522</button>
+                    <button class="selectEmoji">&#128523</button>
+                    <button class="selectEmoji">&#128524</button>
+                    <button class="selectEmoji">&#128525</button>
+                    <button class="selectEmoji">&#128526</button>
+                    <button class="selectEmoji">&#128527</button>
+                    <button class="selectEmoji">&#128528</button>
+                    <button class="selectEmoji">&#128529</button>
+                    <button class="selectEmoji">&#128530</button>
+                    <button class="selectEmoji">&#128531</button>
+                    <button class="selectEmoji">&#128532</button>
+                    <button class="selectEmoji">&#128533</button>
+                    <button class="selectEmoji">&#128534</button>
+                    <button class="selectEmoji">&#128535</button>
+                    <button class="selectEmoji">&#128536</button>
+                    <button class="selectEmoji">&#128537</button>
+                    <button class="selectEmoji">&#128538</button>
+                    <button class="selectEmoji">&#128539</button>
+                    <button class="selectEmoji">&#128540</button>
+                    <button class="selectEmoji">&#128541</button>
+                    <button class="selectEmoji">&#128542</button>
+                    <button class="selectEmoji">&#128543</button>
+                    <button class="selectEmoji">&#128544</button>
+                    <button class="selectEmoji">&#128545</button>
+                    <button class="selectEmoji">&#128546</button>
+                    <button class="selectEmoji">&#128547</button>
+                    <button class="selectEmoji">&#128548</button>
+                    <button class="selectEmoji">&#128549</button>
+                    <button class="selectEmoji">&#128550</button>
+                    <button class="selectEmoji">&#128551</button>
+                    <button class="selectEmoji">&#128552</button>
+                    <button class="selectEmoji">&#128553</button>
+                    <button class="selectEmoji">&#128554</button>
+                    <button class="selectEmoji">&#128555</button>
+                    <button class="selectEmoji">&#128556</button>
+                    <button class="selectEmoji">&#128557</button>
+                    <button class="selectEmoji">&#128558</button>
+                    <button class="selectEmoji">&#128559</button>
+                    <button class="selectEmoji">&#128560</button>
+                    <button class="selectEmoji">&#128561</button>
+                    <button class="selectEmoji">&#128562</button>
+                    <button class="selectEmoji">&#128563</button>
+                    <button class="selectEmoji">&#128564</button>
+                    <button class="selectEmoji">&#128565</button>
+                    <button class="selectEmoji">&#128566</button>
+                    <button class="selectEmoji">&#128567</button>
+                    <button class="selectEmoji">&#128568</button>
+                    <button class="selectEmoji">&#128569</button>
+                    <button class="selectEmoji">&#128570</button>
+                    <button class="selectEmoji">&#128571</button>
+                    <button class="selectEmoji">&#128572</button>
+                    <button class="selectEmoji">&#128573</button>
+                    <button class="selectEmoji">&#128574</button>
+                    <button class="selectEmoji">&#128575</button>
+                    <button class="selectEmoji">&#128576</button>
+                    <button class="selectEmoji">&#128577</button>
+                    <button class="selectEmoji">&#128578</button>
+                    <button class="selectEmoji">&#128579</button>
+                    <button class="selectEmoji">&#128580</button>
+                    <button class="selectEmoji">&#128581</button>
+                    <button class="selectEmoji">&#128582</button>
+                    <button class="selectEmoji">&#128583</button>
+                    <button class="selectEmoji">&#128584</button>
+                    <button class="selectEmoji">&#128585</button>
+                    <button class="selectEmoji">&#128586</button>
+                    <button class="selectEmoji">&#128587</button>
+                    <button class="selectEmoji">&#128588</button>
+                    <button class="selectEmoji">&#128589</button>
+                    <button class="selectEmoji">&#128590</button>
+                    <button class="selectEmoji">&#128591</button>
 
                 </div>
                 <papper-clip>

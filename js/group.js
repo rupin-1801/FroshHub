@@ -31,27 +31,32 @@ for (let i = 0; i < selectedEmoji.length; i++) {
     })
 }
 function changeUserName(e) {
+    console.log(e.target);
     var userName = document.querySelector("#user-name>h2");
     userName.innerHTML = e;
+    if (window.innerWidth < 625) {
+        var contentDisp1 = document.getElementById("grid-item-1");
+        var contentDisp2 = document.getElementById("grid-item-2");
+        let backBtn = document.getElementsByClassName("backButton")
+        contentDisp1.style.display = "none";
+        contentDisp2.style.display = "unset";
+        backBtn[0].addEventListener('click',(e)=>{
+            contentDisp1.style.display = "unset";
+            contentDisp2.style.display = "none";
+        })
+    }
 }
 window.onload = () => {
     var userName = document.querySelector("#user-name>h2");
     let fName = document.getElementById("name");
     userName.innerHTML = fName.innerText;
 }
-let chatHeadingBody= document.getElementsByClassName("chatHeadingBody");
-let contentDisp1 = document.getElementById("grid-item-1");
-let contentDisp2 = document.getElementById("grid-item-2");
-for( let i = 0;i<chatHeadingBody.length;i++){
-    chatHeadingBody[i]=addEventListener('click',(e)=>{
-        console.log(contentDisp1);
-        contentDisp1.style.display = "none";
-        contentDisp2.style.display = "unset";
-    })
-}
-window.onresize= () => {
-    if (window.innerWidth<625){
-        console.log("hello")
 
-    }
+function searchByName() {
+    var name, chatBody, inputedString;
+    name = document.getElementById('name');
+    chatBody = document.getElementsByClassName('chatHeadingBody');
+    console.log(chatBody[0].textContent.split());
+    inputedString = document.getElementsByClassName('search');
+
 }
