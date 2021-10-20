@@ -68,18 +68,20 @@
             <div class="tab-content">
               <div class="tab-pane fade active show" id="account-general">
                 <div class="card-body media align-items-center">
-                  <img
+                   <img
                     src="https://bootdey.com/img/Content/avatar/avatar1.png"
                     alt=""
                     class="d-block ui-w-80"
+                    id="output"
+                    width="200"
                   />
                   <div class="media-body ml-4">
-                    <label class="btn btn-outline-primary">
+                    <label class="btn btn-outline-primary" >
                       Update Profile Photo
-                      <input type="file" class="account-settings-fileinput" />
+                      <input type="file" class="account-settings-fileinput" onchange="loadFile(event)" />
                     </label>
                     &nbsp;
-                    <button type="button" class="btn btn-default md-btn-flat">
+                    <button type="button" class="btn btn-default md-btn-flat" onclick="removeProfile()">
                       Remove
                     </button>
 
