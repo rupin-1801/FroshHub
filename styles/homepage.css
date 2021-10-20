@@ -45,12 +45,14 @@ nav {
   text-align: center;
   cursor: pointer;
 }
-.fh-page-title{
+#fh-page-title{
   margin-left: 100px;
   line-height: 60px;
   letter-spacing: 2px;
   font-family:'Courier New', Courier, monospace;
   display: none;
+  user-select: none;
+  cursor: pointer;
 }
 .fh-border-bottom {
   position: absolute;
@@ -127,7 +129,7 @@ iframe {
   .fh-nav-side{
     display: block;
   }
-  .fh-page-title{
+  #fh-page-title{
     display: block;
   }
   .fh-nav-list{

@@ -23,6 +23,9 @@ document.body.onclick = () => {
 logout.onclick = () => {
   sessionStorage.removeItem("FRID");
   sessionStorage.removeItem("FRSE");
+  sessionStorage.removeItem("FRL");
+  sessionStorage.removeItem("FRNM");
+  sessionStorage.removeItem("FRPL");
   window.location = "../index.html";
 }
 

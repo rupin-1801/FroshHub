@@ -14,173 +14,85 @@
 
 <body>
     <div class="scrollable">
-    <div class="fh-container-top" id="fh-container-top">
-        <div class="fh-card card">
-            <div class="card-body">
-                <h5 class="card-title">1. Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="" class="btn btn-primary">Go somewhere</a>
+        <div class="fh-container-top" id="fh-container-top">
+            <div class="fh-card card">
+                <a class="fh-card-image" target="_blank" href="https://nextjs.org/conf">
+                <img class="fh-card-image" src="https://nextjs.org/static/twitter-cards/conf/twitter-card-oct-21.png" alt ="codechef">
+                </a>
+            </div>
+            <div class="fh-card card">
+                <a class="fh-card-image" target="_blank" href="https://www.codechef.com/SNCKQL21?itm_medium=hpbanner&itm_campaign=CC_SnackDown_2021">
+                <img class="fh-card-image" src="https://cdn.codechef.com/download/banner/1634626443.png" alt ="codechef-snakdown">
+                </a>
+            </div>
+            <div class="fh-card card">
+                <a class="fh-card-image" target="_blank" href="https://www.hackerearth.com/challenges/hackathon/ibm-z-student-contest-powered-by-ibm-z-xplore/">
+                <img class="fh-card-image" src="https://media-fastly.hackerearth.com/media/hackathon/ibm-z-student-contest-powered-by-ibm-z-xplore/images/31d7ab9afe-banner.jpg" alt ="codechef">
+                </a>
+            </div>
+            <div class="fh-card card">
+                <a class="fh-card-image" href="">
+                <img class="fh-card-image" src="https://admissionjockey.com/property/67/placement/images/placement_2_1626419532.jpg" alt ="codechef">
+                </a>
+            </div>
+            <div class="fh-card card">
+                <a class="fh-card-image" target="_blank" href="https://builtin.com/blockchain">
+                <img class="fh-card-image" src="https://www.appventurez.com/blog/wp-content/uploads/2020/05/top-blockchain-trends.jpg" alt ="codechef">
+                </a>
+            </div>
+            <div class="fh-card card">
+                <a class="fh-card-image" target="_blank" href="https://www.codechef.com/START16?itm_medium=hpbanner&itm_campaign=Start16">
+                <img class="fh-card-image" src="https://cdn.codechef.com/download/banner/1634580600.png" alt ="codechef">
+                </a>
             </div>
         </div>
-        <div class="fh-card card">
-            <div class="card-body">
-                <h5 class="card-title">2. Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="fh-card card">
-            <div class="card-body">
-                <h5 class="card-title">3. Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="fh-card card">
-            <div class="card-body">
-                <h5 class="card-title">4. Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="fh-card card">
-            <div class="card-body">
-                <h5 class="card-title">5. Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="" class="btn btn-primary">Go somewhere</a>
+        <div class="fh-main">
+            <div id="stories" class="fh-stories"></div>
+            <div id="post-back">
+                <div id="right-box" class="fh-right-side">
+                    <h4>New Post</h4>
+                    <div class="fh-post-input">
+                        <span>
+                            <p class="fh-label">Tag</p>
+                            <input id="tag" type="text" placeholder="#tag for post">
+                        </span>
+                    </div>
+                    <p class="fh-label">Message</p>
+                    <div class="fh-message">
+                        <ul class="fh-edit-options nav nav-pills nav-fill">
+                            <li class="format-item nav-item">
+                                <b>B</b>
+                            </li>
+                            <li class="format-item nav-item">
+                                <i><b>I</b></i>
+                            </li>
+                            <li class="format-item nav-item">
+                                <b><u>U</u></b>
+                            </li>
+                            <li class="format-item nav-item">
+                                <i class="fas fa-list-ol"></i>
+                            </li>
+                            <li class="format-item nav-item">
+                                <i class="fas fa-list-ul"></i>
+                            </li>
+                            <li class="format-item nav-item">
+                                <i class="fas fa-link"></i>
+                            </li>
+                        </ul>
+                        <textarea id="message" class="fh-body-text"></textarea>
+                    </div>
+                    <div style="width: 100%;"><button id="publish" class="fh-post-send">Publish</button></div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="fh-main">
-        <div id="stories" class="fh-stories">
-            
-          <!--  <div class="card fh-story">
-                <div class="card-body">
-                    <header class="fh-card-title-box">                    
-                        <i class="fas fa-user-circle"></i>
-                        <div class="fh-name-box">
-                            <p># React</p>
-                            <p class="fh-name">
-                                <span class="card-title">Rupin Bhugra</span>
-                                <span> @student</span>
-                                <div class="fh-time">2h ago</div>
-                            </p>
-                        </div>
-                    </header>
-                    <p class="card-text">
-                        This is my second post to make you familiar with how these posts works.
-                        so there are 4 buttons given below: <br /><br /><b>1. Like: </b>To tell whether this content is
-                        helpful for you or not.<br /><b>2. Comment Button: </b>To reply something to post
-                        creator.<br /><b>3. Edit: </b> To do correction and repost, if you find any.<br /><b>4. Share:
-                        </b> Share to your groups.
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <ul class="nav nav-pills nav-fill">
-                        <li class="nav-item">
-                            <i class="far fa-comment"></i>
-                            4
-                        </li>
-                        <li class="nav-item">
-                            <i class="far fa-thumbs-up"></i>
-                            12
-                        </li>
-                        <li class="nav-item">
-                            <i class="far fa-share-square"></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card fh-story">
-                <div class="card-body">
-                    <header class="fh-card-title-box">                   
-                        <i class="fas fa-user-circle"></i>
-                        <div class="fh-name-box">
-                            <p># React</p>
-                            <p class="fh-name">
-                                <span class="card-title">Rupin Bhugra</span>
-                                <span>@student</span>
-                                <div class="fh-time">2h ago</div>
-                            </p>
-                        </div>
-                    </header>
-                    <p class="card-text">
-                        This is my third post to make you familiar with how these posts works.
-                        so there are 4 buttons given below: <br /><br /><b>1. Like: </b>To tell whether this content is
-                        helpful for you or not.<br /><b>2. Comment Button: </b>To reply something to post
-                        creator.<br /><b>3. Edit: </b> To do correction and repost, if you find any.<br /><b>4. Share:
-                        </b> Share to your groups.
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <ul class="nav nav-pills nav-fill">
-                        <li class="nav-item">
-                            <i class="far fa-comment"></i>
-                            4
-                        </li>
-                        <li class="nav-item">
-                            <i class="far fa-thumbs-up"></i>
-                            12
-                        </li>
-                        <li class="nav-item">
-                            <i class="far fa-share-square"></i>
-                        </li>
-                    </ul>
-                </div>
-            </div> -->
-        </div>
-        <div id="post-back">
-        <div id="right-box" class="fh-right-side">
-            <h4>New Post</h4>
-            <form style="position: relative">
-                <div class="fh-post-input">
-                    <span>
-                        <p class="fh-label">Tag</p>
-                        <input id="tag" type="text" placeholder="#tag for post">
-                    </span>
-                    <span>
-                        <p class="fh-label">Designation</p>
-                        <input type="text" id="role" placeholder="who are you?">
-                    </span>
-                </div>
-                <p class="fh-label">Message</p>
-                <div class="fh-message">
-                    <ul class="fh-edit-options nav nav-pills nav-fill">
-                        <li class="nav-item">
-                            <b>B</b>
-                        </li>
-                        <li class="nav-item">
-                            <i><b>I</b></i>
-                        </li>
-                        <li class="nav-item">
-                            <b><u>U</u></b>
-                        </li>
-                        <li class="nav-item">
-                            <i class="fas fa-list-ol"></i>
-                        </li>
-                        <li class="nav-item">
-                            <i class="fas fa-list-ul"></i>
-                        </li>
-                        <li class="nav-item">
-                            <i class="far fa-image"></i>
-                        </li>
-                        <li class="nav-item">
-                            <i class="fas fa-link"></i>
-                        </li>
-                    </ul>
-                    <textarea id="message" class="fh-body-text"></textarea>
-                </div>
-                <button id="publish" class="fh-post-send">Publish</button>
-            </form>
-        </div>
-        </div>
-    </div>
-</div>
     <div class="fh-add-post">
         <i class="fa fa-plus"></i>
     </div>
-    <script src="https://kit.fontawesome.com/4d63232f4c.js" crossorigin="anonymous"></script>
     <script src="./../js/dashboard.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+    <script src="./../js/firbaseConfig.js"></script>
+    <script src="https://kit.fontawesome.com/4d63232f4c.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

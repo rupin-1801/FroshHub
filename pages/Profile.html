@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    
     <link rel="stylesheet" href="../styles/Profile.css">
     <title>Profile</title>
     <style>
@@ -21,8 +22,8 @@
             </div>
             <div class="infos">
                 <div class="name" >
-                    <h2>Himanshu Patel</h2>
-                    <h4>@iamhkr</h4>
+                    <h2 id="Username">Himanshu Patel</h2>
+                    <h4 id="email">@iamhkr</h4>
                 </div>
                 <h2 class="text">
                     I'm a Front End Developer at Devslane.
@@ -102,6 +103,12 @@
             </div>
         </div>
     </div>
+    <script>
+        var UserEmail = sessionStorage.getItem("FRID");
+        document.getElementById("email").innerHTML= UserEmail;
+   var UserName= UserEmail.substring(0, UserEmail.lastIndexOf("@"));
+        document.getElementById("Username").innerHTML = UserName.charAt(0).toUpperCase() + UserName.slice(1);
+    </script>
 </body>
 
 </html>

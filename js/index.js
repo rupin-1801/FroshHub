@@ -46,9 +46,9 @@ function readForm(form) {
   pass = document.getElementById(form[1].id).value;
   let e1 = email.split("@")[0];
   let e2 = email.split("@")[1];
-  e1=e1.split(".").join("");
-  e2=e2.split(".").join("");
-  emailCode = e1+e2;
+  e1 = e1.split(".").join("");
+  e2 = e2.split(".").join("");
+  emailCode = e1 + e2;
 }
 
 remember.addEventListener("change", () => {
@@ -74,20 +74,27 @@ function verification(event) {
   }, 200);
   firebase
     .database()
+    .ref("student/posts")
+    .on("value", function (snap) {
+      sessionStorage.setItem("FRPL", snap.val().length);
+    });
+  firebase
+    .database()
     .ref("student/" + emailCode)
     .on("value", function (snap) {
       clearInterval(loadEvent);
       loading.style.display = "none";
-      if(snap.val() != null){
+      if (snap.val() != null) {
         if (email !== snap.val().email || pass !== snap.val().password) {
           alert("Invalid email id or password");
         } else {
           sessionStorage.setItem("FRID", email);
           sessionStorage.setItem("FRSE", pass);
+          sessionStorage.setItem("FRNM", snap.val().name);
+          sessionStorage.setItem("FRL", snap.val().role);
           window.location = "./pages/homepage.html";
         }
-      }
-      else{
+      } else {
         alert("User Does not exists.");
       }
     });
