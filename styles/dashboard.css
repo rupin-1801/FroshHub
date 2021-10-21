@@ -222,6 +222,12 @@ body {
   .card-title{
     font-size: 18px !important;
   }
+  .fh-card{
+    margin: 0px 10vw;
+    width: 80vw !important;
+    max-width: unset;
+    min-width: unset;
+  }
   .fh-add-post{
     bottom: 5rem;
     right: 1rem;

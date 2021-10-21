@@ -10,15 +10,22 @@ const publish = document.getElementById("publish");
 const formatList = document.getElementsByClassName("format-item");
 const newTag = document.getElementById("tag");
 const newMessage = document.getElementById("message");
+const fhStory = document.getElementsByClassName("fh-story")[0];
 
 const postTop = rightTab.offsetTop - 20;
 var openAddPost = false, scrollCount = 1;
+var value;
 
 function cardMove(){
   let child = containerTop.children[0];
-  size = Math.floor(containerTop.clientWidth / (child.clientWidth + 40));
-  console.log(size, scrollCount, containerTop.childNodes.length/2-size);
-  value = child.clientWidth + 40;
+  if(window.innerWidth <= 425){
+    value = child.offsetWidth + parseFloat(getComputedStyle(child).marginLeft) + parseFloat(getComputedStyle(child).marginRight);
+    size = Math.floor(containerTop.clientWidth / (value));
+  }
+  else{
+    value = child.offsetWidth + 40;
+    size = Math.floor(containerTop.clientWidth / (child.clientWidth + 40));
+  }
   if (scrollCount >= containerTop.childNodes.length/2 - size){
     containerTop.scrollLeft = 0;
     scrollCount = 1;
@@ -54,8 +61,8 @@ function createStory(data) {
         </div>
         <div class="card-footer">
     <ul class="nav nav-pills nav-fill">
-    <li class="nav-item">
-    <i class="far fa-comment" onclick="changeCounter(event)"></i>
+    <li class="nav-item" onclick="changeCounter(event)">
+    <i class="far fa-comment"></i>
     ${data.comment}
     </li>
     <li class="nav-item">
@@ -180,6 +187,10 @@ window.onload = () => {
   // renderPost();
 };
 window.onresize = () => {
+  // clearInterval(cardInterval);
+  cardMove();
+  containerTop.scrollLeft = scrollCount * value;
+  // cardInterval = setInterval(cardMove, 2000);
   if (window.innerWidth > 600) {
     openAddPost = true;
     backPost.style.display = "inline-flex";
