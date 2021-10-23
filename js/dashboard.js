@@ -10,65 +10,98 @@ const publish = document.getElementById("publish");
 const formatList = document.getElementsByClassName("format-item");
 const newTag = document.getElementById("tag");
 const newMessage = document.getElementById("message");
+const fhStory = document.getElementsByClassName("fh-story")[0];
 
 const postTop = rightTab.offsetTop - 20;
-var openAddPost = false, scrollCount = 1;
+var openAddPost = false,
+  scrollCount = 1;
+var value, commentOpen;
 
-function cardMove(){
+function cardMove() {
   let child = containerTop.children[0];
-  size = Math.floor(containerTop.clientWidth / (child.clientWidth + 40));
-  console.log(size, scrollCount, containerTop.childNodes.length/2-size);
-  value = child.clientWidth + 40;
-  if (scrollCount >= containerTop.childNodes.length/2 - size){
+  if (window.innerWidth <= 425) {
+    value =
+      child.offsetWidth +
+      parseFloat(getComputedStyle(child).marginLeft) +
+      parseFloat(getComputedStyle(child).marginRight);
+    size = Math.floor(containerTop.clientWidth / value);
+  } else {
+    value = child.offsetWidth + 40;
+    size = Math.floor(containerTop.clientWidth / (child.clientWidth + 40));
+  }
+  if (scrollCount >= containerTop.childNodes.length / 2 - size) {
     containerTop.scrollLeft = 0;
     scrollCount = 1;
-  }
-  else {
+  } else {
     containerTop.scrollLeft += value;
     scrollCount++;
   }
-};
+}
 function readSession() {
   let name = sessionStorage.getItem("FRNM");
   let role = sessionStorage.getItem("FRL");
   return { name, role };
-};
+}
 function createStory(data) {
   const fhStory = document.createElement("div");
   fhStory.classList.add("fh-story");
   fhStory.classList.add("card");
   fhStory.innerHTML = `
   <div class="card-body">
-  <header class="fh-card-title-box">
-  <i class="fas fa-user-circle"></i>
-  <div class="fh-name-box">
-  <p># ${data.tag}</p>
-  <p class="fh-name">
-  <span class="card-title">${data.name}</span>
-  <span> @${data.role}</span>
-  <div class="fh-time">${data.time}</div>
-  </p>
+      <header class="fh-card-title-box">
+          <i class="fas fa-user-circle"></i>
+          <div class="fh-name-box">
+              <p># ${data.tag}</p>
+              <p class="fh-name">
+                  <span class="card-title">${data.name}</span>
+                  <span> @${data.role}</span>
+              <div class="fh-time">${data.time}</div>
+              </p>
+          </div>
+      </header>
+      <div class="card-text">${data.message}</div>
   </div>
-  </header>
-  <div class="card-text">${data.message}</div>
+  <div class="card-footer">
+      <ul class="nav nav-pills nav-fill">
+          <li class="nav-item"><label class="pointer-comment" for="comment-${data.message}-${data.time}"><i class="far fa-comment"></i>
+          ${data.comments.length}</label>
+           <input type="checkbox" onchange="openComments(event)" id="comment-${data.message}-${data.time}" class="fh-comment-button">
+          </li>
+          <li class="nav-item">
+              <i class="far fa-thumbs-up" onclick="changeLike(event)"></i>
+              ${data.like}
+          </li>
+          <li class="nav-item">
+              <i class="far fa-share-square"></i>
+          </li>
+      </ul>
+      <div id="fh-comments-section">
+        <hr />
+        <div class="fh-comment-container">
+            <div class="fh-add-comment-container">
+            <input type="text" placeholder="Add a comment" class="fh-add-comment">
+            <button type="submit" class="fh-send-comment"><i class="fa fa-send"></i></button>
+            </div><ul class="fh-comment-list">
+            </ul>
         </div>
-        <div class="card-footer">
-    <ul class="nav nav-pills nav-fill">
-    <li class="nav-item">
-    <i class="far fa-comment" onclick="changeCounter(event)"></i>
-    ${data.comment}
-    </li>
-    <li class="nav-item">
-    <i class="far fa-thumbs-up" onclick="changeLike(event)"></i>
-    ${data.like}
-    </li>
-    <li class="nav-item">
-    <i class="far fa-share-square"></i>
-    </li>
-    </ul>
+      </div>
   </div>`;
+  // const 
+  const list = document.createElement('ul');
+  list.classList.add('fh-comment-list');
+  for (let k = 0; k < data.comments.length; k++) {
+    const item = document.createElement('li');
+    item.innerHTML = `<div class="fh-comment-head">
+    <h6>${data.comments[k].name}</h6>
+    <p>${data.comments[k].time}</p>
+    </div>
+    <p class="fh-comment-message">${data.comments[k].message}</p>`;
+    list.appendChild(item);
+  }
+  // console.log();
+  fhStory.lastChild.children[1].children[1].appendChild(list);
   stories.prepend(fhStory);
-};
+}
 function readPostForm() {
   let { name, role } = readSession();
   data = {
@@ -81,7 +114,7 @@ function readPostForm() {
   data.tag = newTag.value;
   data.message = newMessage.value;
   return data;
-};
+}
 function useFormat(type) {
   let start = newMessage.selectionStart;
   let end = newMessage.selectionEnd;
@@ -155,7 +188,7 @@ function useFormat(type) {
     newMessage.focus();
     newMessage.selectionEnd = start + 4;
   }
-};
+}
 function renderPost() {
   stories.innerHTML = "";
   firebase
@@ -166,20 +199,83 @@ function renderPost() {
         createStory(element);
       });
     });
-};
+}
 function uploadPost(post) {
   index = sessionStorage.getItem("FRPL");
   firebase
     .database()
     .ref("student/posts/" + index)
     .set(post);
-};
+}
 
 window.onload = () => {
   cardInterval = setInterval(cardMove, 2000);
   // renderPost();
+  createStory({
+    tag: "tag",
+    name: "name",
+    role: "role",
+    time: "time",
+    message: "message",
+    comment: "0",
+    like: "0",
+    comments: [
+      {
+        name: "name",
+        time: "time",
+        message: "comment",
+      },
+    ],
+  });
+  createStory({
+    tag: "tag",
+    name: "name",
+    role: "role",
+    time: "time",
+    message: "messages",
+    comment: "0",
+    like: "0",
+    comments: [
+      {
+        name: "name",
+        time: "3:40",
+        message: "comment",
+      },
+      {
+        name: "name",
+        time: "3:40",
+        message: "comment",
+      },
+      {
+        name: "name",
+        time: "3:40",
+        message: "comment",
+      },
+      {
+        name: "name",
+        time: "3:40",
+        message: "comment",
+      },
+    ],
+  });
 };
+function openComments(event) {
+  const commentSection = event.target.parentNode.parentNode.nextElementSibling;
+  if (event.target.checked) {
+    commentSection.style.display = "block";
+    const commentInput =
+      commentSection.childNodes[3].childNodes[1].childNodes[1];
+    const button = commentInput.nextElementSibling;
+    button.onclick = () => {
+      console.log(commentInput.value);
+    };
+  } else {
+    commentSection.style.display = "none";
+  }
+}
 window.onresize = () => {
+  cardMove();
+  containerTop.scrollLeft = scrollCount * value;
   if (window.innerWidth > 600) {
     openAddPost = true;
     backPost.style.display = "inline-flex";
