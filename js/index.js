@@ -72,33 +72,47 @@ function verification(event) {
     if (i % 4 === 3) loading.innerHTML = "Validating...<b>.</b>";
     i++;
   }, 200);
-  firebase
-    .database()
-    .ref("student/posts")
-    .on("value", function (snap) {
-      sessionStorage.setItem("FRPL", snap.val().length);
-    });
-  firebase
-    .database()
-    .ref("student/" + emailCode)
-    .on("value", function (snap) {
+  try{
+    firebase
+      .database()
+      .ref("student/posts")
+      .on("value", function (snap) {
+        sessionStorage.setItem("FRPL", snap.val().length);
+      });
+    firebase
+      .database()
+      .ref("student/" + emailCode)
+      .on("value", function (snap) {
+        clearInterval(loadEvent);
+        loading.style.display = "none";
+        if (snap.val() != null) {
+          if (email !== snap.val().email || pass !== snap.val().password) {
+            setTimeout(() => {
+              alert("Invalid email id or password");
+            }, 200);
+          } else {
+            sessionStorage.setItem("FRID", email);
+            sessionStorage.setItem("FRSE", pass);
+            sessionStorage.setItem("FRNM", snap.val().name);
+            sessionStorage.setItem("FRL", snap.val().role);
+            window.location = "./pages/homepage.html";
+          }
+        } else {
+          setTimeout(() => {
+            alert("User Does not exists.");
+          }, 200);
+        }
+      });
+  }
+  catch(err){
+    setTimeout(() => {
       clearInterval(loadEvent);
       loading.style.display = "none";
-      if (snap.val() != null) {
-        if (email !== snap.val().email || pass !== snap.val().password) {
-          alert("Invalid email id or password");
-        } else {
-          sessionStorage.setItem("FRID", email);
-          sessionStorage.setItem("FRSE", pass);
-          sessionStorage.setItem("FRNM", snap.val().name);
-          sessionStorage.setItem("FRL", snap.val().role);
-          window.location = "./pages/homepage.html";
-        }
-      } else {
-        alert("User Does not exists.");
-      }
-    });
-
+      setTimeout(() => {
+        alert("Unable to verify, kindly check your internet connection.");
+      }, 200);
+    }, 2000);
+  }
   if (remembered) {
     localStorage.setItem("remembered", true);
     localStorage.setItem("user-email", email);
