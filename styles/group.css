@@ -93,6 +93,7 @@
 }
 #name{
     margin-left: 10px;
+    text-transform: capitalize;
 }
 #chat-body{
     display: flex;
@@ -143,14 +144,14 @@ color: grey;
     padding: 5px;
     background-color: rgba(255, 255, 255, 0.733);
 }
-.search{
+#search{
     border: none;
     font-size: 15px;
     text-indent: 15px;
     background-color: transparent;
     outline: none;
 }
-.search::placeholder{
+#search::placeholder{
     color: rgba(0, 0, 255, 0.349);
 }
 button[type="submit"]{
@@ -269,7 +270,8 @@ button[type="submit"]{
     background-color: #ededed;
     height: 10%;
     display: flex;
-    padding-left: 12px;
+    padding: 0 12px 12px 12px;
+    overflow: hidden;
     align-items: center;
     justify-content: space-around;
     box-shadow: 0px 0px 10px rgb(173, 169, 169) ;
@@ -277,7 +279,9 @@ button[type="submit"]{
 }
 .emojiOpt{
     position: relative;
-    font-size: xx-large;
+    font-size: x-large;
+    cursor: pointer;
+    margin-right: 10px;
 }
 .emojiPicker{
     display: none;
@@ -291,15 +295,9 @@ button[type="submit"]{
     height: 35px;
     display: none;
     z-index: 3;
+    margin-left: 7px;
+    margin-top: 7px;
     position: absolute;
-}
-#chat-message-bar>papper-clip{
-    font-size: x-large;
-    color: rgb(0, 132, 255);
-}
-#chat-message-bar>papper-clip>a{
-    text-decoration: none;
-    color: rgb(0, 132, 255);
 }
 #chat-message-bar>input[type="text"]{
     overflow-wrap: normal;
@@ -316,13 +314,11 @@ button[type="submit"]{
 #chat-message-bar>input[type="text"]:focus{
     box-shadow: inset 0px 0px 8px rgba(160, 148, 148, 0.822);
 }
-#chat-message-bar>mic{
-    font-size: x-large;
-    margin-right: 2%;
-}
-#chat-message-bar>mic>a{
+#chat-message-bar>#send{
+    font-size: large;
     text-decoration: none;
     color: rgb(0, 132, 255);
+    margin: 1%;
 }
 #location-arrow{
     display: none;
@@ -353,19 +349,36 @@ button[type="submit"]{
 }
 .emojiPicker>button{
     border: none;
-    font-size: 25px;
+    font-size: 22px;
     padding: 1.5px;
     background-color: transparent;
-    margin: 2.8px;
+    margin: 2.9px;
     scroll-behavior: smooth;
 }
 .emojiPicker::-webkit-scrollbar{
     width: 0;
 }
+@media screen and (min-width:625px) and (max-width: 1020px) {
+    .emojiPicker{
+        left: 38vw;
+    }
+}
 
 @media screen and (max-width:625px) {
     .grid-container{
         grid-template-columns: 100%;
+    }
+    .emojiPicker{
+        max-width: 43vw;
+        width: 140px;
+        left:4vw;
+    }
+    .emojiPicker>button{
+        font-size: 16px;
+    }
+    #emoji{
+        width: 25px;
+        height: 25px;
     }
     #grid-item-2{
         display: none;

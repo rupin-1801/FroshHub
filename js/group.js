@@ -1,19 +1,5 @@
-var mic = document.getElementById("microphone");
 var input_bar = document.getElementById("input-bar");
 var arrow = document.getElementById("location-arrow");
-console.log(mic, input_bar);
-var count = 0;
-input_bar.addEventListener("keyup", () => {
-    if (input_bar.value !== "") {
-        mic.style.display = "none";
-        arrow.style.display = "block";
-    }
-    else if (input_bar.value === "") {
-        mic.style.display = "block";
-        arrow.style.display = "none";
-    }
-
-})
 var emoji = document.querySelector("#emoji");
 emoji.addEventListener('click', () => {
     var emojiBox = document.querySelector('.emojiPicker')
@@ -40,7 +26,7 @@ function changeUserName(e) {
         let backBtn = document.getElementsByClassName("backButton")
         contentDisp1.style.display = "none";
         contentDisp2.style.display = "unset";
-        backBtn[0].addEventListener('click',(e)=>{
+        backBtn[0].addEventListener('click', (e) => {
             contentDisp1.style.display = "unset";
             contentDisp2.style.display = "none";
         })
@@ -53,10 +39,25 @@ window.onload = () => {
 }
 
 function searchByName() {
-    var name, chatBody, inputedString;
-    name = document.getElementById('name');
-    chatBody = document.getElementsByClassName('chatHeadingBody');
-    console.log(chatBody[0].textContent.split());
+    let chatBody = document.getElementsByClassName('chatHeadingBody');
+
+    for (let i = 0; i < chatBody.length; i++) {
+        var inputedString;
+        inputedString = document.getElementById("search"); 
+        let filter = inputedString.value;
+        let chatMessage = document.getElementsByClassName("chat-message");
+        let userName = chatBody[i].firstElementChild.firstElementChild.innerHTML;
+        userName = userName.toLowerCase().split(" ");
+        // console.log(gridItem.childNodes[i].nodeValue);
+        if (userName[0].toString().startsWith(filter) || userName[1].toString().startsWith(filter)) {
+            console.log(userName);
+            chatMessage[i].style.display = "";
+            chatMessage[i].attributes[0].value= "";
+        }
+        else {
+            chatMessage[i].style.display = "none";
+        }
+    }
     inputedString = document.getElementsByClassName('search');
 
 }
