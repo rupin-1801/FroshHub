@@ -86,7 +86,6 @@ function createStory(data) {
         </div>
       </div>
   </div>`;
-  if(data.comments) console.log(data.comments[1].name);
   const list = document.createElement('ul');
   list.classList.add('fh-comment-list');
   if(!data.comments) {
@@ -217,7 +216,7 @@ function uploadPost(post) {
 
 window.onload = () => {
   cardInterval = setInterval(cardMove, 2000);
-  renderPost();
+  // renderPost();
 };
 function openComments(event) {
   const commentSection = event.target.parentNode.parentNode.nextElementSibling;

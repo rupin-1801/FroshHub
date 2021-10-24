@@ -47,10 +47,7 @@ function searchByName() {
         let filter = inputedString.value;
         let chatMessage = document.getElementsByClassName("chat-message");
         let userName = chatBody[i].firstElementChild.firstElementChild.innerHTML;
-        userName = userName.toLowerCase().split(" ");
-        // console.log(gridItem.childNodes[i].nodeValue);
-        if (userName[0].toString().startsWith(filter) || userName[1].toString().startsWith(filter)) {
-            console.log(userName);
+        if(userName.toString().match(new RegExp('.*' + filter + '.*', "i"))){
             chatMessage[i].style.display = "";
             chatMessage[i].attributes[0].value= "";
         }
