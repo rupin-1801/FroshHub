@@ -296,11 +296,16 @@ button[type="submit"]{
     word-spacing: 3px;
     overflow-wrap: break-word;
     background-color: #c7fba7cc;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
     color: rgb(0 0 0);
     letter-spacing: 1px;
     border-radius: 19px 19px 0px 19px;
+}
+#messageTime{
+    font-size: 11px;
+    text-align: right;
+    color: rgba(94, 89, 89, 0.815);
 }
 #chat-message-bar{
     grid-area: chat-message-bar;
@@ -309,7 +314,6 @@ button[type="submit"]{
     overflow-x: none;
     display: flex;
     padding: 0 12px 12px 12px;
-    overflow: hidden;
     align-items: center;
     position: relative;
     justify-content: space-around;
@@ -323,7 +327,34 @@ button[type="submit"]{
     margin-right: 10px;
 }
 .emojiPicker{
+    /* display:; */
+    position: absolute;
+    background-color: #b4b4b465;
+    height: 25vh;
+    max-width: 24vw;
+    width: fit-content;
+    border-radius: 20px;
+    bottom: 11vh;
+    padding: 3px;
+    /* left: 26vw; */
+    overflow: auto;
     display: none;
+    /* border: 1px solid red; */
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: space-evenly;
+    z-index: 5;
+}
+.emojiPicker>button{
+    border: none;
+    font-size: 22px;
+    padding: 1.5px;
+    background-color: transparent;
+    margin: 2.9px;
+    scroll-behavior: smooth;
+}
+.emojiPicker::-webkit-scrollbar{
+    width: 0;
 }
 .selectEmoji{
     z-index: 4;
@@ -379,30 +410,6 @@ button[type="submit"]{
 ::-webkit-scrollbar-thumb{
     background:rgba(153, 145, 145, 0.712);
     border-radius: 10px;
-}
-.emojiPicker{
-    /* display:; */
-    position: absolute;
-    background-color: #b4b4b465;
-    height: 25vh;
-    max-width: 24vw;
-    width: fit-content;
-    border-radius: 20px;
-    bottom: 11vh;
-    padding: 3px;
-    left: 26vw;
-    overflow: auto;
-}
-.emojiPicker>button{
-    border: none;
-    font-size: 22px;
-    padding: 1.5px;
-    background-color: transparent;
-    margin: 2.9px;
-    scroll-behavior: smooth;
-}
-.emojiPicker::-webkit-scrollbar{
-    width: 0;
 }
 @media screen and (min-width:625px) and (max-width: 1020px) {
     .emojiPicker{

@@ -7,7 +7,7 @@ emoji.addEventListener('click', () => {
         emojiBox.style.display = "none";
     }
     if (emoji.checked) {
-        emojiBox.style.display = "unset";
+        emojiBox.style.display = "flex";
     }
 });
 var selectedEmoji = document.getElementsByClassName("selectEmoji");
@@ -40,7 +40,6 @@ window.onload = () => {
 
 function searchByName() {
     let chatBody = document.getElementsByClassName('chatHeadingBody');
-
     for (let i = 0; i < chatBody.length; i++) {
         var inputedString;
         inputedString = document.getElementById("search");
@@ -56,10 +55,13 @@ function searchByName() {
         }
     }
     inputedString = document.getElementsByClassName('search');
-
+    
 }
 function sendMessage(e) {
     e.preventDefault();
+    let hr = (new Date().getHours()%12);
+    let min = new Date().getMinutes();
+    time = ((hr<10)?"0":"")+hr+ ":"+((min<10)?"0":"")+min+ ((new Date().getHours()< 12)?" am":" pm");
     if(input_bar.value === ""){
         return;
     }
@@ -68,7 +70,7 @@ function sendMessage(e) {
     newElement.classList.add("chatBox");
     let childMessage = document.createElement("div");
     childMessage.classList.add("messageDiv");
-    childMessage.innerHTML = input_bar.value;
+    childMessage.innerHTML = `${input_bar.value}<br> <p id = "messageTime">${time}</p>`;
     newElement.appendChild(childMessage);
     messageContainer.appendChild(newElement);
     input_bar.value = "";
