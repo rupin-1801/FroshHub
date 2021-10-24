@@ -26,6 +26,7 @@ logout.onclick = () => {
   sessionStorage.removeItem("FRL");
   sessionStorage.removeItem("FRNM");
   sessionStorage.removeItem("FRPL");
+  sessionStorage.removeItem("FRCT");
   window.location = "../index.html";
 }
 

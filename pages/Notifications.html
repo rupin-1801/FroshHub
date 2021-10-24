@@ -14,13 +14,13 @@
   <link rel="stylesheet" href="./../styles/notifications.css">
 </head>
 
-<body> 
+<body>
   <div class="fh-card-container">
     <div class="fh-search-bar-container">
-      <form class="fh-search-form">
-        <input type="text" placeholder="Search..." class="fh-search">
+      <form class="fh-search-form" id="search-form">
+        <input type="text" id="regex" placeholder="Search..." class="fh-search">
         <button type="submit" class="fh-submit">
-            <i class="fas fa-search"></i>
+          <i class="fas fa-search"></i>
         </button>
       </form>
     </div>
@@ -144,6 +144,23 @@
       </div>
     </div>
   </div>
+  <script>
+    const searchTerm = document.getElementById("regex");
+    const searchForm = document.getElementById("search-form");
+    const notificationCards = document.getElementsByClassName("fh-card");
+    searchForm.onsubmit = (event) => {
+      event.preventDefault();
+      let keys = searchTerm.value.split(" ");
+      for (let i = 0; i < notificationCards.length; i++) {
+        notificationCards[i].style.display = "none";
+        keys.forEach(key => {
+          if (notificationCards[i].textContent.match(new RegExp(".*" + key + ".*", "i"))) {
+            notificationCards[i].style.display = "flex";
+          }
+        });
+      }
+    }
+  </script>
   <script src="https://kit.fontawesome.com/4d63232f4c.js" crossorigin="anonymous"></script>
 </body>
 

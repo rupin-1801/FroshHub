@@ -64,7 +64,7 @@ function createStory(data) {
   <div class="card-footer">
       <ul class="nav nav-pills nav-fill">
           <li class="nav-item"><label class="pointer-comment" for="comment-${data.message}-${data.time}"><i class="far fa-comment"></i>
-          ${data.comments.length}</label>
+          ${(data.comments) ? data.comments.length : "0"}</label>
            <input type="checkbox" onchange="openComments(event)" id="comment-${data.message}-${data.time}" class="fh-comment-button">
           </li>
           <li class="nav-item">
@@ -86,19 +86,25 @@ function createStory(data) {
         </div>
       </div>
   </div>`;
-  // const 
   const list = document.createElement('ul');
   list.classList.add('fh-comment-list');
-  for (let k = 0; k < data.comments.length; k++) {
-    const item = document.createElement('li');
-    item.innerHTML = `<div class="fh-comment-head">
-    <h6>${data.comments[k].name}</h6>
-    <p>${data.comments[k].time}</p>
-    </div>
-    <p class="fh-comment-message">${data.comments[k].message}</p>`;
-    list.appendChild(item);
+  if(!data.comments) {
+      const div = document.createElement("div");
+    div.innerHTML = "No comments yet!";
+    div.style.textAlign = "center";
+    list.prepend(div);
   }
-  // console.log();
+  else{
+    for (let k = 1; k < data.comments.length; k++) {
+      const item = document.createElement('li');
+      item.innerHTML = `<div class="fh-comment-head">
+      <h6>${data.comments[k].name}</h6>
+      <p>${data.comments[k].time}</p>
+      </div>
+      <p class="fh-comment-message">${data.comments[k].message}</p>`;
+      list.prepend(item);
+    }
+  }
   fhStory.lastChild.children[1].children[1].appendChild(list);
   stories.prepend(fhStory);
 }
@@ -211,53 +217,6 @@ function uploadPost(post) {
 window.onload = () => {
   cardInterval = setInterval(cardMove, 2000);
   // renderPost();
-  createStory({
-    tag: "tag",
-    name: "name",
-    role: "role",
-    time: "time",
-    message: "message",
-    comment: "0",
-    like: "0",
-    comments: [
-      {
-        name: "name",
-        time: "time",
-        message: "comment",
-      },
-    ],
-  });
-  createStory({
-    tag: "tag",
-    name: "name",
-    role: "role",
-    time: "time",
-    message: "messages",
-    comment: "0",
-    like: "0",
-    comments: [
-      {
-        name: "name",
-        time: "3:40",
-        message: "comment",
-      },
-      {
-        name: "name",
-        time: "3:40",
-        message: "comment",
-      },
-      {
-        name: "name",
-        time: "3:40",
-        message: "comment",
-      },
-      {
-        name: "name",
-        time: "3:40",
-        message: "comment",
-      },
-    ],
-  });
 };
 function openComments(event) {
   const commentSection = event.target.parentNode.parentNode.nextElementSibling;
@@ -268,6 +227,7 @@ function openComments(event) {
     const button = commentInput.nextElementSibling;
     button.onclick = () => {
       console.log(commentInput.value);
+      // firebase.database().ref("student/posts")
     };
   } else {
     commentSection.style.display = "none";
