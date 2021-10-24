@@ -79,7 +79,8 @@ body {
   background-color: #eaeaf3;
 }
 .input-field:focus-within {
-  color: #7975e7;
+  /* color: #7975e7; */
+  color: black;
 }
 .input:focus ~ .border {
   transition: 0.3s;
@@ -315,4 +316,9 @@ input[type="submit"] {
   body {
     min-width: 320px;
   }
+}
+
+.login-container:hover {
+  background-color:#cdd0d1;
+  transform: scale(1.03);
 }
