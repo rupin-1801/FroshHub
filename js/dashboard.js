@@ -64,7 +64,7 @@ function createStory(data) {
   <div class="card-footer">
       <ul class="nav nav-pills nav-fill">
           <li class="nav-item"><label class="pointer-comment" for="comment-${data.message}-${data.time}"><i class="far fa-comment"></i>
-          ${data.comments.length}</label>
+          ${(data.comments) ? data.comments.length : "0"}</label>
            <input type="checkbox" onchange="openComments(event)" id="comment-${data.message}-${data.time}" class="fh-comment-button">
           </li>
           <li class="nav-item">
@@ -86,17 +86,17 @@ function createStory(data) {
         </div>
       </div>
   </div>`;
-  // const 
+  if(data.comments) console.log(data.comments[1].name);
   const list = document.createElement('ul');
   list.classList.add('fh-comment-list');
-  if(data.comments.length == 0) {
-    const div = document.createElement("div");
+  if(!data.comments) {
+      const div = document.createElement("div");
     div.innerHTML = "No comments yet!";
     div.style.textAlign = "center";
     list.prepend(div);
   }
   else{
-    for (let k = 0; k < data.comments.length; k++) {
+    for (let k = 1; k < data.comments.length; k++) {
       const item = document.createElement('li');
       item.innerHTML = `<div class="fh-comment-head">
       <h6>${data.comments[k].name}</h6>
@@ -217,31 +217,7 @@ function uploadPost(post) {
 
 window.onload = () => {
   cardInterval = setInterval(cardMove, 2000);
-  // renderPost();
-  createStory({
-    tag: "tag",
-    name: "name",
-    role: "role",
-    time: "time",
-    message: "message",
-    like: "0",
-    comments: [
-      {
-        name: "name",
-        time: "time",
-        message: "comment",
-      },
-    ],
-  });
-  createStory({
-    tag: "tag",
-    name: "name",
-    role: "role",
-    time: "time",
-    message: "messages",
-    like: "0",
-    comments: [],
-  });
+  renderPost();
 };
 function openComments(event) {
   const commentSection = event.target.parentNode.parentNode.nextElementSibling;
