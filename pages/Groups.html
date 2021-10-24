@@ -19,7 +19,8 @@
                 <table class="search-bar-container">
                     <tr>
                         <td>
-                            <input type="text" placeholder="Search..." onkeyup="searchByName()" autocomplete="off" id="search">
+                            <input type="text" placeholder="Search..." onkeyup="searchByName()" autocomplete="off"
+                                id="search">
                         </td>
                     </tr>
                 </table>
@@ -207,8 +208,10 @@
                     </a>
                 </div>
             </div>
-            <div id="chat-content">
-
+            <div id="chatContentContainer">
+                <div id="chat-content">
+                    
+                </div>
             </div>
             <div id="chat-message-bar">
                 <div id="emoji-container">
@@ -300,9 +303,11 @@
                     <button class="selectEmoji">&#128591</button>
 
                 </div>
-                <input type="text" autocomplete="off" placeholder="Type a Message..." id="input-bar">
-                <button type="submit" id="send">
-                    <i class="fas fa-location-arrow" id="mic-icon"></i>
+                <form onsubmit="sendMessage(event)">
+                    <input type="text" autocomplete="off" placeholder="Type a Message..." id="input-bar">
+                </form>
+                <button type="submit" class="button" id="send">
+                    <i class="fas fa-location-arrow" id="mic-icon" onclick="sendMessage(event)"></i>
                 </button>
             </div>
         </div>
