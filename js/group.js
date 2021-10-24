@@ -43,13 +43,13 @@ function searchByName() {
 
     for (let i = 0; i < chatBody.length; i++) {
         var inputedString;
-        inputedString = document.getElementById("search"); 
+        inputedString = document.getElementById("search");
         let filter = inputedString.value;
         let chatMessage = document.getElementsByClassName("chat-message");
         let userName = chatBody[i].firstElementChild.firstElementChild.innerHTML;
         if(userName.toString().match(new RegExp('.*' + filter + '.*', "i"))){
             chatMessage[i].style.display = "";
-            chatMessage[i].attributes[0].value= "";
+            chatMessage[i].attributes[0].value = "";
         }
         else {
             chatMessage[i].style.display = "none";
@@ -57,4 +57,21 @@ function searchByName() {
     }
     inputedString = document.getElementsByClassName('search');
 
+}
+function sendMessage(e) {
+    e.preventDefault();
+    if(input_bar.value === ""){
+        return;
+    }
+    let messageContainer = document.getElementById("chat-content");
+    let newElement = document.createElement("div");
+    newElement.classList.add("chatBox");
+    let childMessage = document.createElement("div");
+    childMessage.classList.add("messageDiv");
+    childMessage.innerHTML = input_bar.value;
+    newElement.appendChild(childMessage);
+    messageContainer.appendChild(newElement);
+    input_bar.value = "";
+    
+    messageContainer.scrollTop=messageContainer.scrollHeight;
 }
