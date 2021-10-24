@@ -89,16 +89,23 @@ function createStory(data) {
   // const 
   const list = document.createElement('ul');
   list.classList.add('fh-comment-list');
-  for (let k = 0; k < data.comments.length; k++) {
-    const item = document.createElement('li');
-    item.innerHTML = `<div class="fh-comment-head">
-    <h6>${data.comments[k].name}</h6>
-    <p>${data.comments[k].time}</p>
-    </div>
-    <p class="fh-comment-message">${data.comments[k].message}</p>`;
-    list.appendChild(item);
+  if(data.comments.length == 0) {
+    const div = document.createElement("div");
+    div.innerHTML = "No comments yet!";
+    div.style.textAlign = "center";
+    list.prepend(div);
   }
-  // console.log();
+  else{
+    for (let k = 0; k < data.comments.length; k++) {
+      const item = document.createElement('li');
+      item.innerHTML = `<div class="fh-comment-head">
+      <h6>${data.comments[k].name}</h6>
+      <p>${data.comments[k].time}</p>
+      </div>
+      <p class="fh-comment-message">${data.comments[k].message}</p>`;
+      list.prepend(item);
+    }
+  }
   fhStory.lastChild.children[1].children[1].appendChild(list);
   stories.prepend(fhStory);
 }
@@ -217,7 +224,6 @@ window.onload = () => {
     role: "role",
     time: "time",
     message: "message",
-    comment: "0",
     like: "0",
     comments: [
       {
@@ -233,30 +239,8 @@ window.onload = () => {
     role: "role",
     time: "time",
     message: "messages",
-    comment: "0",
     like: "0",
-    comments: [
-      {
-        name: "name",
-        time: "3:40",
-        message: "comment",
-      },
-      {
-        name: "name",
-        time: "3:40",
-        message: "comment",
-      },
-      {
-        name: "name",
-        time: "3:40",
-        message: "comment",
-      },
-      {
-        name: "name",
-        time: "3:40",
-        message: "comment",
-      },
-    ],
+    comments: [],
   });
 };
 function openComments(event) {
