@@ -154,7 +154,6 @@
       for (let i = 0; i < notificationCards.length; i++) {
         notificationCards[i].style.display = "none";
         keys.forEach(key => {
-          console.log(key);
           if (notificationCards[i].textContent.match(new RegExp(".*" + key + ".*", "i"))) {
             notificationCards[i].style.display = "flex";
           }
