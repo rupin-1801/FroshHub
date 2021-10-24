@@ -227,6 +227,7 @@ function openComments(event) {
     const button = commentInput.nextElementSibling;
     button.onclick = () => {
       console.log(commentInput.value);
+      // firebase.database().ref("student/posts")
     };
   } else {
     commentSection.style.display = "none";
