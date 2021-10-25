@@ -261,18 +261,61 @@ button[type="submit"]{
 #user-heading>button[type="submit"]{
     font-size: large;
 }
+#chatContentContainer{
+    height: 81vh;
+    width: 100%;
+    overflow: none;
+    position: relative;
+}
 #chat-content{
     grid-area: chat-content;
-    height: 81%;
+    overflow-y:auto;
+    width: 100%;
+    display: block;
+    bottom: 0;
+    position: absolute;
+    box-sizing: border-box;
+    height: fit-content;
+    max-height: 81vh;
+    padding: 20px;
+}
+.chatBox{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+.messageDiv{
+    max-width: 50%;
+    padding: 10px 20px;
+    width: fit-content;
+    margin: 10px 0px;
+    height: fit-content;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.322) ;
+    word-spacing: 3px;
+    overflow-wrap: break-word;
+    background-color: #c7fba7cc;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(0 0 0);
+    letter-spacing: 1px;
+    border-radius: 19px 19px 0px 19px;
+}
+#messageTime{
+    font-size: 11px;
+    text-align: right;
+    color: rgba(94, 89, 89, 0.815);
 }
 #chat-message-bar{
     grid-area: chat-message-bar;
     background-color: #ededed;
     height: 10%;
+    overflow-x: none;
     display: flex;
     padding: 0 12px 12px 12px;
-    overflow: hidden;
     align-items: center;
+    position: relative;
     justify-content: space-around;
     box-shadow: 0px 0px 10px rgb(173, 169, 169) ;
     
@@ -284,7 +327,34 @@ button[type="submit"]{
     margin-right: 10px;
 }
 .emojiPicker{
+    /* display:; */
+    position: absolute;
+    background-color: #b4b4b465;
+    height: 25vh;
+    max-width: 24vw;
+    width: fit-content;
+    border-radius: 20px;
+    bottom: 11vh;
+    padding: 3px;
+    /* left: 26vw; */
+    overflow: auto;
     display: none;
+    /* border: 1px solid red; */
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: space-evenly;
+    z-index: 5;
+}
+.emojiPicker>button{
+    border: none;
+    font-size: 22px;
+    padding: 1.5px;
+    background-color: transparent;
+    margin: 2.9px;
+    scroll-behavior: smooth;
+}
+.emojiPicker::-webkit-scrollbar{
+    width: 0;
 }
 .selectEmoji{
     z-index: 4;
@@ -299,16 +369,23 @@ button[type="submit"]{
     margin-top: 7px;
     position: absolute;
 }
-#chat-message-bar>input[type="text"]{
+#chat-message-bar>form{
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+    margin: 0;
+}
+#chat-message-bar>form>input[type="text"]{
     overflow-wrap: normal;
-    width: 73%;
-    height: 39%;
+    width: 100%;
+    height: 100%;
     padding: 8px;
     border-radius: 50px;
     border: none;
     font-size: 15px;
     outline: none;
     line-break: normal;
+    position:relative;
     box-shadow: 1px 1px 10px rgba(160, 148, 148, 0.603);
 }
 #chat-message-bar>input[type="text"]:focus{
@@ -333,30 +410,6 @@ button[type="submit"]{
 ::-webkit-scrollbar-thumb{
     background:rgba(153, 145, 145, 0.712);
     border-radius: 10px;
-}
-.emojiPicker{
-    /* display:; */
-    position: absolute;
-    background-color: #b4b4b465;
-    height: 25vh;
-    max-width: 24vw;
-    width: fit-content;
-    border-radius: 20px;
-    bottom: 11vh;
-    padding: 3px;
-    left: 26vw;
-    overflow: auto;
-}
-.emojiPicker>button{
-    border: none;
-    font-size: 22px;
-    padding: 1.5px;
-    background-color: transparent;
-    margin: 2.9px;
-    scroll-behavior: smooth;
-}
-.emojiPicker::-webkit-scrollbar{
-    width: 0;
 }
 @media screen and (min-width:625px) and (max-width: 1020px) {
     .emojiPicker{
