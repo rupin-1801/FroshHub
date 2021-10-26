@@ -73,8 +73,8 @@ function createStory(data) {
              data.message
            }-${data.time}" class="fh-comment-button">
           </li>
-          <li class="nav-item">
-              <i class="far fa-thumbs-up" onclick="changeLike(event)"></i>
+          <li class="nav-item" onclick="changeLike(event)">
+              <i class="far fa-thumbs-up"></i>
               ${data.like}
           </li>
           <li class="nav-item">
@@ -222,7 +222,7 @@ function uploadPost(post) {
 window.onload = () => {
   cardInterval = setInterval(cardMove, 2000);
   windowWidth = window.innerWidth;
-  renderPost();
+  // renderPost();
 };
 function openComments(event) {
   const commentSection = event.target.parentNode.parentNode.nextElementSibling;
@@ -233,7 +233,6 @@ function openComments(event) {
     const button = commentInput.nextElementSibling;
     button.onclick = (buttonEvent) => {
       buttonEvent.preventDefault();
-      // console.log(commentInput.value);
       index = -1;
       for (let i = 0; i < stories.children.length; i++) {
         const childSide = stories.children[i].children[0];
@@ -244,7 +243,6 @@ function openComments(event) {
           break;
         }
       }
-      // console.log(index);
       let size = -1;
       if (index !== -1 && commentInput.value !== "") {
         let hr = new Date().getHours() % 12;
@@ -290,6 +288,27 @@ function openComments(event) {
     };
   } else {
     commentSection.style.display = "none";
+  }
+}
+function changeLike(event){
+  const likes = event.target.textContent.trim();
+  index = -1;
+  for (let i = 0; i < stories.children.length; i++) {
+    const childSide = stories.children[i].children[0];
+    const parentSide =
+      event.target.parentNode.parentNode.previousElementSibling;
+      console.log(childSide, parentSide);
+    if (childSide.textContent === parentSide.textContent) {
+      index = stories.children.length - i;
+      break;
+    }
+  }
+  console.log(index);
+  if(index !== -1){
+    firebase.database().ref(`student/posts/${index}`).update({
+      like: parseInt(likes)+1
+    });
+    // renderPost();
   }
 }
 window.onresize = () => {
