@@ -15,7 +15,9 @@ const fhStory = document.getElementsByClassName("fh-story")[0];
 const postTop = rightTab.offsetTop - 20;
 var openAddPost = false,
   scrollCount = 1;
-var value, commentOpen, windowWidth = 0;
+var value,
+  commentOpen,
+  windowWidth = 0;
 
 function cardMove() {
   let child = containerTop.children[0];
@@ -63,9 +65,13 @@ function createStory(data) {
   </div>
   <div class="card-footer">
       <ul class="nav nav-pills nav-fill">
-          <li class="nav-item"><label class="pointer-comment" for="comment-${data.message}-${data.time}"><i class="far fa-comment"></i>
-          ${(data.comments) ? data.comments.length - 1 : "0"}</label>
-           <input type="checkbox" onchange="openComments(event)" id="comment-${data.message}-${data.time}" class="fh-comment-button">
+          <li class="nav-item"><label class="pointer-comment" for="comment-${
+            data.message
+          }-${data.time}"><i class="far fa-comment"></i>
+          ${data.comments ? data.comments.length - 1 : "0"}</label>
+           <input type="checkbox" onchange="openComments(event)" id="comment-${
+             data.message
+           }-${data.time}" class="fh-comment-button">
           </li>
           <li class="nav-item">
               <i class="far fa-thumbs-up" onclick="changeLike(event)"></i>
@@ -86,19 +92,18 @@ function createStory(data) {
         </div>
       </div>
   </div>`;
-  const list = document.createElement('ul');
-  list.classList.add('fh-comment-list');
-  if(!data.comments) {
-      const div = document.createElement("div");
+  const list = document.createElement("ul");
+  list.classList.add("fh-comment-list");
+  if (!data.comments) {
+    const div = document.createElement("div");
     div.innerHTML = "No comments yet!";
     div.style.textAlign = "center";
     list.prepend(div);
-  }
-  else{
+  } else {
     for (let k = 1; k < data.comments.length; k++) {
-      const item = document.createElement('li');
+      const item = document.createElement("li");
       item.innerHTML = `<div class="fh-comment-head">
-      <h6>${data.comments[k].name}</h6>
+      <h6>${data.comments[k].name}<p>&nbsp;&nbsp;@${data.comments[k].role}</p></h6>
       <p>${data.comments[k].time}</p>
       </div>
       <p class="fh-comment-message">${data.comments[k].message}</p>`;
@@ -217,7 +222,7 @@ function uploadPost(post) {
 window.onload = () => {
   cardInterval = setInterval(cardMove, 2000);
   windowWidth = window.innerWidth;
-  // renderPost();
+  renderPost();
 };
 function openComments(event) {
   const commentSection = event.target.parentNode.parentNode.nextElementSibling;
@@ -226,9 +231,62 @@ function openComments(event) {
     const commentInput =
       commentSection.childNodes[3].childNodes[1].childNodes[1];
     const button = commentInput.nextElementSibling;
-    button.onclick = () => {
-      console.log(commentInput.value);
-      // firebase.database().ref("student/posts")
+    button.onclick = (buttonEvent) => {
+      buttonEvent.preventDefault();
+      // console.log(commentInput.value);
+      index = -1;
+      for (let i = 0; i < stories.children.length; i++) {
+        const childSide = stories.children[i].children[0];
+        const parentSide =
+          event.target.parentNode.parentNode.parentNode.previousElementSibling;
+        if (childSide.textContent === parentSide.textContent) {
+          index = stories.children.length - i;
+          break;
+        }
+      }
+      // console.log(index);
+      let size = -1;
+      if (index !== -1 && commentInput.value !== "") {
+        let hr = new Date().getHours() % 12;
+        let min = new Date().getMinutes();
+        time =
+          (hr < 10 ? "0" : "") +
+          hr +
+          ":" +
+          (min < 10 ? "0" : "") +
+          min +
+          (new Date().getHours() < 12 ? " am" : " pm");
+        firebase
+          .database()
+          .ref(`student/posts/${index}`)
+          .on("value", function (snap) {
+            if (snap.val().comments) {
+              size = snap.val().comments.length;
+            }
+          });
+        if (size !== -1) {
+          firebase
+            .database()
+            .ref(`student/posts/${index}/comments/${size}`)
+            .set({
+              name: sessionStorage.getItem("FRNM"),
+              role: sessionStorage.getItem("FRL"),
+              message: commentInput.value,
+              time: time,
+            });
+        } else {
+          firebase
+            .database()
+            .ref(`student/posts/${index}/comments/1`)
+            .set({
+              name: sessionStorage.getItem("FRNM"),
+              role: sessionStorage.getItem("FRL"),
+              message: commentInput.value,
+              time: time,
+            });
+        }
+        renderPost();
+      }
     };
   } else {
     commentSection.style.display = "none";
@@ -240,7 +298,7 @@ window.onresize = () => {
   if (window.innerWidth > 600) {
     openAddPost = true;
     backPost.style.display = "inline-flex";
-  } else if(openAddPost && windowWidth !== window.innerWidth){
+  } else if (openAddPost && windowWidth !== window.innerWidth) {
     openAddPost = false;
     windowWidth = window.innerWidth;
     backPost.style.display = "none";

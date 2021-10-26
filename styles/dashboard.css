@@ -141,6 +141,15 @@ hr{
   justify-content: space-between;
   padding: 0px 10px;
 }
+.fh-comment-head > h6{
+  align-items: center;
+  display: inline-flex;
+}
+.fh-comment-head > h6 > p{
+  font-size: 13px !important;
+  color: grey !important;
+  margin: 0px;
+}
 .fh-comment-message{
   padding: 0px 10px;
 }
