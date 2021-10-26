@@ -61,6 +61,27 @@ body{
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  margin: 0px !important;
+}
+.card-text{
+  text-align: justify;
+}
+.message{
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+}
+.fh-more-text{
+  user-select: none;
+  position :absolute;
+  cursor: pointer;
+  bottom: 0px;
+  right: 10px;
+  padding-left: 5px;
+  background-color: white;
+  margin: 0px;
+  color:blue;
+  text-align: right;
 }
 .fh-tag-group {
   width: fit-content;
