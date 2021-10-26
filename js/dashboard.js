@@ -15,7 +15,7 @@ const fhStory = document.getElementsByClassName("fh-story")[0];
 const postTop = rightTab.offsetTop - 20;
 var openAddPost = false,
   scrollCount = 1;
-var value, commentOpen;
+var value, commentOpen, windowWidth = 0;
 
 function cardMove() {
   let child = containerTop.children[0];
@@ -64,7 +64,7 @@ function createStory(data) {
   <div class="card-footer">
       <ul class="nav nav-pills nav-fill">
           <li class="nav-item"><label class="pointer-comment" for="comment-${data.message}-${data.time}"><i class="far fa-comment"></i>
-          ${(data.comments) ? data.comments.length : "0"}</label>
+          ${(data.comments) ? data.comments.length - 1 : "0"}</label>
            <input type="checkbox" onchange="openComments(event)" id="comment-${data.message}-${data.time}" class="fh-comment-button">
           </li>
           <li class="nav-item">
@@ -216,6 +216,7 @@ function uploadPost(post) {
 
 window.onload = () => {
   cardInterval = setInterval(cardMove, 2000);
+  windowWidth = window.innerWidth;
   // renderPost();
 };
 function openComments(event) {
@@ -239,8 +240,9 @@ window.onresize = () => {
   if (window.innerWidth > 600) {
     openAddPost = true;
     backPost.style.display = "inline-flex";
-  } else {
+  } else if(openAddPost && windowWidth !== window.innerWidth){
     openAddPost = false;
+    windowWidth = window.innerWidth;
     backPost.style.display = "none";
   }
 };
@@ -287,7 +289,6 @@ containerTop.addEventListener("mouseenter", () => {
 });
 newMessage.addEventListener("keydown", (event) => {
   message = newMessage.value;
-
   if (
     event.key === "Backspace" &&
     message[newMessage.selectionEnd - 1] === ">"

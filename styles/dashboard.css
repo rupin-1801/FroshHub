@@ -178,7 +178,8 @@ hr{
   padding-top: 5px;
 }
 .fh-right-side input, textarea{
-  text-indent: 5px;
+  padding: 0px 5px;
+  text-align: justify;
   width: 90%;
   font-size: 13px;
 }
@@ -256,6 +257,8 @@ hr{
 @media screen and (max-width: 600px){
   .fh-right-side{
     width: 60vw;
+    height: 50vh;
+    min-height: 400px;
     min-width: 300px;    
   }
   .fh-stories{

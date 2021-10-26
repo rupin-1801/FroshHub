@@ -7,11 +7,16 @@ const borderLine = document.getElementById("fh-bottom-line");
 const sideOptions = document.getElementsByClassName("fh-nav-side");
 const logout = document.getElementsByClassName("fh-sidebar-option")[7];
 const backdrop = document.getElementById("backdrop");
+var FRCT = 0;
 
 window.onload = () => {
   profile.checked = false;
+  if(!sessionStorage.getItem("FRID")){
+    window.location = "../index.html";
+  }
   if(sessionStorage.getItem("FRCT")){
     let option = sessionStorage.getItem("FRCT");
+    sessionStorage.removeItem("FRCT");
     borderLine.style.transform = `translateX(${20 * option}vw)`;
   }
 };
@@ -20,6 +25,9 @@ document.body.onclick = () => {
   backdrop.style.display = "none";
 }
 
+function saveTab(){
+  sessionStorage.setItem("FRCT", FRCT);
+}
 logout.onclick = () => {
   sessionStorage.removeItem("FRID");
   sessionStorage.removeItem("FRSE");
@@ -50,7 +58,7 @@ let indexes = [0, 1, 2, 3];
 indexes.map((option) => {
   options[option].addEventListener("click", (event) => {
     changePage(`./${event.target.innerHTML}.html`);
-    sessionStorage.setItem("FRCT", option);
+    FRCT = option;
     borderLine.style.transform = `translateX(${20 * option}vw)`;
     closeSidebar();
   });
