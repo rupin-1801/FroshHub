@@ -87,7 +87,7 @@
     justify-content: space-between;
     height: 35%;
 }
-#time{
+.time{
     font-size: small;
     color: rgba(128, 128, 128, 0.76);
 }
@@ -336,7 +336,7 @@ button[type="submit"]{
     border-radius: 20px;
     bottom: 11vh;
     padding: 3px;
-    /* left: 26vw; */
+    left: 7vw;
     overflow: auto;
     display: none;
     /* border: 1px solid red; */
@@ -371,9 +371,9 @@ button[type="submit"]{
 }
 #chat-message-bar>form{
     height: fit-content;
-    width: fit-content;
+    width:75%;
     position: relative;
-    margin: 0;
+    margin: 0 15px 0 0;
 }
 #chat-message-bar>form>input[type="text"]{
     overflow-wrap: normal;
@@ -413,7 +413,7 @@ button[type="submit"]{
 }
 @media screen and (min-width:625px) and (max-width: 1020px) {
     .emojiPicker{
-        left: 38vw;
+        left: 5vw;
     }
 }
 
