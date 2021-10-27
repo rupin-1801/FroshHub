@@ -141,6 +141,15 @@ hr{
   justify-content: space-between;
   padding: 0px 10px;
 }
+.fh-comment-head > h6{
+  align-items: center;
+  display: inline-flex;
+}
+.fh-comment-head > h6 > p{
+  font-size: 13px !important;
+  color: grey !important;
+  margin: 0px;
+}
 .fh-comment-message{
   padding: 0px 10px;
 }
@@ -178,7 +187,8 @@ hr{
   padding-top: 5px;
 }
 .fh-right-side input, textarea{
-  text-indent: 5px;
+  padding: 0px 5px;
+  text-align: justify;
   width: 90%;
   font-size: 13px;
 }
@@ -256,6 +266,8 @@ hr{
 @media screen and (max-width: 600px){
   .fh-right-side{
     width: 60vw;
+    height: 50vh;
+    min-height: 400px;
     min-width: 300px;    
   }
   .fh-stories{

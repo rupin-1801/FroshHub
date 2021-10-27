@@ -141,7 +141,7 @@ input[type="submit"] {
 .footer {
   text-align: center;
 }
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1180px) {
   .image > h2 {
     font-size: 20px;
   }
@@ -162,6 +162,9 @@ input[type="submit"] {
   }
   .input {
     width: 100%;
+  }
+  .show{
+    right: 15px;
   }
   .input:focus ~ .border {
     width: 100%;
@@ -243,6 +246,22 @@ input[type="submit"] {
     box-shadow: inset 0px 0px 35px rgba(255, 255, 255, 0.3);
     border-radius: 20px;
     text-indent: 10px;
+    position: relative;
+  }
+  .input-field{
+    width: 80%;
+  }
+  .input-field:focus-within {
+    color: black;
+  }
+  #m-pass{
+    width: 100%;
+  }
+  .show{
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    bottom: 8px;
   }
   .in::placeholder {
     color: white;
@@ -289,7 +308,7 @@ input[type="submit"] {
     justify-content: center;
     align-items: center;
   }
-  .fas {
+  .fa-arrow-right {
     font-size: 18px;
     color: rgb(0, 68, 255);
   }

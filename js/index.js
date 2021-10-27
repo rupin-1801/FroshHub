@@ -2,10 +2,10 @@ var emailCode, email, pass, remembered;
 
 const remember = document.getElementById("remember");
 const mRemember = document.getElementById("m-remember");
-const eye = document.getElementsByClassName("show")[0];
-const passField = document.getElementById("pass");
 
-eye.onclick = () => {
+function show(event){
+  const eye = event.target;
+  const passField = eye.previousElementSibling;
   if (eye.classList.contains("far")) {
     eye.classList.remove("fa-eye");
     eye.classList.remove("far");

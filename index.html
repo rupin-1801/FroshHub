@@ -35,7 +35,7 @@
           <field class="input-field">
             <label for="pass">Password</label>
             <input type="password" id="pass" class="input">
-            <i class="far fa-eye show"></i>
+            <i class="far fa-eye show" onclick="show(event)"></i>
             </input>
             <span class="border"></span>
           </field>
@@ -54,7 +54,11 @@
     <h1>FroshHub</h1>
     <form id="mobile-form" onsubmit="verification(event)">
       <input type="email" placeholder="email" class="in" id="m-mail" autofocus />
-      <input type="password" placeholder="password" class="in" id="m-pass" />
+      <field class="input-field">
+      <input type="password" placeholder="password" class="in" id="m-pass" >
+        <i class="far fa-eye show" id="m-eye" onclick="show(event)"></i>
+      </input>
+    </field>
       <span id="rem">
         <div>
           <input type="checkbox" id="m-remember" />
