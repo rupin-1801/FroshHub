@@ -21,7 +21,7 @@
                     src="https://media-exp1.licdn.com/dms/image/C5603AQHeTift-P04eA/profile-displayphoto-shrink_800_800/0/1623159148848?e=1639612800&v=beta&t=XDZcGvT_Jj8nkx7DOQcH0TaBDdjcQ4s7l0Y5Y2LfeN8">
             </div>
             <div class="infos">
-                <div class="name" >
+                <div class="name">
                     <h2 id="Username">Himanshu Patel</h2>
                     <h4 id="email">@iamhkr</h4>
                 </div>
@@ -40,92 +40,59 @@
 
                 </ul>
                 <div class="links">
-                    <a href='./Settings' class="follow">Edit</button>
+                    <button class="follow"><a href='./Settings.html'>Edit</a></button>
                     <button class="view">Call Me</button>
                 </div>
 
             </div>
         </div>
         <div class="card1">
-              <div class="infos">
+            <div class="infos">
                 <div class="name">
-                <h2 style="text-align: center ">Your Post & Bookmarked Post</h2>
+                    <h2 style="text-align: center ">Your Posts</h2>
                 </div>
 
-                <div class="mypost">
-                        <div class="container">
-                            <div class="square" >
-                                
-                                <div class="h1" id="post1">Is Deno Still a Thing?</div>
-                                <p id="post2">Back in May 2020, I wrote an introductory article to Deno due to it having been officially released and available to the
-                                public.
-                                I later went on to write a full book about Deno as well. I liked Deno and all the freshness it brought to the
-                                Node.js-ruled table. However, it also posed a lot of questions that at the time, had no real answer.</p>
-                    
-                                <div><a href="https://medium.com/@laheshk/is-apple-a-design-company-f5c83514e261" target="_"
-                                        class="button">Read More</a></div>
-                            </div>
-                        </div>
-                    <div class="container">
-                        <div class="square">
-                            
-                            <div class="h1" id="post3" >5 Top Audio Processing Libraries for JavaScript</div>
-                            <p id="post4">Implementing web applications with high-fidelity audio processing can be a challenging task. But, if you know the
-                            correct tools, you can make it a whole lot easier.
-                            In this article.</p>
-                    
-                            <div><a href="https://blog.bitsrc.io/high-fidelity-web-audio-with-javascript-2e5fff0f071d" target="_" class="button">Read
-                                    More</a></div>
-                        </div>
-                    </div><div class="container">
-                        <div class="square">
-                            
-                            <div class="h1" id="post5">Howler.js — Free and Reliable Feature-rich Library.</div>
-                            <p id="post6">Howler.js utilizes the power of Web Audio API and HTML5 Audio to provide highly reliable, cross-platform audio support.</p>
-                    
-                            <div><a href="https://blog.bitsrc.io/high-fidelity-web-audio-with-javascript-2e5fff0f071d" target="_" class="button">Read
-                                    More</a></div>
-                        </div>
-                    </div>
-                    
-                    
+                <div id="my-post" class="mypost">
                     <div class="circle1 blue"></div>
-                        </div>
-                    
-                    
-                </div>
-                </div>
-                <div id="content">
-                    <div class="circle1 blue"></div>
-                    <div class="circle green"></div>
-                    <div class="circle2 red"></div>
                 </div>
             </div>
         </div>
+        <div id="content">
+            <div class="circle1 blue"></div>
+            <div class="circle green"></div>
+            <div class="circle2 red"></div>
+        </div>
     </div>
+    </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+    <script src="./../js/firbaseConfig.js"></script>
     <script>
         var UserEmail = sessionStorage.getItem("FRID");
-            document.getElementById("email").innerHTML = UserEmail;
-            var UserName = UserEmail.substring(0, UserEmail.lastIndexOf("@"));
-            document.getElementById("Username").innerHTML =
-                UserName.charAt(0).toUpperCase() + UserName.slice(1);
-            firebase
-                .database()
-                .ref("student/posts/1/")
-                .on("value", function (snapshot) {
-                    document.getElementById("post1").innerHTML = snapshot.val().tag;
-                    document.getElementById("post3").innerHTML = snapshot.val().tag;
-                    document.getElementById("post5").innerHTML = snapshot.val().tag;
-                    document.getElementById("post2").innerHTML = snapshot.val().message;
-                    document.getElementById("post4").innerHTML = snapshot.val().message;
-                    document.getElementById("post6").innerHTML = snapshot.val().message;
+        var posts = document.getElementById("my-post");
+        document.getElementById("email").innerHTML = UserEmail;
+        var UserName = UserEmail.substring(0, UserEmail.lastIndexOf("@"));
+        document.getElementById("Username").innerHTML =
+            UserName.charAt(0).toUpperCase() + UserName.slice(1);
+        firebase
+            .database()
+            .ref("student/posts")
+            .on("value", function (snapshot) {
+                posts.innerHTML = "";
+                for (let i in snapshot.val()) {
+                    posts.innerHTML += `<div class="container">
+                            <div class="square" >
+                                <div class="h1" id="tag${i}">${snapshot.val()[i].tag}</div>
+                                <post class="post" id="post${i}">${snapshot.val()[i].message}</post>
+                                <div><a href="#" class="button">Read More</a></div>
+                            </div>
+                        </div>`;
+                }
 
-                });
-        </script>
-        <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
-        <script src="./../js/firbaseConfig.js"></script>
+            });
+    </script>
 
- 
+
 </body>
 
 </html>
