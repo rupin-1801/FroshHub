@@ -165,6 +165,9 @@ hr{
 .card-text{
   padding: 10px 10px;
 }
+.far, .fa-thumbs-up{
+  pointer-events: none;
+}
 .fh-right-side {
   padding: 10px 20px;
   margin: 0px 20px 0px 10px;

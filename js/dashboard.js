@@ -15,7 +15,7 @@ const fhStory = document.getElementsByClassName("fh-story")[0];
 const postTop = rightTab.offsetTop - 20;
 var openAddPost = false,
   scrollCount = 1;
-var value,
+var value, likes=[],
   commentOpen,
   windowWidth = 0;
 
@@ -42,7 +42,9 @@ function cardMove() {
 function readSession() {
   let name = sessionStorage.getItem("FRNM");
   let role = sessionStorage.getItem("FRL");
-  return { name, role };
+  let id = sessionStorage.getItem("FRID");
+  id = (id.split("@")[0]).split(".").join("") + (id.split("@")[1]).split(".").join("");
+  return { id, name, role };
 }
 function createStory(data) {
   const fhStory = document.createElement("div");
@@ -201,11 +203,11 @@ function useFormat(type) {
   }
 }
 function renderPost() {
-  stories.innerHTML = "";
   firebase
     .database()
     .ref("student/posts")
     .on("value", function (snap) {
+      stories.innerHTML = "";
       snap.val().forEach((element) => {
         createStory(element);
       });
@@ -222,7 +224,16 @@ function uploadPost(post) {
 window.onload = () => {
   cardInterval = setInterval(cardMove, 2000);
   windowWidth = window.innerWidth;
-  // renderPost();
+  renderPost();
+  let {id} = readSession();
+  firebase.database().ref(`student/${id}/likes`).on("value", function (snap){
+    let i = 0;
+    snap.val().forEach((value) => {
+      if(likes.length > i) likes[i] = value;
+      else if(likes.length === i) likes.push(value);
+      i++;
+    })
+  });
 };
 function openComments(event) {
   const commentSection = event.target.parentNode.parentNode.nextElementSibling;
@@ -283,7 +294,6 @@ function openComments(event) {
               time: time,
             });
         }
-        renderPost();
       }
     };
   } else {
@@ -291,25 +301,32 @@ function openComments(event) {
   }
 }
 function changeLike(event){
-  const likes = event.target.textContent.trim();
+  const curLikes = event.target.textContent.trim();
   index = -1;
   for (let i = 0; i < stories.children.length; i++) {
     const childSide = stories.children[i].children[0];
     const parentSide =
       event.target.parentNode.parentNode.previousElementSibling;
-      console.log(childSide, parentSide);
     if (childSide.textContent === parentSide.textContent) {
       index = stories.children.length - i;
       break;
     }
   }
-  console.log(index);
-  if(index !== -1){
+  let {id} = readSession();
+  let valid = likes[index-1];
+  if(index !== -1 && !valid){
     firebase.database().ref(`student/posts/${index}`).update({
-      like: parseInt(likes)+1
+      like: parseInt(curLikes)+1
     });
-    // renderPost();
   }
+  else if(index !== -1){
+    firebase.database().ref(`student/posts/${index}`).update({
+      like: parseInt(curLikes)-1
+    });
+  }
+  firebase.database().ref(`student/${id}/likes`).update({
+    [index] : !likes[index-1]
+  });
 }
 window.onresize = () => {
   cardMove();
@@ -342,6 +359,7 @@ backPost.onclick = () => {
     backPost.style.display = "none";
   }
 };
+
 addPost.onclick = () => {
   openAddPost = true;
   backPost.style.display = "inline-flex";
@@ -362,7 +380,7 @@ containerTop.addEventListener("mouseleave", () => {
   cardInterval = setInterval(cardMove, 2000);
 });
 containerTop.addEventListener("mouseenter", () => {
-  clearInterval(cardInterval);
+  if(cardInterval) clearInterval(cardInterval);
 });
 newMessage.addEventListener("keydown", (event) => {
   message = newMessage.value;
@@ -445,8 +463,8 @@ publish.addEventListener("click", (event) => {
       .on("value", function (snap) {
         sessionStorage.setItem("FRPL", snap.val().length);
       });
-    // uploadPost(data);
-    // renderPost();
+    uploadPost(data);
+    renderPost();
     newTag.value = "";
     newMessage.value = "";
     if (window.innerWidth <= 600) {

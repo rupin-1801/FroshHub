@@ -9,11 +9,11 @@ const logout = document.getElementsByClassName("fh-sidebar-option")[7];
 const backdrop = document.getElementById("backdrop");
 var FRCT = 0;
 
+if(!sessionStorage.getItem("FRID")){
+  window.location = "../index.html";
+}
 window.onload = () => {
   profile.checked = false;
-  if(!sessionStorage.getItem("FRID")){
-    window.location = "../index.html";
-  }
   if(sessionStorage.getItem("FRCT")){
     let option = sessionStorage.getItem("FRCT");
     sessionStorage.removeItem("FRCT");

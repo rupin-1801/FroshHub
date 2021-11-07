@@ -44,7 +44,26 @@
             <label for="remember">Remember me</label>
           </field>
           <input type="submit" class="pointer" id="_login" value="Login" />
-          <p id="loading" style="text-align:center;">Validating<b>.</b>...</p>
+          <p id="loading" style="text-align: center;">
+            <svg width="45px" height="30px" viewBox="0 0 51 50">
+
+              <rect y="0" width="10" height="30" fill="#1fa2ff">
+                  <animate attributeName="height" values="30;8;30" begin="0s" dur="1s" repeatCount="indefinite" />
+                  <animate attributeName="y" values="0;10;0" begin="0s" dur="1s" repeatCount="indefinite" />
+              </rect>
+          
+              <rect x="16" y="0" width="10" height="30" fill="#12d8fa">
+                  <animate attributeName="height" values="30;8;30" begin="0.2s" dur="1s" repeatCount="indefinite" />
+                  <animate attributeName="y" values="0;10;0" begin="0.2s" dur="1s" repeatCount="indefinite" />
+              </rect>
+          
+              <rect x="35" y="0" width="10" height="30" fill="#06ffcb">
+                  <animate attributeName="height" values="30;8;30" begin="0.4s" dur="1s" repeatCount="indefinite" />
+                  <animate attributeName="y" values="0;10;0" begin="0.4s" dur="1s" repeatCount="indefinite" />
+              </rect>
+          
+          </svg>
+          </p>
         </form>
       </div>
     </div>
@@ -55,10 +74,10 @@
     <form id="mobile-form" onsubmit="verification(event)">
       <input type="email" placeholder="email" class="in" id="m-mail" autofocus />
       <field class="input-field">
-      <input type="password" placeholder="password" class="in" id="m-pass" >
+        <input type="password" placeholder="password" class="in" id="m-pass">
         <i class="far fa-eye show" id="m-eye" onclick="show(event)"></i>
-      </input>
-    </field>
+        </input>
+      </field>
       <span id="rem">
         <div>
           <input type="checkbox" id="m-remember" />
@@ -73,7 +92,26 @@
       <div class="packet">
         <div id="follow"></div>
       </div>
-      <p id="loading" style="color:white;">Validating<b>.</b>...</p>
+      <p id="loading" style="color:white;">
+        <svg width="45px" height="30px" viewBox="0 0 51 50">
+
+          <rect y="0" width="10" height="30" fill="#12d8fa">
+              <animate attributeName="height" values="30;8;30" begin="0s" dur="1s" repeatCount="indefinite" />
+              <animate attributeName="y" values="0;10;0" begin="0s" dur="1s" repeatCount="indefinite" />
+          </rect>
+      
+          <rect x="16" y="0" width="10" height="30" fill="#ffffff">
+              <animate attributeName="height" values="30;8;30" begin="0.2s" dur="1s" repeatCount="indefinite" />
+              <animate attributeName="y" values="0;10;0" begin="0.2s" dur="1s" repeatCount="indefinite" />
+          </rect>
+      
+          <rect x="35" y="0" width="10" height="30" fill="#06ffcb">
+              <animate attributeName="height" values="30;8;30" begin="0.4s" dur="1s" repeatCount="indefinite" />
+              <animate attributeName="y" values="0;10;0" begin="0.4s" dur="1s" repeatCount="indefinite" />
+          </rect>
+      
+      </svg>
+      </p>
     </form>
     <div id="social">
       <a href="">
