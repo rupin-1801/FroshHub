@@ -18,15 +18,15 @@
         <div class="card">
             <div class="img">
                 <img
-                    src="https://media-exp1.licdn.com/dms/image/C5603AQHeTift-P04eA/profile-displayphoto-shrink_800_800/0/1623159148848?e=1639612800&v=beta&t=XDZcGvT_Jj8nkx7DOQcH0TaBDdjcQ4s7l0Y5Y2LfeN8">
+                    src="https://bootdey.com/img/Content/avatar/avatar1.png">
             </div>
             <div class="infos">
                 <div class="name">
-                    <h2 id="Username">Himanshu Patel</h2>
-                    <h4 id="email">@iamhkr</h4>
+                    <h2 id="Username"></h2>
+                    <h4 id="email"></h4>
                 </div>
                 <h2 class="text">
-                    I'm a Front End Developer at Devslane.
+                    This is admin user
                 </h2>
                 <ul class="stats">
                     <li>
@@ -69,24 +69,24 @@
     <script src="./../js/firbaseConfig.js"></script>
     <script>
         var UserEmail = sessionStorage.getItem("FRID");
+        var UserName = sessionStorage.getItem("FRNM");
         var posts = document.getElementById("my-post");
         document.getElementById("email").innerHTML = UserEmail;
-        var UserName = UserEmail.substring(0, UserEmail.lastIndexOf("@"));
-        document.getElementById("Username").innerHTML =
-            UserName.charAt(0).toUpperCase() + UserName.slice(1);
+        document.getElementById("Username").innerHTML = UserName;
         firebase
             .database()
             .ref("student/posts")
             .on("value", function (snapshot) {
                 posts.innerHTML = "";
                 for (let i in snapshot.val()) {
-                    posts.innerHTML += `<div class="container">
-                            <div class="square" >
-                                <div class="h1" id="tag${i}">${snapshot.val()[i].tag}</div>
-                                <post class="post" id="post${i}">${snapshot.val()[i].message}</post>
-                                <div><a href="#" class="button">Read More</a></div>
-                            </div>
-                        </div>`;
+                    if(snapshot.val()[i].name === UserName){
+                        posts.innerHTML += `<div class="container">
+                                <div class="square" >
+                                    <div class="h1" id="tag${i}">${snapshot.val()[i].tag}</div>
+                                    <post class="post" id="post${i}">${snapshot.val()[i].message}</post>
+                                </div>
+                            </div>`;
+                    }
                 }
 
             });
