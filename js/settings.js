@@ -10,7 +10,7 @@ var loadFile = function (event) {
 function removeProfile(event) {
   var image = document.getElementById("output");
   // output.parentNode.removeChild(output);
-  image.src = "https://bootdey.com/img/Content/avatar/avatar1.png";
+  image.src = "../util/profile.png";
   // URL.revokeObjectURL(image.src);
 }
 

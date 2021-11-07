@@ -21,7 +21,12 @@
   <body>
     <div class="container light-style flex-grow-1 container-p-y">
       <!-- <i class="fas fa-arrow-circle-left"></i> -->
-      <h3 class="font-weight-bold py-3 mb-4"><button class="back-button" onclick="goBack()"><i class="fas fa-arrow-left"></i></button> Account settings</h3>
+      <h3 class="font-weight-bold py-3 mb-4">
+        <button class="back-button" onclick="goBack()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        Account settings
+      </h3>
 
       <div class="card overflow-hidden">
         <div class="row no-gutters row-bordered row-border-light">
@@ -51,38 +56,33 @@
                 href="#account-social-links"
                 >Social links</a
               >
-              <a
-                class="list-group-item list-group-item-action"
-                data-toggle="list"
-                href="#account-connections"
-                >Connections</a
-              >
-              <a
-                class="list-group-item list-group-item-action"
-                data-toggle="list"
-                href="#account-notifications"
-                >Notifications</a
-              >
             </div>
           </div>
           <div class="col-md-9">
             <div class="tab-content">
               <div class="tab-pane fade active show" id="account-general">
                 <div class="card-body media align-items-center">
-                   <img
-                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                  <img
+                    src="../util/profile.png"
                     alt=""
                     class="d-block ui-w-80"
                     id="output"
                     width="200"
                   />
                   <div class="media-body ml-4">
-                    <label class="btn btn-outline-primary" >
+                    <label
+                      class="btn btn-outline-primary"
+                      onchange="loadFile(event)"
+                    >
                       Update Profile Photo
-                      <input type="file" class="account-settings-fileinput" onchange="loadFile(event)" />
+                      <input type="file" class="account-settings-fileinput" />
                     </label>
                     &nbsp;
-                    <button type="button" class="btn btn-default md-btn-flat" onclick="removeProfile()">
+                    <button
+                      type="button"
+                      class="btn btn-default md-btn-flat"
+                      onclick="removeProfile()"
+                    >
                       Remove
                     </button>
 
@@ -149,16 +149,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, digni
                       class="form-control"
                       value="May 3, 1995"
                     />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Country</label>
-                    <select class="custom-select">
-                      <option>USA</option>
-                      <option selected="">Canada</option>
-                      <option>UK</option>
-                      <option>Germany</option>
-                      <option>France</option>
-                    </select>
                   </div>
                 </div>
                 <hr class="border-light m-0" />
@@ -358,11 +348,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, digni
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
     ></script>
-    <script
+    <!-- <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
       integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
