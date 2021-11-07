@@ -86,9 +86,11 @@
     display: flex;
     justify-content: space-between;
     height: 35%;
+    width:100%;
 }
 .time{
     font-size: small;
+    padding: 0px 10px;
     color: rgba(128, 128, 128, 0.76);
 }
 #name{
@@ -97,7 +99,6 @@
 }
 #chat-body{
     display: flex;
-    margin-top: 10px;
     margin-left: 7px;
     font-size: x-small;
     height: 30%;
@@ -113,10 +114,13 @@ color: grey;
     -webkit-box-orient: vertical;
     margin-bottom: 0;
     line-height: 2;
+    font-size: 11px;
+    text-indent: 7px;
 }
 #chat-heading-body{
     align-items: center;
     padding: 15px 0 0 10px;
+    width: 100%;
 }
 .chat-message:hover{
     background-color: rgba(231, 216, 204, 0.658);
@@ -192,7 +196,18 @@ button[type="submit"]{
     grid-area: user-9;
     border-top: 1px solid rgba(116, 112, 112, 0.473);
 }
-
+#onLoad{
+    background: url("../util/food.png"),linear-gradient(#ece3df,#ebd6ca);
+    width: 100%;
+    height: 100%;
+}
+#onLoad>h1{
+    height: 100%;
+    line-height: 15;
+    color:#766b6b ;
+    text-align: center;
+    width: 100%;
+}
 #grid-item-2{
     background: url("../util/food.png"),linear-gradient(#f5ece7,#f5ece7);
     grid-template-areas: "user-heading"
@@ -200,6 +215,7 @@ button[type="submit"]{
     "chat-message-bar";
     width: 100%;
 }
+
 #user-heading{
     grid-area: user-heading;
     background-color: #ededed;
