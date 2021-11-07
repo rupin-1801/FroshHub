@@ -113,12 +113,14 @@
                 .database()
                 .ref("student/posts/1/")
                 .on("value", function (snapshot) {
-                    document.getElementById("post1").innerHTML = snapshot.val().tag;
-                    document.getElementById("post3").innerHTML = snapshot.val().tag;
-                    document.getElementById("post5").innerHTML = snapshot.val().tag;
-                    document.getElementById("post2").innerHTML = snapshot.val().message;
-                    document.getElementById("post4").innerHTML = snapshot.val().message;
-                    document.getElementById("post6").innerHTML = snapshot.val().message;
+                  let heading_Const=snapshot.val().tag;
+                  let content=snapshot.val().message;
+                    document.getElementById("post1").innerHTML = heading_Const;
+                    document.getElementById("post3").innerHTML = heading_Const;
+                    document.getElementById("post5").innerHTML = heading_Const;
+                    document.getElementById("post2").innerHTML = content;
+                    document.getElementById("post4").innerHTML = content;
+                    document.getElementById("post6").innerHTML = content;
 
                 });
         </script>
