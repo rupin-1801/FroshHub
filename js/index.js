@@ -61,17 +61,9 @@ mRemember.addEventListener("change", () => {
 
 function verification(event) {
   readForm(event.target);
-  let loading = event.target.childNodes[event.target.childNodes.length - 2];
+  let loading = event.target.children[event.target.children.length-1];
   event.preventDefault();
   loading.style.display = "block";
-  let i = 0;
-  const loadEvent = setInterval(() => {
-    if (i % 4 === 0) loading.innerHTML = "Validating<b>.</b>...";
-    if (i % 4 === 1) loading.innerHTML = "Validating.<b>.</b>..";
-    if (i % 4 === 2) loading.innerHTML = "Validating..<b>.</b>.";
-    if (i % 4 === 3) loading.innerHTML = "Validating...<b>.</b>";
-    i++;
-  }, 200);
   try{
     firebase
       .database()
@@ -83,7 +75,6 @@ function verification(event) {
       .database()
       .ref("student/" + emailCode)
       .on("value", function (snap) {
-        clearInterval(loadEvent);
         loading.style.display = "none";
         if (snap.val() != null) {
           if (email !== snap.val().email || pass !== snap.val().password) {
@@ -106,7 +97,6 @@ function verification(event) {
   }
   catch(err){
     setTimeout(() => {
-      clearInterval(loadEvent);
       loading.style.display = "none";
       setTimeout(() => {
         alert("Unable to verify, kindly check your internet connection.");

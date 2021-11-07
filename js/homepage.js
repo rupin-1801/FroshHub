@@ -9,11 +9,11 @@ const logout = document.getElementsByClassName("fh-sidebar-option")[7];
 const backdrop = document.getElementById("backdrop");
 var FRCT = 0;
 
+if(!sessionStorage.getItem("FRID")){
+  window.location = "../index.html";
+}
 window.onload = () => {
   profile.checked = false;
-  if(!sessionStorage.getItem("FRID")){
-    window.location = "../index.html";
-  }
   if(sessionStorage.getItem("FRCT")){
     let option = sessionStorage.getItem("FRCT");
     sessionStorage.removeItem("FRCT");
@@ -49,7 +49,7 @@ function closeSidebar(){
 
 for(let i = 0; i < sideOptions.length; i++){
   sideOptions[i].addEventListener("click", (event) => {
-    changePage(`./${event.target.innerHTML}.html`);
+    changePage(event.target.innerHTML);
     closeSidebar();
   })
 }
@@ -57,7 +57,7 @@ for(let i = 0; i < sideOptions.length; i++){
 let indexes = [0, 1, 2, 3];
 indexes.map((option) => {
   options[option].addEventListener("click", (event) => {
-    changePage(`./${event.target.innerHTML}.html`);
+    changePage(event.target.innerHTML);
     FRCT = option;
     borderLine.style.transform = `translateX(${20 * option}vw)`;
     closeSidebar();
@@ -80,6 +80,7 @@ profile.addEventListener("change", (event) => {
   }
 });
 
-function changePage(link) {
-  iframe.src = link;
+function changePage(page) {
+  iframe.src = `./${page}.html`;
+  document.title = page;
 }
