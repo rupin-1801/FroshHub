@@ -15,7 +15,8 @@ const fhStory = document.getElementsByClassName("fh-story")[0];
 const postTop = rightTab.offsetTop - 20;
 var openAddPost = false,
   scrollCount = 1;
-var value, likes=[],
+var value,
+  likes = [],
   commentOpen,
   windowWidth = 0;
 
@@ -43,7 +44,8 @@ function readSession() {
   let name = sessionStorage.getItem("FRNM");
   let role = sessionStorage.getItem("FRL");
   let id = sessionStorage.getItem("FRID");
-  id = (id.split("@")[0]).split(".").join("") + (id.split("@")[1]).split(".").join("");
+  id =
+    id.split("@")[0].split(".").join("") + id.split("@")[1].split(".").join("");
   return { id, name, role };
 }
 function createStory(data) {
@@ -225,15 +227,18 @@ window.onload = () => {
   cardInterval = setInterval(cardMove, 2000);
   windowWidth = window.innerWidth;
   renderPost();
-  let {id} = readSession();
-  firebase.database().ref(`student/${id}/likes`).on("value", function (snap){
-    let i = 0;
-    snap.val().forEach((value) => {
-      if(likes.length > i) likes[i] = value;
-      else if(likes.length === i) likes.push(value);
-      i++;
-    })
-  });
+  let { id } = readSession();
+  firebase
+    .database()
+    .ref(`student/${id}/likes`)
+    .on("value", function (snap) {
+      let i = 0;
+      snap.val().forEach((value) => {
+        if (likes.length > i) likes[i] = value;
+        else if (likes.length === i) likes.push(value);
+        i++;
+      });
+    });
 };
 function openComments(event) {
   const commentSection = event.target.parentNode.parentNode.nextElementSibling;
@@ -300,7 +305,7 @@ function openComments(event) {
     commentSection.style.display = "none";
   }
 }
-function changeLike(event){
+function changeLike(event) {
   const curLikes = event.target.textContent.trim();
   index = -1;
   for (let i = 0; i < stories.children.length; i++) {
@@ -312,21 +317,29 @@ function changeLike(event){
       break;
     }
   }
-  let {id} = readSession();
-  let valid = likes[index-1];
-  if(index !== -1 && !valid){
-    firebase.database().ref(`student/posts/${index}`).update({
-      like: parseInt(curLikes)+1
-    });
+  let { id } = readSession();
+  let valid = likes[index - 1];
+  if (index !== -1 && !valid) {
+    firebase
+      .database()
+      .ref(`student/posts/${index}`)
+      .update({
+        like: parseInt(curLikes) + 1,
+      });
+  } else if (index !== -1) {
+    firebase
+      .database()
+      .ref(`student/posts/${index}`)
+      .update({
+        like: parseInt(curLikes) - 1,
+      });
   }
-  else if(index !== -1){
-    firebase.database().ref(`student/posts/${index}`).update({
-      like: parseInt(curLikes)-1
+  firebase
+    .database()
+    .ref(`student/${id}/likes`)
+    .update({
+      [index]: !likes[index - 1],
     });
-  }
-  firebase.database().ref(`student/${id}/likes`).update({
-    [index] : !likes[index-1]
-  });
 }
 window.onresize = () => {
   cardMove();
@@ -380,7 +393,7 @@ containerTop.addEventListener("mouseleave", () => {
   cardInterval = setInterval(cardMove, 2000);
 });
 containerTop.addEventListener("mouseenter", () => {
-  if(cardInterval) clearInterval(cardInterval);
+  if (cardInterval) clearInterval(cardInterval);
 });
 newMessage.addEventListener("keydown", (event) => {
   message = newMessage.value;

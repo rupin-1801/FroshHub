@@ -54,10 +54,10 @@
 
                 <div class="mypost">
                         <div class="container">
-                            <div class="square">
+                            <div class="square" >
                                 
-                                <div class="h1">Is Deno Still a Thing?</div>
-                                <p>Back in May 2020, I wrote an introductory article to Deno due to it having been officially released and available to the
+                                <div class="h1" id="post1">Is Deno Still a Thing?</div>
+                                <p id="post2">Back in May 2020, I wrote an introductory article to Deno due to it having been officially released and available to the
                                 public.
                                 I later went on to write a full book about Deno as well. I liked Deno and all the freshness it brought to the
                                 Node.js-ruled table. However, it also posed a lot of questions that at the time, had no real answer.</p>
@@ -69,8 +69,8 @@
                     <div class="container">
                         <div class="square">
                             
-                            <div class="h1">5 Top Audio Processing Libraries for JavaScript</div>
-                            <p>Implementing web applications with high-fidelity audio processing can be a challenging task. But, if you know the
+                            <div class="h1" id="post3" >5 Top Audio Processing Libraries for JavaScript</div>
+                            <p id="post4">Implementing web applications with high-fidelity audio processing can be a challenging task. But, if you know the
                             correct tools, you can make it a whole lot easier.
                             In this article.</p>
                     
@@ -80,8 +80,8 @@
                     </div><div class="container">
                         <div class="square">
                             
-                            <div class="h1">Howler.js — Free and Reliable Feature-rich Library.</div>
-                            <p>Howler.js utilizes the power of Web Audio API and HTML5 Audio to provide highly reliable, cross-platform audio support.</p>
+                            <div class="h1" id="post5">Howler.js — Free and Reliable Feature-rich Library.</div>
+                            <p id="post6">Howler.js utilizes the power of Web Audio API and HTML5 Audio to provide highly reliable, cross-platform audio support.</p>
                     
                             <div><a href="https://blog.bitsrc.io/high-fidelity-web-audio-with-javascript-2e5fff0f071d" target="_" class="button">Read
                                     More</a></div>
@@ -105,10 +105,27 @@
     </div>
     <script>
         var UserEmail = sessionStorage.getItem("FRID");
-        document.getElementById("email").innerHTML= UserEmail;
-   var UserName= UserEmail.substring(0, UserEmail.lastIndexOf("@"));
-        document.getElementById("Username").innerHTML = UserName.charAt(0).toUpperCase() + UserName.slice(1);
-    </script>
+            document.getElementById("email").innerHTML = UserEmail;
+            var UserName = UserEmail.substring(0, UserEmail.lastIndexOf("@"));
+            document.getElementById("Username").innerHTML =
+                UserName.charAt(0).toUpperCase() + UserName.slice(1);
+            firebase
+                .database()
+                .ref("student/posts/1/")
+                .on("value", function (snapshot) {
+                    document.getElementById("post1").innerHTML = snapshot.val().tag;
+                    document.getElementById("post3").innerHTML = snapshot.val().tag;
+                    document.getElementById("post5").innerHTML = snapshot.val().tag;
+                    document.getElementById("post2").innerHTML = snapshot.val().message;
+                    document.getElementById("post4").innerHTML = snapshot.val().message;
+                    document.getElementById("post6").innerHTML = snapshot.val().message;
+
+                });
+        </script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+        <script src="./../js/firbaseConfig.js"></script>
+
+ 
 </body>
 
 </html>
